@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.gemery.groupradioaddfragment.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"></FrameLayout>
+
+ <LinearLayout
+     android:gravity="center"
+     android:background="@mipmap/nav_footer_white"
+     android:orientation="horizontal"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
+
+     <RadioGroup
+         android:id="@+id/rgTool"
+         android:gravity="center"
+         android:orientation="horizontal"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+         <RadioButton
+             android:id="@+id/rbHome"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_gravity="right"
+             android:layout_weight="1"
+             android:button="@null"
+             android:checked="true"
+             android:drawableTop="@drawable/selector_main_btn_home_bak"
+             android:gravity="center"
+             android:paddingLeft="0dp"
+             android:textColor="@drawable/text_color_selector"
+             android:text="工作台"/>
+         <RadioButton
+             android:id="@+id/rbShop"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_weight="1"
+             android:button="@null"
+             android:checked="false"
+             android:textColor="@drawable/text_color_selector"
+
+             android:drawableTop="@drawable/selector_main_btn_shopcart"
+             android:gravity="center"
+             android:text="通讯录"/>
+
+         <RadioButton
+             android:checked="false"
+             android:id="@+id/rbMessage"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_weight="1"
+             android:button="@null"
+             android:textColor="@drawable/text_color_selector"
+
+             android:drawableTop="@drawable/selector_main_btn_message"
+             android:gravity="center"
+             android:text="消息"/>
+
+         <RadioButton
+             android:checked="false"
+             android:id="@+id/rbMine"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_gravity="center"
+             android:layout_weight="1"
+             android:textColor="@drawable/text_color_selector"
+
+             android:button="@null"
+             android:drawableTop="@drawable/selector_main_btn_mine"
+             android:gravity="center"
+             android:text="我"/>
+
+
+     </RadioGroup>
+
+ </LinearLayout>
+
+</LinearLayout>
