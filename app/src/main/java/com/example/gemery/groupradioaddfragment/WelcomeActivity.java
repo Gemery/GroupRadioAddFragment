@@ -33,7 +33,7 @@ public class WelcomeActivity extends Activity {
     private int getCount() {
         count--;
         if (count == 0) {
-            Intent intent = new Intent(this, LoginActivity.class);
+            Intent intent = new Intent(this, SignInActivity.class);
             startActivity(intent);
             finish();
         }

@@ -14,17 +14,18 @@
         android:id="@+id/btnGoHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="去首页"/>
+        android:text="loadData"/>
 
-    <Button
-        android:id="@+id/btnGoShopCart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="去购物车"/>
+ <ScrollView
+     android:id="@+id/scrollView"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnGoMessage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="去消息"/>
+     <TextView
+         android:id="@+id/dataContainer"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content" />
+ </ScrollView>
+
+
 </LinearLayout>

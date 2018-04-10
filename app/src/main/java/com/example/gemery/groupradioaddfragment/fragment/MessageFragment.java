@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.gemery.groupradioaddfragment.LoginActivity;
 import com.example.gemery.groupradioaddfragment.R;
 import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;

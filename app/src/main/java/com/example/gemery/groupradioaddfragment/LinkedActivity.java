@@ -6,6 +6,7 @@ import android.app.Activity;
  * Created by gemery on 2018/4/7.
  */
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ import com.example.gemery.groupradioaddfragment.linkedlistview.tab.ListViewTabCo
 import com.example.gemery.groupradioaddfragment.linkedlistview.ui.LinkedLayout;
 import com.example.gemery.groupradioaddfragment.linkedlistview.widget.RealSectionIndexer;
 import com.example.gemery.groupradioaddfragment.linkedlistview.widget.SimpleArrayAdapter;
+import com.example.gemery.groupradioaddfragment.utils.ToastUtil;
 
 public class LinkedActivity extends Activity {
 
@@ -75,8 +77,8 @@ public class LinkedActivity extends Activity {
         for(int i = 0 ;i< 10;i++){
             lData.add("xxx系列"+ i);
             for(int j= 0 ;j<10;j++){
-                rData.add("===这是右边的内容---->" + j);
-                Log.e("tag","执行了111111111111");
+                rData.add(i + "===这是右边的内容---->" + j);
+
             }
         }
     }
@@ -92,18 +94,22 @@ public class LinkedActivity extends Activity {
 
     private void initContentContainer() {
         RecyclerView mRecyclerView = new RecyclerView(this);
+        //mRecyclerView.setBackgroundColor(getResources().getColor(android.R.color.background_light));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         RightArrayAdapter<String> adapter = new RightArrayAdapter<>(this,R.layout.right_item, rData, mSectionIndexer);
 
         mRecyclerView.setAdapter(adapter);
 
-        Log.e("tag","执行了111111111111");
+
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onClick(int position) {
-                Log.e("tag","dayingzhelide xinxi执行了");
-                Toast.makeText(LinkedActivity.this,"您点击了"+position+"行",Toast.LENGTH_SHORT).show();
-
+                Log.e("tag","执行了 onClick 方法");
+                ToastUtil.showToast(LinkedActivity.this,"show toast");
+//                Intent intent=new Intent(LinkedActivity.this,SignUpActivity.class);
+//                intent.putExtra("action","to_recycler_item");
+//                startActivity(intent);
+//                finish();
             }
 
             @Override

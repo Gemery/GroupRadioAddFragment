@@ -12,7 +12,7 @@ import okhttp3.OkHttpClient;
  * Created by gemery on 2018/4/1.
  */
 
-public class HttpUtils {
+public class HttpConfig {
     public static OkHttpClient.Builder  setOkgoConfig(){
 
         OkHttpClient.Builder builder = new OkHttpClient.Builder();

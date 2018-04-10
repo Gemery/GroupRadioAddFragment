@@ -53,13 +53,13 @@ public class RightArrayAdapter<T>
         holder.textView.setText(mObjects.get(position).toString());
 
         if(mOnItemClickListener!= null){
-            holder.textView.setOnClickListener(new View.OnClickListener() {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     mOnItemClickListener.onClick(position);
                 }
             });
-            holder.textView.setOnLongClickListener(new View.OnLongClickListener() {
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     mOnItemClickListener.onLongClick(position);
@@ -83,13 +83,14 @@ public class RightArrayAdapter<T>
 
         public ViewHolder(View itemView) {
             super(itemView);
+
             textView = (TextView) itemView.findViewById(R.id.right_text);
             textView2 = (TextView) itemView.findViewById(R.id.right_msg);
             imageView = (ImageView) itemView.findViewById(R.id.right_img);
-            textView.setLayoutParams(new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-            ));
+//            textView.setLayoutParams(new LinearLayout.LayoutParams(
+//                    ViewGroup.LayoutParams.MATCH_PARENT,
+//                    ViewGroup.LayoutParams.WRAP_CONTENT
+//            ));
         }
     }
 

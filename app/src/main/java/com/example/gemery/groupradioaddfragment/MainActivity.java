@@ -13,7 +13,7 @@ import android.widget.RadioGroup;
 import com.example.gemery.groupradioaddfragment.fragment.HomeFragment;
 import com.example.gemery.groupradioaddfragment.fragment.MessageFragment;
 import com.example.gemery.groupradioaddfragment.fragment.MineFragment;
-import com.example.gemery.groupradioaddfragment.fragment.ShopcartFragment;
+import com.example.gemery.groupradioaddfragment.fragment.ContactFragment;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
 import com.lzy.okgo.cache.CacheMode;
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initOkgo() {
-        OkHttpClient.Builder builder = HttpUtils.setOkgoConfig();
+        OkHttpClient.Builder builder = HttpConfig.setOkgoConfig();
 
         //---------这里给出的是示例代码,告诉你可以这么传,实际使用的时候,根据需要传,不需要就不传-------------//
         HttpHeaders headers = new HttpHeaders();
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         //首页
         HomeFragment homeFragment =new HomeFragment();
         //购物车
-        ShopcartFragment shopcartFragment =new ShopcartFragment();
+        ContactFragment contactFragment =new ContactFragment();
 
         //消息
         MessageFragment messageFragment =new MessageFragment();
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         MineFragment mineFragment =new MineFragment();
 
         //添加到数组
-        mFragments = new Fragment[]{homeFragment,shopcartFragment,messageFragment,mineFragment};
+        mFragments = new Fragment[]{homeFragment, contactFragment,messageFragment,mineFragment};
 
         //开启事务
 
