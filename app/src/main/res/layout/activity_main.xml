@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.gemery.groupradioaddfragment.MainActivity">
+    tools:context="com.example.gemery.importactivity.MainActivity">
 
     <FrameLayout
         android:id="@+id/content"

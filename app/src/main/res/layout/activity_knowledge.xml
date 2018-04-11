@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <com.youth.banner.Banner
+        android:id="@+id/k_banner"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"></com.youth.banner.Banner>
+
+    <RadioGroup
+        android:id="@+id/radiogrop1"
+        android:gravity="center"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/taoCi"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/tc"
+            android:gravity="center"
+            android:paddingLeft="0dp"
+            android:text="陶瓷"/>
+        <RadioButton
+            android:id="@+id/zhiNeng"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/zn"
+            android:gravity="center"
+            android:text="智能"/>
+
+        <RadioButton
+            android:checked="false"
+            android:id="@+id/yuShiGui"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/ysg"
+            android:gravity="center"
+            android:text="浴室柜"/>
+
+        <RadioButton
+            android:checked="false"
+            android:id="@+id/linYuF"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/lyf"
+            android:gravity="center"
+            android:text="淋浴房"/>
+
+
+    </RadioGroup>
+    <RadioGroup
+        android:id="@+id/radiogroup2"
+        android:padding="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/xiuXian"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/xx"
+            android:gravity="center"
+            android:paddingLeft="0dp"
+            android:text="休闲"/>
+        <RadioButton
+            android:id="@+id/wuJin"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/lt"
+            android:gravity="center"
+            android:text="五金"/>
+
+        <RadioButton
+            android:checked="false"
+            android:id="@+id/shaoShou"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/jq"
+            android:gravity="center"
+            android:text="销售"/>
+
+        <RadioButton
+            android:checked="false"
+            android:id="@+id/dMian"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/dm"
+            android:gravity="center"
+            android:text=" 店面管理"/>
+
+
+    </RadioGroup>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#aaa"
+        ></LinearLayout>
+    <ListView
+        android:id="@+id/mRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+</LinearLayout>
