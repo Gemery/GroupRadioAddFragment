@@ -53,7 +53,7 @@ dependencies {
     compile 'com.annimon:stream:1.0.9'
 
     //gson 的 解析 json字符串 ---> java对象
-    compile 'com.google.code.gson:gson:2.8.0'
+    //compile 'com.google.code.gson:gson:2.8.0'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
