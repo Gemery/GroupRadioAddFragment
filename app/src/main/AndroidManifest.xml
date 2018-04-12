@@ -47,6 +47,15 @@
         <activity android:name=".LinkedActivity">
 
         </activity>
+        <activity android:name=".ContactActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+
+        <activity android:name=".CityActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            >
+
+        </activity>
     </application>
 
 </manifest>

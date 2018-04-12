@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 
+import com.example.gemery.groupradioaddfragment.ContactActivity;
 import com.example.gemery.groupradioaddfragment.KnowledgeActivity;
 import com.example.gemery.groupradioaddfragment.R;
 
@@ -77,7 +78,12 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
             Intent intent = new Intent(getActivity(),KnowledgeActivity.class);
             intent.putExtra("action","to_knowledge_activity");
             getActivity().startActivity(intent);
-        }else {
+        }else if(i == 6){
+            Intent intent = new Intent(getActivity(),ContactActivity.class);
+            intent.putExtra("action","to_contact_activity");
+            getActivity().startActivity(intent);
+        }
+        else {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("提示").setMessage(dataList.get(i).get("text").toString()).create().show();

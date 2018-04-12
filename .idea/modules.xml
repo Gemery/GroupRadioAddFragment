@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GroupRadioAddFragment.iml" filepath="$PROJECT_DIR$/GroupRadioAddFragment.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/indexstickyview/indexstickyview.iml" filepath="$PROJECT_DIR$/indexstickyview/indexstickyview.iml" />
     </modules>
   </component>
 </project>

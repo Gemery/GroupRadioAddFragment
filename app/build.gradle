@@ -28,7 +28,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.android.support:design:26.1.0'
@@ -36,32 +36,27 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     // butterknife  注解注入
     compile 'com.jakewharton:butterknife:7.0.1'
-
     compile 'com.android.support:support-v4:26.0.0'
     //网络请求 okgo
     compile 'com.lzy.net:okgo:3.0.4'
     // 图片Banner 轮播
     compile 'com.youth.banner:banner:1.4.9'
-  // listView 联动 网络retrofit2
+    // listView 联动 网络retrofit2
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'io.reactivex:rxjava:1.2.7'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
-
     compile 'com.annimon:stream:1.0.9'
-
     //gson 的 解析 json字符串 ---> java对象
     //compile 'com.google.code.gson:gson:2.8.0'
-
     //圆形图片
     compile 'de.hdodenhof:circleimageview:2.1.0'
-
     //字体图标
     compile 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
     compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
-
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation project(':indexstickyview')
 }
