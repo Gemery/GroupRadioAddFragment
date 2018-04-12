@@ -14,6 +14,8 @@ import android.widget.SimpleAdapter;
 
 import com.example.gemery.groupradioaddfragment.ContactActivity;
 import com.example.gemery.groupradioaddfragment.KnowledgeActivity;
+import com.example.gemery.groupradioaddfragment.PersonActivity;
+import com.example.gemery.groupradioaddfragment.QueryActivity;
 import com.example.gemery.groupradioaddfragment.R;
 
 import java.util.ArrayList;
@@ -56,9 +58,9 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
     private void initData() {
 
         //图标
-        int icno[] = {R.drawable.th_text3, R.drawable.th_topple3, R.drawable.th_toy_bot,
-                R.drawable.th_wikipanion2, R.drawable.th_yelp, R.drawable.th_youtube,
-                R.drawable.th_textreader, R.drawable.th_thisday};
+        int icno[] = {R.drawable.ps, R.drawable.anz, R.drawable.js,
+                R.drawable.jiangp, R.drawable.zs, R.drawable.kccx,
+                R.drawable.txl, R.drawable.gr};
         //图标下的文字
         String name[] = {"配送中心", "安装中心", "结算中心", "功勋榜", "知识中心",
                 "库存查询", "通讯录", "个人中心"};
@@ -81,6 +83,16 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
         }else if(i == 6){
             Intent intent = new Intent(getActivity(),ContactActivity.class);
             intent.putExtra("action","to_contact_activity");
+            getActivity().startActivity(intent);
+        }
+        else if(i == 5){
+            Intent intent = new Intent(getActivity(),QueryActivity.class);
+            intent.putExtra("action","to_query_activity");
+            getActivity().startActivity(intent);
+        }
+        else if(i == 7){
+            Intent intent = new Intent(getActivity(),PersonActivity.class);
+            intent.putExtra("action","to_personal_activity");
             getActivity().startActivity(intent);
         }
         else {
