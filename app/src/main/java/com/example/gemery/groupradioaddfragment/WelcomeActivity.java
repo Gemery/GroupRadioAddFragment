@@ -16,7 +16,7 @@ import android.widget.TextView;
 public class WelcomeActivity extends Activity {
     private TextView textView;
     //声明时间有多少;
-    private int count = 5;
+    private int count = 1;
     private Animation animation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

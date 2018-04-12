@@ -29,10 +29,7 @@ import butterknife.OnClick;
  */
 
 public class MineFragment extends Fragment {
-    @Bind(R.id.btnGoHome)
-    Button bt1;
-    @Bind(R.id.dataContainer)
-    TextView tvContainer;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,7 +46,7 @@ public class MineFragment extends Fragment {
         ButterKnife.bind(this,view);
         return view;
     }
-    @OnClick(R.id.btnGoHome)
+
     public void loadData(){
         OkGo.<String>get("https://www.baidu.com")
                 .tag(getContext())
@@ -58,7 +55,7 @@ public class MineFragment extends Fragment {
                 .execute(new StringCallback() {
                              @Override
                              public void onSuccess(Response<String> response) {
-                                 tvContainer.setText(response.body());
+                                 Log.i("tage",response.body());
                              }
 
                              @Override
