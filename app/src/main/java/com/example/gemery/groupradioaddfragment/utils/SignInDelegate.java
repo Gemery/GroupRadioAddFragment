@@ -11,7 +11,8 @@ import com.example.gemery.groupradioaddfragment.R;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
-import butterknife.Bind;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -20,9 +21,9 @@ import butterknife.OnClick;
  */
 
 public class SignInDelegate extends Activity {
-    @Bind(R.id.edit_sign_in_email)
+    @BindView(R.id.edit_sign_in_email)
     TextInputEditText mEmail = null;
-    @Bind(R.id.edit_sign_in_password)
+    @BindView(R.id.edit_sign_in_password)
     TextInputEditText mPassword = null;
 
     @Override

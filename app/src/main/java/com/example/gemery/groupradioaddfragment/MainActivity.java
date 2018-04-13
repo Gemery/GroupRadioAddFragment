@@ -20,7 +20,8 @@ import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.model.HttpHeaders;
 import com.lzy.okgo.model.HttpParams;
 
-import butterknife.Bind;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.OkHttpClient;
@@ -28,17 +29,17 @@ import okhttp3.OkHttpClient;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Bind(R.id.content)
+    @BindView(R.id.content)
     FrameLayout mContent;
-    @Bind(R.id.rbHome)
+    @BindView(R.id.rbHome)
     RadioButton mRbHome;
-    @Bind(R.id.rbShop)
+    @BindView(R.id.rbShop)
     RadioButton mRbShop;
-    @Bind(R.id.rbMessage)
+    @BindView(R.id.rbMessage)
     RadioButton mRbMessage;
-    @Bind(R.id.rbMine)
+    @BindView(R.id.rbMine)
     RadioButton mRbMine;
-    @Bind(R.id.rgTool)
+    @BindView(R.id.rgTool)
     RadioGroup mRgTools;
     private Fragment[] mFragments;
 

@@ -13,7 +13,7 @@ import com.youth.banner.Banner;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -22,7 +22,7 @@ import butterknife.OnClick;
  */
 
 public class SignInActivity extends Activity {
-    @Bind(R.id.email_sign_in_button)
+    @BindView(R.id.email_sign_in_button)
     Button btGo;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

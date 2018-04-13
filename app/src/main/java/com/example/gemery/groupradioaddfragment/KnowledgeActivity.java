@@ -24,7 +24,7 @@ import com.youth.banner.loader.ImageLoader;
 import java.util.Arrays;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -35,29 +35,29 @@ import butterknife.OnClick;
 
 public class KnowledgeActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-    @Bind(R.id.mRecyclerView)
+    @BindView(R.id.mRecyclerView)
     ListView lv;
-    @Bind(R.id.k_banner)
+    @BindView(R.id.k_banner)
     Banner kBanner;
-    @Bind(R.id.taoCi)
+    @BindView(R.id.taoCi)
     RadioButton taoCi;
-    @Bind(R.id.zhiNeng)
+    @BindView(R.id.zhiNeng)
     RadioButton zhiNeng;
-    @Bind(R.id.yuShiGui)
+    @BindView(R.id.yuShiGui)
     RadioButton yuShiGui;
-    @Bind(R.id.linYuF)
+    @BindView(R.id.linYuF)
     RadioButton linYuF;
-    @Bind(R.id.radiogrop1)
+    @BindView(R.id.radiogrop1)
     RadioGroup radiogrop1;
-    @Bind(R.id.xiuXian)
+    @BindView(R.id.xiuXian)
     RadioButton xiuXian;
-    @Bind(R.id.wuJin)
+    @BindView(R.id.wuJin)
     RadioButton wuJin;
-    @Bind(R.id.shaoShou)
+    @BindView(R.id.shaoShou)
     RadioButton shaoShou;
-    @Bind(R.id.dMian)
+    @BindView(R.id.dMian)
     RadioButton dMian;
-    @Bind(R.id.radiogroup2)
+    @BindView(R.id.radiogroup2)
     RadioGroup radiogroup2;
 
     @Override

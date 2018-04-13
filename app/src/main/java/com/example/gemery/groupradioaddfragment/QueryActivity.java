@@ -12,7 +12,7 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -22,13 +22,13 @@ import butterknife.OnClick;
 
 public class QueryActivity extends AppCompatActivity {
 
-    @Bind(R.id.edit_biaohao)
+    @BindView(R.id.edit_biaohao)
     TextInputEditText editBiaohao;
-    @Bind(R.id.edit_xinghao)
+    @BindView(R.id.edit_xinghao)
     TextInputEditText editXinghao;
-    @Bind(R.id.bt_query)
+    @BindView(R.id.bt_query)
     Button btQuery;
-    @Bind(R.id.lv_query)
+    @BindView(R.id.lv_query)
     ListView lvQuery;
 
     @Override

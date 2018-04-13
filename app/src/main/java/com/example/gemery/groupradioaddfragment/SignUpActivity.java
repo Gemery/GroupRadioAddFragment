@@ -12,7 +12,7 @@ import com.example.gemery.groupradioaddfragment.utils.HttpUtils;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -22,15 +22,15 @@ import butterknife.OnClick;
 
 public class SignUpActivity extends Activity{
 
-    @Bind(R.id.edit_sign_up_name)
+    @BindView(R.id.edit_sign_up_name)
     TextInputEditText mName = null;
-    @Bind(R.id.edit_sign_up_email)
+    @BindView(R.id.edit_sign_up_email)
     TextInputEditText mEmail = null;
-    @Bind(R.id.edit_sign_up_phone)
+    @BindView(R.id.edit_sign_up_phone)
     TextInputEditText mPhone = null;
-    @Bind(R.id.edit_sign_up_password)
+    @BindView(R.id.edit_sign_up_password)
     TextInputEditText mPassword = null;
-    @Bind(R.id.edit_sign_up_re_password)
+    @BindView(R.id.edit_sign_up_re_password)
     TextInputEditText mRePassword = null;
 
     private Boolean checkForm(){

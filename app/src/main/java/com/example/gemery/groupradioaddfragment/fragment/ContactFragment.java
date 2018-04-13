@@ -23,7 +23,7 @@ import com.example.gemery.groupradioaddfragment.utils.ToastUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -34,9 +34,9 @@ public class ContactFragment extends Fragment implements SwipeRefreshLayout.OnRe
     List<String> mList = new ArrayList<>();
 
 
-    @Bind(R.id.swipeRefreshLayout)
+    @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout swipeRefreshLayout;
-    @Bind(R.id.listView)
+    @BindView(R.id.listView)
     ListView listView;
     private ArrayAdapter<String> adapter;
 

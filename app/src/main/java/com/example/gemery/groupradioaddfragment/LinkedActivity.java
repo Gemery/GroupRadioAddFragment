@@ -13,8 +13,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import butterknife.Bind;
 
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -38,7 +39,7 @@ import com.example.gemery.groupradioaddfragment.utils.ToastUtil;
 
 public class LinkedActivity extends Activity {
 
-    @Bind(R.id.linked_layout)
+    @BindView(R.id.linked_layout)
     LinkedLayout mLinkedLayout;
 
     private BaseScrollableContainer mTabContainer;      // 左边的 Tab 页

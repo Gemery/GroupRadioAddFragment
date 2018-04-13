@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'org.greenrobot.greendao'
+//加入下面这段代码
+apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -26,7 +28,11 @@ android {
         sourceCompatibility 1.8
     }
 }
-
+greendao {
+    schemaVersion 1  //版本
+    daoPackage 'com.example.gemery.groupradioaddfragment.dao' // 一般为app包名+生成文件的文件夹名
+    targetGenDir 'src/main/java' //生成文件路径
+}
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
@@ -35,7 +41,11 @@ dependencies {
     // 单元测试  junit
     testImplementation 'junit:junit:4.12'
     // butterknife  注解注入
-    compile 'com.jakewharton:butterknife:7.0.1'
+    //加入下面这两行代码
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
+
     compile 'com.android.support:support-v4:26.0.0'
     //网络请求 okgo
     compile 'com.lzy.net:okgo:3.0.4'
@@ -54,8 +64,11 @@ dependencies {
     //圆形图片
     compile 'de.hdodenhof:circleimageview:2.1.0'
     //字体图标
+
     compile 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
     compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
+//Green dao  ---->
+    compile 'org.greenrobot:greendao:3.2.0'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation project(':indexstickyview')

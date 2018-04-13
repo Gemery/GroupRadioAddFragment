@@ -1,6 +1,7 @@
 package com.example.gemery.groupradioaddfragment;
 
-import butterknife.Bind;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.ittiger.indexlist.IndexStickyView;
 import cn.ittiger.indexlist.adapter.IndexHeaderFooterAdapter;
@@ -38,11 +39,11 @@ import java.util.List;
  */
 public class ContactActivity extends AppCompatActivity implements
         Toolbar.OnMenuItemClickListener, OnItemClickListener<ContactEntity>, OnItemLongClickListener<ContactEntity> {
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.swipeRefreshLayout)
+    @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout mRefreshLayout;
-    @Bind(R.id.indexStickyView)
+    @BindView(R.id.indexStickyView)
     IndexStickyView mIndexStickyView;
     MyIndexStickyViewAdapter mAdapter;
     private Context mContext;
