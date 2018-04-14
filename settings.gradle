@@ -1,1 +1,1 @@
-include ':app', ':indexstickyview'
+include ':app', ':indexstickyview', ':fileview'

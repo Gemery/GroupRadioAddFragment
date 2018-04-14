@@ -32,9 +32,9 @@ public class HttpUtils {
     //登录
     public void login(String username,String password,StringCallback callback) {
         HttpParams params = new HttpParams();
-        params.put("mobile", username);
-        params.put("password", password);
-        execute(params, callback, "dacheng/login.php");//API
+        params.put("phoneNumber", username);
+        params.put("verifyCode", password);
+        execute(params, callback, "http://rapapi.org/mockjsdata/11156/api/u/verify");//API
     }
     //注册
     public void register(String username,String email,String phone,String password,

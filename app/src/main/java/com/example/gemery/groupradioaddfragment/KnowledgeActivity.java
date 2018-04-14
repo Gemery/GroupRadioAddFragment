@@ -5,7 +5,10 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +18,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.gemery.groupradioaddfragment.utils.ToastUtil;
+import com.silang.superfileview.FileDisplayActivity;
 import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -27,6 +31,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import pub.devrel.easypermissions.EasyPermissions;
 
 
 /**
@@ -63,12 +68,26 @@ public class KnowledgeActivity extends AppCompatActivity implements AdapterView.
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("知识中心");
         setContentView(R.layout.activity_knowledge);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
 
         initBanner(kBanner);
         changeImageSize();
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void initBanner(Banner banner) {
         String[] urls = getResources().getStringArray(R.array.url);
         List list  = Arrays.asList(urls);
@@ -177,12 +196,12 @@ public class KnowledgeActivity extends AppCompatActivity implements AdapterView.
 
                 String[] perms = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE};
-//
-//                if (!EasyPermissions.hasPermissions(KnowledgeActivity.this, perms)) {
-//                    EasyPermissions.requestPermissions(KnowledgeActivity.this, "需要访问手机存储权限！", 10086, perms);
-//                } else {
-//                    FileDisplayActivity.show(KnowledgeActivity.this, path);
-//                }
+
+                if (!EasyPermissions.hasPermissions(KnowledgeActivity.this, perms)) {
+                    EasyPermissions.requestPermissions(KnowledgeActivity.this, "需要访问手机存储权限！", 10086, perms);
+               } else {
+                   FileDisplayActivity.show(KnowledgeActivity.this, path);
+               }
                 break;
             case 1:
                 path =  "/storage/emulated/0/test.docx";

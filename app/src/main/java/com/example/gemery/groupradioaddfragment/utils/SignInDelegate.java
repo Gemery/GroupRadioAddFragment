@@ -6,11 +6,14 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.util.Log;
 import android.util.Patterns;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.example.gemery.groupradioaddfragment.R;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
-
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,11 +28,19 @@ public class SignInDelegate extends Activity {
     TextInputEditText mEmail = null;
     @BindView(R.id.edit_sign_in_password)
     TextInputEditText mPassword = null;
+    @BindView(R.id.email)
+    AutoCompleteTextView email;
+    @BindView(R.id.password)
+    EditText password;
+    @BindView(R.id.email_sign_in_button)
+    Button emailSignInButton;
+    @BindView(R.id.email_login_form)
+    LinearLayout emailLoginForm;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
     }
 
@@ -55,9 +66,10 @@ public class SignInDelegate extends Activity {
 
         return isPass;
     }
+
     @OnClick(R.id.btn_sign_in)
-    void onClickSignIn(){
-        if(checkForm()){
+    void onClickSignIn() {
+        if (checkForm()) {
             HttpUtils.Buider().login(mEmail.getText().toString(),
                     mPassword.getText().toString(),
                     new StringCallback() {
@@ -70,7 +82,7 @@ public class SignInDelegate extends Activity {
                         public void onError(Response<String> response) {
                             super.onError(response);
 
-                            Log.e("tag","登录出错了");
+                            Log.e("tag", "登录出错了");
                         }
                     });
         }

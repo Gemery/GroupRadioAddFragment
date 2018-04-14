@@ -11,7 +11,7 @@ android {
             }
         }
         applicationId "com.example.gemery.groupradioaddfragment"
-        minSdkVersion 15
+        minSdkVersion 14
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -44,8 +44,6 @@ dependencies {
     //加入下面这两行代码
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-
-
     compile 'com.android.support:support-v4:26.0.0'
     //网络请求 okgo
     compile 'com.lzy.net:okgo:3.0.4'
@@ -55,21 +53,34 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'io.reactivex:rxjava:1.2.7'
     compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    //网络请求依赖
+    compile 'com.squareup.okio:okio:1.13.0'
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    //Loader依赖
+    compile 'com.wang.avi:library:2.1.3'
+    //JSON依赖Android版
+    compile 'com.alibaba:fastjson:1.1.57.android'
+    //Log
+    compile 'com.orhanobut:logger:2.1.1'
+    //compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
     compile 'com.annimon:stream:1.0.9'
     //gson 的 解析 json字符串 ---> java对象
-    //compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.google.code.gson:gson:2.8.0'
     //圆形图片
     compile 'de.hdodenhof:circleimageview:2.1.0'
     //字体图标
-
     compile 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
     compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
-//Green dao  ---->
+    //Green dao  ---->
     compile 'org.greenrobot:greendao:3.2.0'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation project(':indexstickyview')
+    implementation project(':fileview')
+  // 加载图片
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 }
