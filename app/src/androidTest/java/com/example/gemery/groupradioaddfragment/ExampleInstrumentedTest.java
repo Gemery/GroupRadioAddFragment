@@ -5,8 +5,8 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
-import com.example.gemery.groupradioaddfragment.bean.Student;
-import com.example.gemery.groupradioaddfragment.bean.StudentA;
+import com.example.gemery.ssww.bean.Student;
+import com.example.gemery.ssww.bean.StudentA;
 import com.google.gson.Gson;
 
 import org.junit.Ignore;

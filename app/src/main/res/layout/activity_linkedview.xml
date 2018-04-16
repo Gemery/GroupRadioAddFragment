@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-   <com.example.gemery.groupradioaddfragment.linkedlistview.ui.LinkedLayout
+   <com.example.gemery.ssww.linkedlistview.ui.LinkedLayout
        android:id="@+id/linked_layout"
        android:orientation="horizontal"
        android:layout_width="match_parent"
        android:layout_height="match_parent">
 
-   </com.example.gemery.groupradioaddfragment.linkedlistview.ui.LinkedLayout>
+   </com.example.gemery.ssww.linkedlistview.ui.LinkedLayout>
 </LinearLayout>

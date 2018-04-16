@@ -1,4 +1,4 @@
-package com.example.gemery.groupradioaddfragment.dao;
+package com.example.gemery.ssww.dao;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteStatement;
