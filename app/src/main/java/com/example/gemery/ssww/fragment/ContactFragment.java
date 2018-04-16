@@ -14,7 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.gemery.ssww.LinkedActivity;
+import com.example.gemery.ssww.activities.LinkedActivity;
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.utils.ToastUtil;
 

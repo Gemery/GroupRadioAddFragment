@@ -18,6 +18,8 @@ import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.CreationList;
 import com.example.gemery.ssww.bean.CreationsString;
 import com.example.gemery.ssww.bean.User;
+import com.example.gemery.ssww.utils.DensityUtil;
+import com.example.gemery.ssww.utils.SpaceItemDecoration;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -64,7 +66,7 @@ public class MessageFragment extends Fragment {
                 .params("accessToken","123456")
                 .execute(new StringCallback() {
             @Override
-            public void onSuccess(Response<String> response) {
+                public void onSuccess(Response<String> response) {
                 Log.e("tage",response.body());
                 String json = response.body();
                 try {
@@ -87,7 +89,7 @@ public class MessageFragment extends Fragment {
         //添加Android自带的分割线
         //mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //mRecyclerView.addItemDecoration(new SpaceItemDecoration(DensityUtil.dip2px(getActivity(),10)));
+        mRecyclerView.addItemDecoration(new SpaceItemDecoration(DensityUtil.dip2px(getActivity(),10)));
         mRecyclerView.setAdapter(new RecyclerView.Adapter() {
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -101,7 +103,7 @@ public class MessageFragment extends Fragment {
 
             @Override
             public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-                //Log.e("tage",list.get(position).toString());
+                Log.e("tage",list.get(position).getUserInfo().getAvatar());
 
                 ((TextView) holder.itemView.findViewById(R.id.m_avatar_name)).setText(list.get(position).getUserInfo().getNickName());
                 ImageView imageview =  (ImageView) holder.itemView.findViewById(R.id.m_avatar);
@@ -144,6 +146,10 @@ public class MessageFragment extends Fragment {
             }
         });
         banner.start();
+
+        // bannner 使用  是加载 网络图片还是  file:///  本地图片的资源
+        // useriverl-loader-ImageLoader  d 使用    全局配字imageloader 在application 配置需要的参数
+        // ImageLoader.getInstance 获得单列  套用  displayImage（url , imageview)   小赤佬
 
     }
 }

@@ -1,4 +1,4 @@
-package com.example.gemery.ssww;
+package com.example.gemery.ssww.activities;
 
 import android.app.Activity;
 

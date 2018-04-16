@@ -1,4 +1,4 @@
-package com.example.gemery.ssww;
+package com.example.gemery.ssww.activities;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;

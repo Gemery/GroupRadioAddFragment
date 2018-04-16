@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setIndexSelected(int index) {
+        // 创建一个  Fragment 的数组 或 List<Fragment>    替换layout frame收个fragment
         if(mIndex == index)
             return;
         FragmentManager fragmentManager = getSupportFragmentManager();

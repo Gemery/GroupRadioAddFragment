@@ -30,6 +30,8 @@ public class AppExample extends Application {
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
         ImageLoader loader = ImageLoader.getInstance();
+
+        //config.imageDownloader(new AuthImageDownloader(this));
         loader.init(config);
 
     }

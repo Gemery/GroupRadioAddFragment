@@ -13,9 +13,9 @@ import android.widget.GridView;
 import android.widget.SimpleAdapter;
 
 import com.example.gemery.ssww.activities.ContactActivity;
-import com.example.gemery.ssww.KnowledgeActivity;
-import com.example.gemery.ssww.PersonActivity;
-import com.example.gemery.ssww.QueryActivity;
+import com.example.gemery.ssww.activities.KnowledgeActivity;
+import com.example.gemery.ssww.activities.PersonActivity;
+import com.example.gemery.ssww.activities.QueryActivity;
 import com.example.gemery.groupradioaddfragment.R;
 
 import java.util.ArrayList;
