@@ -96,7 +96,10 @@ public class MainActivity extends AppCompatActivity {
         //添加到数组
         mFragments = new Fragment[]{homeFragment, contactFragment,messageFragment,mineFragment};
 
-        //开启事务
+        //开启事务   FragmentManager   getSuppertFragmentManager();  beginTransaction --->ft.add(R.id.frame,fragment)  ft.commit
+
+        //    mRecyclerView . addViewHeader   .addViewFooter
+        //   mRecy clerView setDeafult
 
         FragmentTransaction ft =
                 getSupportFragmentManager().beginTransaction();

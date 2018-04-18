@@ -10,12 +10,15 @@ import com.joanzapata.iconify.fonts.IoniconsModule;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import org.jivesoftware.smack.XMPPConnection;
+
 /**
  * Created by gemery on 2018/4/3.
  */
 
 public class AppExample extends Application {
     private static AppExample mApp;
+    public  static XMPPConnection xmppConnection;
 
     @Override
     public void onCreate() {

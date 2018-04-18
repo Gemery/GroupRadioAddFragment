@@ -113,6 +113,7 @@ public class MessageFragment extends Fragment {
 
 
             }
+            // 钉钉 打卡
 
             @Override
             public int getItemCount() {
@@ -121,7 +122,7 @@ public class MessageFragment extends Fragment {
         });
 
     }
-
+// 即时通信
     private void initBanner(Banner banner) {
         String[] urls = getResources().getStringArray(R.array.url);
         List list  = Arrays.asList(urls);
@@ -150,6 +151,7 @@ public class MessageFragment extends Fragment {
         // bannner 使用  是加载 网络图片还是  file:///  本地图片的资源
         // useriverl-loader-ImageLoader  d 使用    全局配字imageloader 在application 配置需要的参数
         // ImageLoader.getInstance 获得单列  套用  displayImage（url , imageview)   小赤佬
+
 
     }
 }

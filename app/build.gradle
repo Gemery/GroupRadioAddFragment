@@ -83,4 +83,7 @@ dependencies {
     implementation project(':fileview')
   // 加载图片
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+
+    compile files('libs/asmack.jar')
+    compile files('libs/afinal_0.5.1_bin.jar')
 }
