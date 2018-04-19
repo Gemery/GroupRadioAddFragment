@@ -362,6 +362,7 @@ public class XmppUtil {
 		if (chat != null) {
 			chat.sendMessage(content);
 			Log.e("jj", "发送成功");
+			Log.e("jj",content);
 		}
 	}
 	

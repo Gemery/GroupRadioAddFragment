@@ -8,6 +8,7 @@ import java.util.Collection;
 import org.jivesoftware.smack.Chat;
 import org.jivesoftware.smack.ChatManager;
 import org.jivesoftware.smack.ChatManagerListener;
+import org.jivesoftware.smack.MessageListener;
 import org.jivesoftware.smack.Roster;
 import org.jivesoftware.smack.RosterEntry;
 import org.jivesoftware.smack.RosterGroup;
@@ -15,6 +16,7 @@ import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.filter.AndFilter;
 import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.filter.PacketTypeFilter;
+import org.jivesoftware.smack.packet.Message;
 import org.jivesoftware.smack.packet.Presence;
 
 
@@ -28,6 +30,7 @@ import android.util.Log;
 import com.example.gemery.ssww.AppExample;
 import com.example.gemery.ssww.listener.CheckConnectionListener;
 import com.example.gemery.ssww.listener.FriendsPacketListener;
+import com.example.gemery.ssww.listener.MsgListener;
 import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.PreferencesUtils;
 import com.example.gemery.ssww.utils.XmppConnectionManager;
@@ -110,8 +113,14 @@ public class MsfService extends Service{
 		ChatManager chatmanager = mXMPPConnection.getChatManager();
 		chatmanager.addChatListener(new ChatManagerListener() {
 			@Override
-			public void chatCreated(Chat arg0, boolean arg1) {
-				//arg0.addMessageListener(new MsgListener(MsfService.this, mNotificationManager));
+			public void chatCreated(Chat chat, boolean arg1) {
+				chat.addMessageListener(new MsgListener(MsfService.this, mNotificationManager));
+//				chat.addMessageListener(new MessageListener() {
+//					@Override
+//					public void processMessage(Chat chat, Message message) {
+//						String msg = message.getBody();
+//					}
+//				});
 			}
 		});
 	}
@@ -123,6 +132,7 @@ public class MsfService extends Service{
 		try {
 			mPassword = PreferencesUtils.getSharePreStr(this, "pwd");
 			mXMPPConnection.connect();
+			Log.e("jj","连接成功。。。。。。。。");
 		    try{
 		    	if(checkConnectionListener!=null){
 		    		mXMPPConnection.removeConnectionListener(checkConnectionListener);

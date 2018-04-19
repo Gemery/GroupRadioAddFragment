@@ -16,6 +16,7 @@ import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 
 import com.example.gemery.groupradioaddfragment.R;
+import com.example.gemery.ssww.AppExample;
 import com.example.gemery.ssww.MainActivity;
 import com.example.gemery.ssww.service.MsfService;
 import com.example.gemery.ssww.utils.Const;
@@ -26,7 +27,10 @@ import com.joanzapata.iconify.widget.IconTextView;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
+import org.jivesoftware.smack.Chat;
+import org.jivesoftware.smack.ChatManager;
 import org.jivesoftware.smack.ConnectionConfiguration;
+import org.jivesoftware.smack.MessageListener;
 import org.jivesoftware.smack.PacketCollector;
 import org.jivesoftware.smack.SmackConfiguration;
 import org.jivesoftware.smack.XMPPConnection;
@@ -36,6 +40,7 @@ import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.filter.PacketIDFilter;
 import org.jivesoftware.smack.filter.PacketTypeFilter;
 import org.jivesoftware.smack.packet.IQ;
+import org.jivesoftware.smack.packet.Message;
 import org.jivesoftware.smack.packet.Registration;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,6 +54,9 @@ import butterknife.OnClick;
  */
 
 public class SignInActivity extends Activity {
+
+    private static Chat chat;
+
 
     @BindView(R.id.edit_sign_in_email)
     TextInputEditText mEmail;
@@ -136,42 +144,42 @@ public class SignInActivity extends Activity {
             startService(intent);
 
 
-            HttpUtils.Buider().login(username, password,
-                    new StringCallback() {
-                        @Override
-                        public void onSuccess(Response<String> response) {
-                            loginDialog.dismiss();
-                            //TODO
-                           // Log.e("tage",response.body());
-                            try {
-                                JSONObject object = new JSONObject(response.body());
-                                //Log.e("tage",object.toString());
-                                if(object.getString("success").equals("true")){
-                                    // 第一次登陆  ---》
-                                    usersp=getSharedPreferences("user",0);
-                                    SharedPreferences.Editor editor = usersp.edit();
-                                    //editor.putString("uid", object.getString("g_uid"));
-                                    editor.putString("username", username);
-                                    editor.putString("userpsw", password);
-                                    editor.commit();
-
-                                    Intent intent=new Intent(SignInActivity.this,MainActivity.class);
-                                    intent.putExtra("action","im_login");
-                                    startActivity(intent);
-                                    finish();
-                                }
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-
-                        @Override
-                        public void onError(Response<String> response) {
-                            super.onError(response);
-                            //TODO
-                        }
-                    });
+//            HttpUtils.Buider().login(username, password,
+//                    new StringCallback() {
+//                        @Override
+//                        public void onSuccess(Response<String> response) {
+//                            loginDialog.dismiss();
+//                            //TODO
+//                           // Log.e("tage",response.body());
+//                            try {
+//                                JSONObject object = new JSONObject(response.body());
+//                                //Log.e("tage",object.toString());
+//                                if(object.getString("success").equals("true")){
+//                                    // 第一次登陆  ---》
+//                                    usersp=getSharedPreferences("user",0);
+//                                    SharedPreferences.Editor editor = usersp.edit();
+//                                    //editor.putString("uid", object.getString("g_uid"));
+//                                    editor.putString("username", username);
+//                                    editor.putString("userpsw", password);
+//                                    editor.commit();
+//
+//                                    Intent intent=new Intent(SignInActivity.this,MainActivity.class);
+//                                    intent.putExtra("action","im_login");
+//                                    startActivity(intent);
+//                                    finish();
+//                                }
+//
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onError(Response<String> response) {
+//                            super.onError(response);
+//                            //TODO
+//                        }
+//                    });
 
         }
 
@@ -207,6 +215,58 @@ public class SignInActivity extends Activity {
         }
 
         return isPass;
+    }
+
+    /**
+     * 发送消息
+     *
+     * @param username
+     * @param txt
+     */
+//    public void sendMsg(String username, String txt) {
+//        if (connection != null) {
+//            try {
+//                Chat chat = connection.getChatManager().createChat(
+//                        "user@gemery/Smack", new MessageListener() {
+//
+//                            @Override
+//                            public void processMessage(Chat arg0, Message msg) {
+//                                // TODO Auto-generated method stub
+//                                Bundle bundle = new Bundle();
+//                                bundle.putString("msg", msg.getBody());
+//                                android.os.Message message = new android.os.Message();
+//                                message.what = 0;
+//                                message.setData(bundle);
+//                                myhandler.sendMessage(message);
+//                            }
+//                        });
+//                chat.sendMessage("hello world");
+//            } catch (XMPPException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
+//        }
+//    }
+
+    public static void semdmessage(final String msg,final String msgto) {
+
+        //³õÊ¼»¯·¢ËÍÏûÏ¢
+        ChatManager chatManager = AppExample.xmppConnection.getChatManager();
+        chat = chatManager.createChat(msgto, null);
+        new Thread()
+        {
+            @Override
+            public void run() {
+                try {
+                    chat.sendMessage(msg);
+                    //sendhandlemsg(User,msg,true);
+                } catch (XMPPException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+
     }
 
     @Override

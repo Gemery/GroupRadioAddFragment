@@ -17,6 +17,7 @@ import com.example.gemery.ssww.activities.KnowledgeActivity;
 import com.example.gemery.ssww.activities.PersonActivity;
 import com.example.gemery.ssww.activities.QueryActivity;
 import com.example.gemery.groupradioaddfragment.R;
+import com.example.gemery.ssww.activities.SendMessageActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -93,6 +94,11 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
         else if(i == 7){
             Intent intent = new Intent(getActivity(),PersonActivity.class);
             intent.putExtra("action","to_personal_activity");
+            getActivity().startActivity(intent);
+        }
+        else if(i == 1){
+            Intent intent = new Intent(getActivity(),SendMessageActivity.class);
+            intent.putExtra("action","to_chat_activity");
             getActivity().startActivity(intent);
         }
         else {
