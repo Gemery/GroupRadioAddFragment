@@ -60,6 +60,12 @@ public class MsgListener implements MessageListener{
 			if (TextUtils.isEmpty(msgBody))
 				return;
 			Log.e("jj", "收到消息"+msgBody);
+
+			Intent intent=new Intent(Const.ACTION_MSG_OPER);//发送广播，通知消息界面更新
+			intent.putExtra("content",msgBody);
+			context.sendBroadcast(intent);
+
+
 			//接收者卍发送者卍消息类型卍消息内容卍发送时间
 			String[] msgs=msgBody.split(Const.SPLIT);
 			String to=msgs[0];//接收者,当然是自己
@@ -129,7 +135,7 @@ public class MsgListener implements MessageListener{
 				msg.setType(msgtype);
 				msgDao.insert(msg);
 				session.setType(Const.MSG_TYPE_TEXT);
-				session.setContent("[位置]");
+				session.setContent("[位置]");//打法的发送到发送到发啊fdsgsdfgsdfgsdf
 				if(sessionDao.isContent(from, to)){
 					sessionDao.updateSession(session);
 				}else{
@@ -137,8 +143,7 @@ public class MsgListener implements MessageListener{
 				}
 			}
 
-			Intent intent=new Intent(Const.ACTION_ADDFRIEND);//发送广播，通知消息界面更新
-			context.sendBroadcast(intent);
+
 			//showNotice();
 		} catch (Exception e) {
 			e.printStackTrace();

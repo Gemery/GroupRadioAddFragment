@@ -24,9 +24,11 @@ import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.AppExample;
 import com.example.gemery.ssww.adapter.ChatAdapter;
 import com.example.gemery.ssww.bean.Msg;
+import com.example.gemery.ssww.bean.Session;
 import com.example.gemery.ssww.db.ChatMsgDao;
 import com.example.gemery.ssww.db.SessionDao;
 import com.example.gemery.ssww.utils.Const;
+import com.example.gemery.ssww.utils.PreferencesUtils;
 import com.example.gemery.ssww.utils.ToastUtil;
 import com.example.gemery.ssww.utils.XmppUtil;
 
@@ -35,6 +37,7 @@ import org.jivesoftware.smack.XMPPException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.prefs.PreferenceChangeEvent;
 
 /**
  * Created by gemery on 2018/4/19.
@@ -55,6 +58,8 @@ public class SendMessageActivity extends AppCompatActivity {
     private BroadcastReceiver msgOperReciver;
     private Button btnSend;
     private EditText edtText;
+    private List<Session> sessionList;
+    private String userid;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,7 +74,7 @@ public class SendMessageActivity extends AppCompatActivity {
         IntentFilter intentFilter=new IntentFilter(Const.ACTION_MSG_OPER);
         registerReceiver(msgOperReciver, intentFilter);
 
-
+        userid = PreferencesUtils.getSharePreStr(this,"username");
         //initData();
         btnSend = (Button)findViewById(R.id.sendMessage);
         edtText = (EditText) findViewById(R.id.ed_input) ;
@@ -80,17 +85,18 @@ public class SendMessageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 ToastUtil.showToast(SendMessageActivity.this,"onclick excute");
                 I = "gemery";
-                YOU = "xiaoming";
+                YOU = "admin";
                 String content = edtText.getText().toString();
                 Log.e("jj","new Thread send message"+content);
 
                 final String message=YOU+Const.SPLIT+I+Const.SPLIT+Const.MSG_TYPE_TEXT+Const.SPLIT+content+Const.SPLIT+sd.format(new Date());
+
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
 
-                            XmppUtil.sendMessage(AppExample.xmppConnection, message, YOU);
+                            XmppUtil.sendMessage(AppExample.xmppConnection, content, YOU);
                         } catch (XMPPException e) {
                             e.printStackTrace();
                             Looper.prepare();
@@ -177,51 +183,23 @@ public class SendMessageActivity extends AppCompatActivity {
     private class MsgOperReciver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            int type=intent.getIntExtra("type", 0);
-            final int position=intent.getIntExtra("position", 0);
-            if(listMsg.size()<=0){
-                return;
-            }
-            final Msg msg=listMsg.get(position);
-            switch (type) {
-                case 1://聊天记录操作
-                    AlertDialog.Builder bd = new AlertDialog.Builder(SendMessageActivity.this);
-                    String[] items=null;
-                    if(msg.getType().equals(Const.MSG_TYPE_TEXT)){
-                        items =  new String[]{"删除记录","删除全部记录","复制文字"};
-                    }else{
-                        items =  new String[]{"删除记录","删除全部记录"};
-                    }
-                    bd.setItems(items, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface arg0, int arg1) {
-                            switch (arg1) {
-                                case 0://删除
-                                    listMsg.remove(position);
-                                    offset=listMsg.size();
-                                    mLvAdapter.notifyDataSetChanged();
-                                    msgDao.deleteMsgById(msg.getMsgId());
-                                    break;
-                                case 1://删除全部
-                                    listMsg.removeAll(listMsg);
-                                    offset=listMsg.size();
-                                    mLvAdapter.notifyDataSetChanged();
-                                    msgDao.deleteTableData();
-                                    break;
-                                case 2://复制
-                                    ClipboardManager cmb = (ClipboardManager) SendMessageActivity.this.getSystemService(SendMessageActivity.CLIPBOARD_SERVICE);
-                                    cmb.setText(msg.getContent());
-                                    Toast.makeText(getApplicationContext(), "已复制到剪切板", Toast.LENGTH_SHORT).show();
-                                    break;
-                            }
-                        }
-                    });
-                    bd.show();
-                    break;
-            }
+            Log.e("jj",intent.getAction());
+           initUpDataView(intent);
 
         }
     }
+
+    private void initUpDataView(Intent intent) {
+        String content = intent.getStringExtra("content");
+        ToastUtil.showToast(SendMessageActivity.this,content);
+
+        sessionList=sessionDao.queryAllSessions(userid);
+
+        Log.e("jj",sessionDao.toString());
+
+
+    }
+
 
     @Override
     protected void onDestroy() {

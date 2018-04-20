@@ -19,6 +19,7 @@ import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.filter.PacketIDFilter;
 import org.jivesoftware.smack.filter.PacketTypeFilter;
 import org.jivesoftware.smack.packet.IQ;
+import org.jivesoftware.smack.packet.Message;
 import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.packet.Registration;
@@ -360,11 +361,12 @@ public class XmppUtil {
 		ChatManager chatmanager = mXMPPConnection.getChatManager();
 		Chat chat =chatmanager.createChat(touser + "@" + Const.XMPP_HOST, null);
 		if (chat != null) {
+            Message message = new Message(content);
 			chat.sendMessage(content);
 			Log.e("jj", "发送成功");
 			Log.e("jj",content);
 		}
 	}
-	
-    
+
+
 }
