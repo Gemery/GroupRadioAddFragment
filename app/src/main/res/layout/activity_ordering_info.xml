@@ -3,39 +3,26 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:id="@+id/order_linear_layout"
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@color/main_color">
-
-        <android.support.v7.widget.AppCompatImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:src="@drawable/icon_back"
-            android:id="@+id/icon_back"
-            />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="添加订单信息"
-            android:textColor="@android:color/white"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/action_send_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="保存"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            />
-         </LinearLayout>
+        android:layout_height="wrap_content"
+        android:background="?attr/colorAccent"
+        android:minHeight="?attr/actionBarSize"
+        android:subtitleTextColor="@android:color/white"
+        android:titleTextColor="@android:color/white"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp"
+        app:paddingEnd="0dp"
+        app:paddingStart="0dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    </android.support.v7.widget.Toolbar>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -146,7 +133,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="客户类型: "
-
                     />
                 <Spinner
                     android:id="@+id/def_spinner"
@@ -154,20 +140,43 @@
                     android:layout_height="wrap_content"
                     android:visibility="gone"
                     />
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
                 <TextView
                     android:id="@+id/user_def"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
-                    android:textColor="@android:color/white"
+                    android:textColor="#333"
                     android:paddingLeft="5dp"
                     android:layout_marginLeft="5dp"
                     android:drawableRight="@drawable/arrow_right"
                     android:text="个人客户"
                     />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#ccc"
+                        ></RelativeLayout>
+                </android.support.v7.widget.LinearLayoutCompat>
             </LinearLayout>
 
+            <Button
+                android:id="@+id/action_send_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="保 存"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:background="@drawable/border_corners"
+                android:textStyle="bold" />
+
         </android.support.v7.widget.LinearLayoutCompat>
+
     </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

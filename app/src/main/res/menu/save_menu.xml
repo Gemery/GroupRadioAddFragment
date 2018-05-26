@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/toolbar_reset"
+          android:title="重置"
+          android:icon="@drawable/vector_del"
+          app:showAsAction="never|withText" />
+</menu>

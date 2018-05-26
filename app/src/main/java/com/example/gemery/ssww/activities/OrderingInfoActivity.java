@@ -3,11 +3,11 @@ package com.example.gemery.ssww.activities;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,10 +20,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.example.gemery.groupradioaddfragment.R;
+import com.example.gemery.ssww.MainActivity;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
+
+import org.jivesoftware.smack.packet.Bind;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +37,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class OrderingInfoActivity extends AppCompatActivity {
-    private ActionBar toolbar;
+public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
+   @BindView(R.id.toolbar)
+   Toolbar toolbar;
     private String message_url = "";
     //  java 代码的字符串引号是 双引号  代码提示是  Alt+Enter  ！！！！！！
     @BindView(R.id.action_send_button)
@@ -47,15 +52,18 @@ public class OrderingInfoActivity extends AppCompatActivity {
     @BindView(R.id.user_def)
     TextView tvWeek;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_ordering_info);
        ButterKnife.bind(this);
-       // toolbar = getSupportActionBar();
-        //toolbar.setTitle(" 添加订单信息 ");
-        // 显示导航按钮
-       //toolbar.setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("添加订单信息");
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setOnMenuItemClickListener(this);
+
         mItems = getResources().getStringArray(R.array.user_def);
 
        //initSpinner();
@@ -134,9 +142,24 @@ public class OrderingInfoActivity extends AppCompatActivity {
                 finish();
                 break;
         }
-
         return super.onOptionsItemSelected(item);
 
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.save_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+
+
+        return false;
+    }
+
+
 }

@@ -18,4 +18,6 @@ public class PersonActivity extends AppCompatActivity {
 
         setContentView(R.layout.fragment_mine);
     }
+
+
 }

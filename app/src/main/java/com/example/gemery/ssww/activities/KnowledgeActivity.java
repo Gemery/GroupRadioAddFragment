@@ -19,7 +19,6 @@ import android.widget.RadioGroup;
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.utils.ToastUtil;
 
-import com.silang.superfileview.FileDisplayActivity;
 import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -201,7 +200,7 @@ public class KnowledgeActivity extends AppCompatActivity implements AdapterView.
                 if (!EasyPermissions.hasPermissions(KnowledgeActivity.this, perms)) {
                     EasyPermissions.requestPermissions(KnowledgeActivity.this, "需要访问手机存储权限！", 10086, perms);
                } else{
-                   FileDisplayActivity.show(KnowledgeActivity.this, path);
+                   //FileDisplayActivity.show(KnowledgeActivity.this, path);
                }
                 break;
             case 1:
