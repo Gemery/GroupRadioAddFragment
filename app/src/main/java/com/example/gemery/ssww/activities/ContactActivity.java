@@ -58,6 +58,17 @@ public class ContactActivity extends AppCompatActivity implements
     IndexHeaderFooterAdapter mFooterBannerAdapter;
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -66,6 +77,8 @@ public class ContactActivity extends AppCompatActivity implements
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("联系人列表");
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mToolbar.setOnMenuItemClickListener(this);
         initEditData();
 

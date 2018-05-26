@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:background="@color/main_color"
+        >
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icon_back"
+            android:id="@+id/icon_back_home"
+            android:layout_gravity="center"
+            />
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:hint="查找的内容"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/btn_search"
+            android:gravity="center"
+            android:background="#fff"
+            android:padding="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="搜索"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/filter_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal" >
+        <TextView
+            android:id="@+id/filter_first"
+            android:layout_width="wrap_content"
+            android:text="名 称"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:drawableRight="@drawable/arrow_drop_mini"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal" >
+        <TextView
+            android:id="@+id/filter_second"
+            android:layout_width="wrap_content"
+            android:text="型 号"
+            android:textSize="18sp"
+
+            android:drawableRight="@drawable/arrow_drop_mini"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal" >
+        <TextView
+            android:id="@+id/filter_three"
+            android:layout_width="wrap_content"
+            android:text="智能排序"
+            android:textSize="18sp"
+            android:drawableRight="@drawable/arrow_drop_mini"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

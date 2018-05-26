@@ -24,6 +24,7 @@ import com.example.gemery.ssww.utils.HttpUtils;
 import com.example.gemery.ssww.utils.PreferencesUtils;
 import com.example.gemery.ssww.utils.ToastUtil;
 import com.joanzapata.iconify.widget.IconTextView;
+import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
@@ -76,7 +77,7 @@ public class SignInActivity extends Activity {
     private XMPPConnection connection;
     private BroadcastReceiver receiver;
     private SignInActivity mContext;
-
+    private String login_url;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +86,7 @@ public class SignInActivity extends Activity {
         mContext = this;
         initReceiver();
         init();
-
+        login_url = "https://www.baidu.com";
     }
 
     private void initReceiver() {
@@ -139,18 +140,26 @@ public class SignInActivity extends Activity {
             PreferencesUtils.putSharePre(mContext, "username", username);
             PreferencesUtils.putSharePre(mContext, "pwd", password);
             loginDialog.show();
-            //启动核心Service
-            Intent intent=new Intent(this,MsfService.class);
-            startService(intent);
 
 
-//            HttpUtils.Buider().login(username, password,
-//                    new StringCallback() {
-//                        @Override
-//                        public void onSuccess(Response<String> response) {
-//                            loginDialog.dismiss();
-//                            //TODO
-//                           // Log.e("tage",response.body());
+            //启动核心Service  建立长连接    reciver  接受广播（携带后台状态码）做处理验证
+           // Intent intent=new Intent(this,MsfService.class);
+            //startService(intent);
+
+
+            OkGo.<String>post(login_url)
+                    .params("username",username)
+                    .params("password",password)
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onSuccess(Response<String> response) {
+                            loginDialog.dismiss();
+                            //TODO
+                            Intent intent=new Intent(SignInActivity.this,MainActivity.class);
+                                    intent.putExtra("action","im_login");
+                                    startActivity(intent);
+                                    finish();
+
 //                            try {
 //                                JSONObject object = new JSONObject(response.body());
 //                                //Log.e("tage",object.toString());
@@ -173,13 +182,18 @@ public class SignInActivity extends Activity {
 //                                e.printStackTrace();
 //                            }
 //                        }
-//
-//                        @Override
-//                        public void onError(Response<String> response) {
-//                            super.onError(response);
-//                            //TODO
-//                        }
-//                    });
+
+
+                        }
+
+                        @Override
+                        public void onError(Response<String> response) {
+                            super.onError(response);
+
+                        }
+                    });
+
+
 
         }
 
@@ -217,36 +231,7 @@ public class SignInActivity extends Activity {
         return isPass;
     }
 
-    /**
-     * 发送消息
-     *
-     * @param username
-     * @param txt
-     */
-//    public void sendMsg(String username, String txt) {
-//        if (connection != null) {
-//            try {
-//                Chat chat = connection.getChatManager().createChat(
-//                        "user@gemery/Smack", new MessageListener() {
-//
-//                            @Override
-//                            public void processMessage(Chat arg0, Message msg) {
-//                                // TODO Auto-generated method stub
-//                                Bundle bundle = new Bundle();
-//                                bundle.putString("msg", msg.getBody());
-//                                android.os.Message message = new android.os.Message();
-//                                message.what = 0;
-//                                message.setData(bundle);
-//                                myhandler.sendMessage(message);
-//                            }
-//                        });
-//                chat.sendMessage("hello world");
-//            } catch (XMPPException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//            }
-//        }
-//    }
+
 
     public static void semdmessage(final String msg,final String msgto) {
 

@@ -15,7 +15,12 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-
+    <!--下拉列表的选项-->
+    <string-array name="user_def">
+        <item>个人客户</item>
+        <item>公司客户</item>
+        <item>工程客户</item>
+    </string-array>
     <string-array name="contact_array">
         <item>$^*张狗蛋</item>
         <item>000王二</item>

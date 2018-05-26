@@ -11,4 +11,10 @@
         <item>file:///android_asset/banner.png</item>
         <item>file:///android_asset/banner.png</item>
     </array>
+    <array name="userDel">
+        <item>个人客户</item>
+        <item>公司客户</item>
+        <item>工程客户</item>
+    </array>
+
 </resources>
