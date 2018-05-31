@@ -96,7 +96,7 @@ public class MessageFragment extends Fragment {
                 RecyclerView.ViewHolder holder = new RecyclerView.ViewHolder(
                         LayoutInflater.from(getActivity()).inflate(R.layout.recycler_item,parent,false
                 )){};
-
+        //item  rootView 交给 viewHolder 管理
 
                 return holder;
             }
@@ -105,7 +105,8 @@ public class MessageFragment extends Fragment {
             public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
                 Log.e("tage",list.get(position).getUserInfo().getAvatar());
 
-                ((TextView) holder.itemView.findViewById(R.id.m_avatar_name)).setText(list.get(position).getUserInfo().getNickName());
+                ((TextView) holder.itemView.findViewById(R.id.m_avatar_name))
+                        .setText(list.get(position).getUserInfo().getNickName());
                 ImageView imageview =  (ImageView) holder.itemView.findViewById(R.id.m_avatar);
                 imageview.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 com.nostra13.universalimageloader.core.ImageLoader.getInstance()

@@ -1,8 +1,10 @@
 package com.example.gemery.ssww.activities;
 
+import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -22,14 +24,18 @@ import android.widget.Toast;
 
 
 import com.example.gemery.groupradioaddfragment.R;
-import com.example.gemery.ssww.MainActivity;
+import com.example.gemery.ssww.bean.CustomMsg;
+import com.example.gemery.ssww.bean.MsgList;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
+import com.lzy.okgo.model.Progress;
 import com.lzy.okgo.model.Response;
 
-import org.jivesoftware.smack.packet.Bind;
+import org.json.JSONException;
+
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -40,7 +46,7 @@ import butterknife.OnClick;
 public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
    @BindView(R.id.toolbar)
    Toolbar toolbar;
-    private String message_url = "";
+    private String message_url = "http://192.168.1.251:8091/api/baseData/occExq";
     //  java 代码的字符串引号是 双引号  代码提示是  Alt+Enter  ！！！！！！
     @BindView(R.id.action_send_button)
     Button action_send_button;
@@ -51,7 +57,7 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
 
     @BindView(R.id.user_def)
     TextView tvWeek;
-
+   //CustomMsg[] list = new CustomMsg[1];
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,18 +73,51 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
         mItems = getResources().getStringArray(R.array.user_def);
 
        //initSpinner();
-
         tvWeek.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPopupWindow();
+                //showPopupWindow();
+                singleClick(view);
             }
         });
     }
+    /**
+     * 单选对话框
+     *
+     * @param v
+     */
+    private int checkedItem = 0; //默认选中的item
+    public void singleClick(View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("你现在的居住地是：");
+        String[] cities = {"北京", "上海", "广州", "深圳", "杭州", "天津", "成都"};
 
+        builder.setSingleChoiceItems(cities, checkedItem, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                checkedItem = which;
+            }
+        });
+        //设置正面按钮
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        //设置反面按钮
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
     private void showPopupWindow(){
         View myView = getLayoutInflater().inflate(R.layout.pop_week, null);
-        pw = new PopupWindow(myView, (int)(getApplicationContext().getResources().getDisplayMetrics().widthPixels / 2),
+        pw = new PopupWindow(myView, (int)(getApplicationContext().getResources().getDisplayMetrics().widthPixels),
                 LinearLayout.LayoutParams.WRAP_CONTENT, true);
         //注意要设置背景（使用图片或者颜色），否则PopupWIndow会不显示
         pw.setBackgroundDrawable(new ColorDrawable(0xcccddd));
@@ -87,7 +126,7 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
         pw.showAsDropDown(tvWeek);
 
         ListView lv = (ListView) myView.findViewById(R.id.lv_pop);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, mItems);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, mItems);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -123,16 +162,31 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
 
     @OnClick(R.id.action_send_button)
     public void onViewClick(View view){
+        Log.e("tag","onclick");
+        CustomMsg mCustom = new CustomMsg();
+        mCustom.setId(33333);
+        mCustom.setS_occ00("string00");
+        mCustom.setS_occ02("string02");
+        mCustom.setS_occ03("string012222");
+        mCustom.setS_occ_code("String_code");
+        List<CustomMsg> list1 = new ArrayList<>();
+        list1.add(mCustom);
+
+        MsgList data = new MsgList();
+        data.setFlage("1");
+        data.setList(list1);
         //TODO  提交表单请求到后台
-        OkGo.<String>post(message_url)
-                .params("","")
-                .params("","")
-                .execute(new StringCallback() {
-                    @Override
-                    public void onSuccess(Response<String> response) {
-                        Log.e("tag",response.body());
-                    }
-                });
+    OkGo.<String>post(message_url)
+            .tag(this)
+            .upJson(data.toString())
+           // .upString("helloWorld")
+            .execute(new StringCallback() {
+                @Override
+                public void onSuccess(Response<String> response) {
+                    Log.e("tag",response.body());
+                }
+            });
+
     }
 
     @Override
@@ -149,17 +203,13 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(R.menu.save_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-
-
         return false;
     }
-
 
 }
