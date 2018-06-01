@@ -1,6 +1,7 @@
 package com.example.gemery.ssww.activities;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -16,19 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gemery.groupradioaddfragment.R;
-import com.example.gemery.ssww.bean.CreationsString;
 import com.example.gemery.ssww.bean.CustomMsg;
-import com.example.gemery.ssww.bean.MutiOrderMessage;
 import com.example.gemery.ssww.utils.GsonUtils;
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.reflect.TypeToken;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -87,6 +82,14 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
 
                         ((TextView) holder.itemView.findViewById(R.id.item_des))
                         .setText(data.get(position).getS_occ03());
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(ProductListActivity.this,OrderingInfoActivity.class);
+                        intent.putExtra("action","go to OrderingActivity");
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override
@@ -125,17 +128,19 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
 
     }
 
-    @OnClick({R.id.filter_three,R.id.filter_second,R.id.filter_first,R.id.btn_search})
+    @OnClick({R.id.filter_three,R.id.filter_second,R.id.filter_first,R.id.btn_search,R.id.icon_back_home})
     public void onClickedView(View view){
         switch(view.getId()){
             case R.id.filter_first:
                 showPopupWindow();
                 break;
-
+            case R.id.icon_back_home:
+                  finish();
+                break;
             case R.id.btn_search:
-                Intent intent = new Intent(this,OrderingInfoActivity.class);
-                intent.putExtra("action","go to OrderingActivity");
-                startActivity(intent);
+                //TODO
+
+
                 break;
         }
     }
@@ -160,23 +165,28 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
         mPopWindow.showAsDropDown(filterLinearLayout);
 
     }
+    private void setDrawableRight(TextView tvVersionStatus){
+        Drawable rightDrawable = getResources().getDrawable(R.drawable.arrow_right);
+            rightDrawable.setBounds(0, 0, rightDrawable.getMinimumWidth(), rightDrawable.getMinimumHeight());
+            tvVersionStatus.setCompoundDrawables(null, null, rightDrawable, null);
 
+    }
     @Override
     public void onClick(View v) {
         int id = v.getId();
         switch (id){
             case R.id.pop_computer:{
-                Toast.makeText(this,"clicked computer",Toast.LENGTH_SHORT).show();
+                setDrawableRight((TextView) v);
                 mPopWindow.dismiss();
             }
             break;
             case R.id.pop_financial:{
-                Toast.makeText(this,"clicked financial",Toast.LENGTH_SHORT).show();
+                setDrawableRight((TextView) v);
                 mPopWindow.dismiss();
             }
             break;
             case R.id.pop_manage:{
-                Toast.makeText(this,"clicked manage", Toast.LENGTH_SHORT).show();
+                setDrawableRight((TextView) v);
                 mPopWindow.dismiss();
             }
             break;

@@ -9,13 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:orientation="horizontal"
-        android:background="#aaa"
+        android:background="#fff"
         >
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:paddingLeft="10dp"
-            android:src="@drawable/arrow_left32"
+            android:src="@drawable/arrow_left128"
             android:id="@+id/icon_back_home"
             android:layout_gravity="center"
             />
@@ -27,12 +27,10 @@
             app:queryHint="请输入搜索内容"
             />
 
-
-
         <TextView
             android:id="@+id/btn_search"
             android:layout_gravity="center"
-            android:background="#fff"
+            android:background="#eee"
             android:padding="5dp"
             android:layout_marginRight="10dp"
             android:layout_width="wrap_content"

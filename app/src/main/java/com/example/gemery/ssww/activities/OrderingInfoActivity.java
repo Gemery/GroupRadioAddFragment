@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,8 +25,11 @@ import android.widget.Toast;
 
 
 import com.example.gemery.groupradioaddfragment.R;
+import com.example.gemery.ssww.bean.ConstResponse;
 import com.example.gemery.ssww.bean.CustomMsg;
 import com.example.gemery.ssww.bean.MsgList;
+import com.example.gemery.ssww.utils.GsonUtils;
+import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Progress;
@@ -34,6 +38,7 @@ import com.lzy.okgo.model.Response;
 import org.json.JSONException;
 
 
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -58,6 +63,23 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
     @BindView(R.id.user_def)
     TextView tvWeek;
    //CustomMsg[] list = new CustomMsg[1];
+    @BindView(R.id.edit_user_name)
+    TextInputEditText mUserName;
+    @BindView(R.id.edit_user_phone)
+    TextInputEditText mPhone;
+    @BindView(R.id.edit_emp)
+    TextInputEditText mEmp;
+    @BindView(R.id.user_address)
+    TextInputEditText mAddress;
+    @BindView(R.id.order_message_number)
+    TextInputEditText mOrderNum;
+
+
+
+    private void  getFormData(){
+
+
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -89,13 +111,14 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
     private int checkedItem = 0; //默认选中的item
     public void singleClick(View v) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("你现在的居住地是：");
-        String[] cities = {"北京", "上海", "广州", "深圳", "杭州", "天津", "成都"};
+        builder.setTitle("你选择的客户类型是：");
+        String[] cities = {"个人客户", "公司客户", "工程客户"};
 
         builder.setSingleChoiceItems(cities, checkedItem, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 checkedItem = which;
+                tvWeek.setText(cities[checkedItem]);
             }
         });
         //设置正面按钮
@@ -167,7 +190,7 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
         mCustom.setId(33333);
         mCustom.setS_occ00("string00");
         mCustom.setS_occ02("string02");
-        mCustom.setS_occ03("string012222");
+        mCustom.setS_occ03(mOrderNum.getText().toString());
         mCustom.setS_occ_code("String_code");
         List<CustomMsg> list1 = new ArrayList<>();
         list1.add(mCustom);
@@ -175,6 +198,7 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
         MsgList data = new MsgList();
         data.setFlage("1");
         data.setList(list1);
+        Log.e("tag",data.toString());
         //TODO  提交表单请求到后台
     OkGo.<String>post(message_url)
             .tag(this)
@@ -184,6 +208,50 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
                 @Override
                 public void onSuccess(Response<String> response) {
                     Log.e("tag",response.body());
+                    String json = response.body();
+                    ConstResponse obj = GsonUtils.parseJSON(json, ConstResponse.class);
+                    if(obj.getResultCode().equals("0")){
+                        new AlertDialog.Builder(OrderingInfoActivity.this)
+                                .setTitle("上传到后台")
+                                .setMessage("上传完成")
+                                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                })
+                                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                })
+                                .create().show();
+                    }
+                    if(obj.getResultCode().equals("9997")){
+                        new AlertDialog.Builder(OrderingInfoActivity.this)
+                                .setTitle("上传到后台")
+                                .setMessage("该用户资料已经存在，请重新输入")
+                                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                })
+                                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                })
+                                .create().show();
+                    }
+                }
+
+                @Override
+                public void onError(Response<String> response) {
+
+                    super.onError(response);
                 }
             });
 

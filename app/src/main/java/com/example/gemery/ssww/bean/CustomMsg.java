@@ -6,20 +6,20 @@ import java.util.List;
 public class CustomMsg{
     @Override
     public String toString() {
-        return "CustomMsg{" +
-                "id=" + id +
-                ", s_occ00='" + s_occ00 + '\'' +
-                ", s_occ_code='" + s_occ_code + '\'' +
-                ", s_occ02='" + s_occ02 + '\'' +
-                ", s_occ03='" + s_occ03 + '\'' +
-                ", s_occ04='" + s_occ04 + '\'' +
-                ", s_occ06='" + s_occ06 + '\'' +
-                ", s_occ07='" + s_occ07 + '\'' +
-                ", s_occ08='" + s_occ08 + '\'' +
-                ", s_occ09='" + s_occ09 + '\'' +
-                ", s_occ10='" + s_occ10 + '\'' +
-                ", s_occ11='" + s_occ11 + '\'' +
-                ", s_occ12=" + s_occ12 +
+        return "{" +
+                "id:" + id +
+                ", s_occ00:'" + s_occ00 + '\'' +
+                ", s_occ_code:'" + s_occ_code + '\'' +
+                ", s_occ02:'" + s_occ02 + '\'' +
+                ", s_occ03:'" + s_occ03 + '\'' +
+                ", s_occ04:'" + s_occ04 + '\'' +
+                ", s_occ06:'" + s_occ06 + '\'' +
+                ", s_occ07:'" + s_occ07 + '\'' +
+                ", s_occ08:'" + s_occ08 + '\'' +
+                ", s_occ09:'" + s_occ09 + '\'' +
+                ", s_occ10:'" + s_occ10 + '\'' +
+                ", s_occ11:'" + s_occ11 + '\'' +
+                ", s_occ12:" + s_occ12 +
                 '}';
     }
 
