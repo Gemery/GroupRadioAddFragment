@@ -13,6 +13,7 @@ import android.widget.GridView;
 import android.widget.SimpleAdapter;
 
 import com.example.gemery.ssww.activities.ContactActivity;
+import com.example.gemery.ssww.activities.CustomInfoListActivity;
 import com.example.gemery.ssww.activities.KnowledgeActivity;
 import com.example.gemery.ssww.activities.PersonActivity;
 import com.example.gemery.ssww.activities.ProductListActivity;
@@ -62,10 +63,10 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
         //图标
         int icno[] = {R.drawable.ps, R.drawable.anz, R.drawable.js,
                 R.drawable.jiangp, R.drawable.zs, R.drawable.kccx,
-                R.drawable.txl, R.drawable.gr,R.drawable.ps};
+                R.drawable.txl, R.drawable.gr,R.drawable.ps,R.drawable.anz};
         //图标下的文字
         String name[] = {"配送中心", "安装中心", "结算中心", "功勋榜", "知识中心",
-                "库存查询", "通讯录", "个人中心","产品列表"};
+                "库存查询", "通讯录", "个人中心","产品列表","客户资料列表"};
         dataList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < icno.length; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
@@ -105,6 +106,11 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
         else if(i == 8){
             Intent intent = new Intent(getActivity(),ProductListActivity.class);
             intent.putExtra("action","to_product_list");
+            getActivity().startActivity(intent);
+        }
+        else if(i == 9){
+            Intent intent = new Intent(getActivity(),CustomInfoListActivity.class);
+            intent.putExtra("action","to_Custom_info_list_activity");
             getActivity().startActivity(intent);
         }
         else {

@@ -5,6 +5,8 @@ package com.example.gemery.ssww.bean;
  */
 
 public class CreationsString {
+
+
   //[{"id":1,"s_occ00":"string","s_occ_code":"string","s_occ02":"string","s_occ03":"string","s_occ04":"","s_occ06":"","s_occ07":"","s_occ08":"","s_occ09":"","s_occ10":"","s_occ11":"","s_occ12":0,"s_occud01":"","s_occud02":"","s_occud03":"","s_occud04":"","s_occud05":"","s_occud06":"","s_occud07":"","s_occud08":""}]
   public static String listOrderinginfo =
           "[{\"id\":1,\"s_occ00\":\"string\",\"s_occ_code\":\"string\"," +
@@ -13,6 +15,7 @@ public class CreationsString {
                   "\"s_occ10\":\"\",\"s_occ11\":\"\",\"s_occ12\":0,\"s_occud01\":\"\",\"s_occud02\":\"\"," +
                   "\"s_occud03\":\"\",\"s_occud04\":\"\",\"s_occud05\":\"\",\"s_occud06\":\"\",\"s_occud07\":\"\"," +
                   "\"s_occud08\":\"\"}]";
+
   public static String orderinginfo =
           "{\"id\":1,\"s_occ00\":\"string\"," +
                   "\"s_occ_code\":\"string\",\"s_occ02\":\"string\"," +

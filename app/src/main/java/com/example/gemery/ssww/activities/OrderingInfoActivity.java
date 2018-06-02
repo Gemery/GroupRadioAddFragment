@@ -47,10 +47,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-
+// 终端客户信息 录入界面
 public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
    @BindView(R.id.toolbar)
    Toolbar toolbar;
+  // private String get_occ_url = "http://192.168.1.251:8091/api/baseData/getoccList";
     private String message_url = "http://192.168.1.251:8091/api/baseData/occExq";
     //  java 代码的字符串引号是 双引号  代码提示是  Alt+Enter  ！！！！！！
     @BindView(R.id.action_send_button)
@@ -87,7 +88,7 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
        setContentView(R.layout.activity_ordering_info);
        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("添加订单信息");
+        getSupportActionBar().setTitle("终端客户资料录入");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setOnMenuItemClickListener(this);
@@ -111,7 +112,7 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
     private int checkedItem = 0; //默认选中的item
     public void singleClick(View v) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("你选择的客户类型是：");
+        //builder.setTitle("你选择的客户类型是：");
         String[] cities = {"个人客户", "公司客户", "工程客户"};
 
         builder.setSingleChoiceItems(cities, checkedItem, new DialogInterface.OnClickListener() {
@@ -119,22 +120,23 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
             public void onClick(DialogInterface dialog, int which) {
                 checkedItem = which;
                 tvWeek.setText(cities[checkedItem]);
+                dialog.dismiss();
             }
         });
         //设置正面按钮
-        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+//        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.dismiss();
+//            }
+//        });
         //设置反面按钮
-        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+//        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.dismiss();
+//            }
+//        });
         AlertDialog dialog = builder.create();
         dialog.show();
     }

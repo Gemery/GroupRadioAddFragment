@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,6 +19,8 @@ import android.widget.Toast;
 
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.CustomMsg;
+import com.example.gemery.ssww.bean.ImaBean;
+import com.example.gemery.ssww.utils.Constants;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -46,9 +49,9 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
     RecyclerView mRecyclerView;
 
 
-    private String get_data_url = "http://192.168.1.251:8091/api/baseData/getoccList";
+    private String get_data_url = "http://192.168.1.251:8091/api/imaData/getimaList";
     //private MutiOrderMessage data;
-    private List<CustomMsg> data = new ArrayList<>();
+    private List<ImaBean.ListBean> data = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,7 +66,8 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
 
     private void initRecyclerView() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        //添加Android自带的分割线
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         mRecyclerView.setAdapter(new RecyclerView.Adapter() {
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -75,21 +79,23 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
 
             @Override
             public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-                ((TextView) holder.itemView.findViewById(R.id.item_name)).setText(data.get(position).getS_occ00());
+                ((TextView) holder.itemView.findViewById(R.id.item_name)).setText(data.get(position).getS_ima00());
 
                         ((TextView) holder.itemView.findViewById(R.id.item_price))
-                        .setText(data.get(position).getS_occ02());
+                        .setText(data.get(position).getS_ima01());
 
                         ((TextView) holder.itemView.findViewById(R.id.item_des))
-                        .setText(data.get(position).getS_occ03());
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(ProductListActivity.this,OrderingInfoActivity.class);
-                        intent.putExtra("action","go to OrderingActivity");
-                        startActivity(intent);
-                    }
-                });
+                        .setText(data.get(position).getS_ima02());
+                    holder.itemView.findViewById(R.id.action_add_cart).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(ProductListActivity.this,OrderEditActivity.class);
+                            intent.putExtra("action","go to OrderEditActivity");
+                            startActivity(intent);
+                        }
+                    });
+
+
             }
 
             @Override
@@ -103,16 +109,17 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
     private void initDatas() {
         Log.e("tag","initDatas");
         OkGo.<String>post(get_data_url)
-                .params("id","11")
-                .params("s_occ00","string")
+                .tag(this)
+                .upJson(Constants.IMA_POST_JSON)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
                         String json = response.body();
-                        Log.e("tag111",json);
+                       // Log.e("tag111",json);
                     try {
-                        data = GsonUtils.jsonToArrayList(json, CustomMsg.class);
-                        Log.e("tag", data.toString());
+                       ImaBean obj = GsonUtils.parseJSON(json, ImaBean.class);
+                       data = obj.getList();
+                        //Log.e("tag", data.toString());
 
                     }catch (Exception e){
                         e.printStackTrace();

@@ -17,6 +17,7 @@ import android.widget.ListView;
 
 import com.example.gemery.ssww.activities.LinkedActivity;
 import com.example.gemery.groupradioaddfragment.R;
+import com.example.gemery.ssww.activities.OrderEditActivity;
 import com.example.gemery.ssww.activities.ProductListActivity;
 import com.example.gemery.ssww.adapter.OrderMessageAdapter;
 import com.example.gemery.ssww.bean.OeaBen;
@@ -130,9 +131,9 @@ public class ContactFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-       // Intent intent = new Intent(getContext(),ProductListActivity.class);
-        //intent.putExtra("action","to_recyclerview_activity");
-       // startActivity(intent);
+        Intent intent = new Intent(getContext(),OrderEditActivity.class);
+        intent.putExtra("action","to_orderedit_activity");
+        startActivity(intent);
 
     }
 }

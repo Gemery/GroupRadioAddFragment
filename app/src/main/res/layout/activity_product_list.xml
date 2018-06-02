@@ -12,12 +12,13 @@
         android:background="#fff"
         >
         <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:paddingLeft="10dp"
-            android:src="@drawable/arrow_left128"
+            android:layout_width="28dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="5dp"
+            android:src="@mipmap/icon_back"
             android:id="@+id/icon_back_home"
             android:layout_gravity="center"
+            android:background="#eee"
             />
         <android.support.v7.widget.SearchView
             android:layout_width="0dp"
