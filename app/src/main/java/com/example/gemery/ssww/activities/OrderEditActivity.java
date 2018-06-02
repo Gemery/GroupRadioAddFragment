@@ -1,5 +1,6 @@
 package com.example.gemery.ssww.activities;
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,10 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.ConstResponse;
@@ -28,20 +31,7 @@ import butterknife.OnClick;
 
 public class OrderEditActivity extends AppCompatActivity {
 
-    @BindView(R.id.edit_user_name)
-    TextInputEditText editUserName;
-    @BindView(R.id.custom_phone)
-    TextInputEditText customPhone;
-    @BindView(R.id.custom_address)
-    TextInputEditText customAddress;
-    @BindView(R.id.emp_number)
-    TextInputEditText empNumber;
-    @BindView(R.id.ps_date)
-    TextInputEditText psDate;
-    @BindView(R.id.order_number)
-    TextInputEditText orderNumber;
-    @BindView(R.id.action_send_button)
-    Button actionSendButton;
+
     @BindView(R.id.title_bar_back)
     ImageView titleBarBack;
     @BindView(R.id.title_bar_title)
@@ -56,6 +46,40 @@ public class OrderEditActivity extends AppCompatActivity {
     RelativeLayout titleBarRight;
     @BindView(R.id.title)
     LinearLayout title;
+    @BindView(R.id.edit_user_name)
+    TextInputEditText editUserName;
+    @BindView(R.id.custom_phone)
+    TextInputEditText customPhone;
+    @BindView(R.id.custom_address)
+    TextInputEditText customAddress;
+    @BindView(R.id.text_label)
+    TextView textLabel;
+    @BindView(R.id.text_content_emp_code)
+    TextView textContentEmpCode;
+    @BindView(R.id.rl_text_emp_code)
+    RelativeLayout rlTextEmpCode;
+    @BindView(R.id.text_content_date)
+    TextView textContentDate;
+    @BindView(R.id.rl_text_date)
+    RelativeLayout rlTextDate;
+    @BindView(R.id.text_content)
+    TextView textContent;
+    @BindView(R.id.rl_text_bh)
+    RelativeLayout rlTextBh;
+    @BindView(R.id.text_content_bh)
+    TextView textContentBh;
+    @BindView(R.id.rl_text)
+    RelativeLayout rlText;
+    @BindView(R.id.order_count)
+    TextInputEditText orderCount;
+    @BindView(R.id.text_content_xh)
+    TextView textContentXh;
+    @BindView(R.id.rl_text_xh)
+    RelativeLayout rlTextXh;
+    @BindView(R.id.order_lar)
+    TextInputEditText orderLar;
+    @BindView(R.id.action_send_button)
+    Button actionSendButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,10 +94,24 @@ public class OrderEditActivity extends AppCompatActivity {
         titleOptionsTv.setText("重置");
     }
 
-    @OnClick({R.id.action_send_button, R.id.title_bar_back, R.id.title_options_tv})
+    @OnClick({R.id.action_send_button, R.id.title_bar_back, R.id.title_options_tv, R.id.rl_text_date})
     public void onViewClick(View v) {
         Log.e("tag", "onclick");
         switch (v.getId()) {
+            case R.id.rl_text_date:
+                DatePickerDialog datePicker = new DatePickerDialog(OrderEditActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        // TODO Auto-generated method stub
+                        Toast.makeText(OrderEditActivity.this,
+                                year + "year " + (monthOfYear + 1) + "month " + dayOfMonth + "day",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }, 2018, 5, 20);
+                datePicker.show();
+                break;
             case R.id.title_bar_back:
                 finish();
                 break;

@@ -14,11 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
-        android:orientation="vertical"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
+        android:orientation="vertical">
         <!--客服姓名-->
         <LinearLayout
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
@@ -31,6 +31,8 @@
                 android:id="@+id/edit_user_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#555"
+                android:textSize="14sp"
                 android:text="某某"
 
                 />
@@ -38,6 +40,8 @@
         </LinearLayout>
         <!--消费者手机号-->
         <LinearLayout
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
@@ -50,12 +54,16 @@
                 android:id="@+id/custom_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#555"
+                android:textSize="14sp"
                 android:text="xx123456"
                 />
 
         </LinearLayout>
         <!--消费者地址-->
         <LinearLayout
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
@@ -68,65 +76,66 @@
                 android:id="@+id/custom_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#555"
+                android:textSize="14sp"
                 android:text="xxxtt111"
                 />
 
         </LinearLayout>
         <!--业务员编号-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="业务员编号："
-                />
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/emp_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="x123x12"
-                />
-
-        </LinearLayout>
+       <include layout="@layout/item_order_emp_code"></include>
         <!--约定送货时间-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="约定送货时间："
-                />
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/ps_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="2018/2/12"
-                />
-
-        </LinearLayout>
+        <include layout="@layout/item_order_sh_date"></include>
         <!--单据编号-->
+        <include layout="@layout/item_order_bh"></include>
+    <!--销售订单编号单身-->
+        <!--物料代码-->
+
+        <include layout="@layout/item_text_show"></include>
+
         <LinearLayout
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="单据编号："
+                android:text="数量："
                 />
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/order_number"
+                android:id="@+id/order_count"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="x123x123"
+                android:textColor="#555"
+                android:textSize="14sp"
+                android:text="8"
                 />
 
         </LinearLayout>
+        <include layout="@layout/item_order_xinhao"></include>
+        <LinearLayout
+            android:paddingRight="24dp"
+            android:paddingLeft="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="规格："
+                />
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/order_lar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#555"
+                android:textSize="14sp"
+                android:text="xxxx"
+                />
 
+        </LinearLayout>
         <Button
             android:id="@+id/action_send_button"
             style="?android:textAppearanceSmall"
