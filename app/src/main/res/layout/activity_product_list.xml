@@ -115,12 +115,33 @@
         android:layout_height="1dp"
         android:background="#ddd"
         ></RelativeLayout>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
+      <RelativeLayout
+          android:background="@color/gray"
+        android:layout_alignParentBottom="true"
+          android:layout_width="match_parent"
+          android:layout_height="50dp">
 
+          <Button
+              android:id="@+id/action_add_cart"
+              android:layout_alignParentRight="true"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="添加到订单"
+              />
+      </RelativeLayout>
+    </RelativeLayout>
 
 </LinearLayout>

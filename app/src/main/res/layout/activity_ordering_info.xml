@@ -4,25 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/main_color"
-        android:minHeight="?attr/actionBarSize"
-        android:subtitleTextColor="@android:color/white"
-        android:titleTextColor="@android:color/white"
-        app:contentInsetEnd="0dp"
-        app:contentInsetLeft="0dp"
-        app:contentInsetRight="0dp"
-        app:contentInsetStart="0dp"
-        app:paddingEnd="0dp"
-        app:paddingStart="0dp"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-    </android.support.v7.widget.Toolbar>
+    <include layout="@layout/titilebar"></include>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -80,7 +62,7 @@
 
             </LinearLayout>
             <!--业务员信息-->
-            <include layout="@layout/item_order_emp_code"></include>
+            <include layout="@layout/item_custom_emp"></include>
 
             <LinearLayout
                 android:paddingLeft="24dp"

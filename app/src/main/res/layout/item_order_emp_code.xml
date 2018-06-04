@@ -28,16 +28,5 @@
          android:text="xx123xxx"
          android:gravity="center"
          />
-     <ImageView
-         android:layout_width="wrap_content"
-         android:layout_height="match_parent"
-         android:src="@drawable/arrow_right"
-         android:layout_alignParentRight="true"
-         />
     </RelativeLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#ddd"
-        ></LinearLayout>
 </LinearLayout>

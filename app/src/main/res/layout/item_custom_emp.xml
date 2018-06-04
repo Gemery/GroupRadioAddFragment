@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <RelativeLayout
-        android:id="@+id/rl_text_sl"
+        android:id="@+id/rl_custom_emp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@android:color/white"
@@ -14,19 +14,18 @@
         android:paddingRight="24dp"
        >
      <TextView
-         android:id="@+id/text_label3"
+         android:id="@+id/custom_text_label"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
-         android:text="数量："
+         android:text="业务员："
          android:gravity="center"
          />
      <TextView
-         android:id="@+id/text_content_sl"
+         android:id="@+id/text_content_custom_emp"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
-         android:textSize="18sp"
-         android:layout_toRightOf="@+id/text_label3"
-         android:text="20"
+         android:layout_toRightOf="@+id/custom_text_label"
+         android:text="某 某"
          android:gravity="center"
          />
      <ImageView

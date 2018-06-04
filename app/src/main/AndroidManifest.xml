@@ -32,6 +32,9 @@
         <activity android:name="com.example.gemery.ssww.MainActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
+        <activity android:name="com.example.gemery.ssww.activities.AddHeaderActivity">
+
+        </activity>
         <activity
             android:name="com.example.gemery.ssww.activities.WelcomeActivity"
 
@@ -85,13 +88,12 @@
 
         <activity android:name="com.example.gemery.ssww.activities.ProductListActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
         </activity>
-        <activity android:name="com.example.gemery.ssww.activities.SearchProductActivity"
+        <activity android:name="com.example.gemery.ssww.activities.OrderEditActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
-        <activity android:name="com.example.gemery.ssww.activities.OrderEditActivity"
+        <activity android:name="com.example.gemery.ssww.activities.SearchProductActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>

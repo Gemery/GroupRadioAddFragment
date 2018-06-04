@@ -12,13 +12,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.gemery.groupradioaddfragment.R;
-import com.example.gemery.ssww.bean.CustomMsg;
 import com.example.gemery.ssww.bean.ImaBean;
 import com.example.gemery.ssww.utils.Constants;
 import com.example.gemery.ssww.utils.GsonUtils;
@@ -26,6 +25,7 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
     private PopupWindow mPopWindow;
     @BindView(R.id.list_recyclerview)
     RecyclerView mRecyclerView;
-
+    private List<ImaBean.ListBean> checkData = new ArrayList<>();
 
     private String get_data_url = "http://192.168.1.251:8091/api/imaData/getimaList";
     //private MutiOrderMessage data;
@@ -86,14 +86,18 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
 
                         ((TextView) holder.itemView.findViewById(R.id.item_des))
                         .setText(data.get(position).getS_ima02());
-                    holder.itemView.findViewById(R.id.action_add_cart).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(ProductListActivity.this,OrderEditActivity.class);
-                            intent.putExtra("action","go to OrderEditActivity");
-                            startActivity(intent);
+                holder.itemView.findViewById(R.id.check_box).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Log.e("tag",view.toString());
+                        if(((CheckBox) holder.itemView.findViewById(R.id.check_box)).isChecked()){
+                            checkData.add(data.get(position));
+
                         }
-                    });
+                    }
+                });
+
+
 
 
             }
@@ -135,9 +139,18 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
 
     }
 
-    @OnClick({R.id.filter_three,R.id.filter_second,R.id.filter_first,R.id.btn_search,R.id.icon_back_home})
+    @OnClick({R.id.filter_three,R.id.filter_second,R.id.filter_first,R.id.btn_search,R.id.icon_back_home,R.id.action_add_cart})
     public void onClickedView(View view){
         switch(view.getId()){
+            case R.id.action_add_cart:
+                Intent intent = new Intent(ProductListActivity.this,OrderEditActivity.class);
+                Bundle bundle = new Bundle();
+                Log.e("tag",checkData.toString());
+                bundle.putSerializable("list", (Serializable) checkData);
+               intent.putExtras(bundle);
+               // intent.putExtra("action","go to OrderEditActivity");
+                startActivity(intent);
+                break;
             case R.id.filter_first:
                 showPopupWindow();
                 break;
