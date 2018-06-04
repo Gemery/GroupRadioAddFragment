@@ -134,13 +134,24 @@
           android:layout_width="match_parent"
           android:layout_height="50dp">
 
+          <!--<Button-->
+              <!--android:id="@+id/action_add_cart1"-->
+              <!--android:layout_alignParentRight="true"-->
+              <!--android:layout_width="wrap_content"-->
+              <!--android:layout_height="wrap_content"-->
+              <!--android:text="添加到订单"-->
+              <!--android:visibility="gone"-->
+              <!--/>-->
           <Button
               android:id="@+id/action_add_cart"
-              android:layout_alignParentRight="true"
-              android:layout_width="wrap_content"
+              style="?android:textAppearanceSmall"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:text="添加到订单"
-              />
+              android:textColor="#ffffff"
+              android:textSize="16sp"
+              android:background="@drawable/border_corners"
+              android:textStyle="bold" />
       </RelativeLayout>
     </RelativeLayout>
 
