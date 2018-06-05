@@ -62,8 +62,7 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
         ButterKnife.bind(this);
 
         initDatas();
-        initRecyclerView();
-
+        //initRecyclerView();
     }
 
     private void initRecyclerView() {
@@ -126,6 +125,12 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
                        ImaBean obj = GsonUtils.parseJSON(json, ImaBean.class);
                        data = obj.getList();
                         //Log.e("tag", data.toString());
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                initRecyclerView();
+                            }
+                        });
 
                     }catch (Exception e){
                         e.printStackTrace();

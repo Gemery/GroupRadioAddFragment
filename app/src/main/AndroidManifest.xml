@@ -87,9 +87,11 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
 
         <activity android:name="com.example.gemery.ssww.activities.ProductListActivity"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity android:name="com.example.gemery.ssww.activities.OrderEditActivity"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
@@ -102,6 +104,10 @@
 
         </activity>
         <activity android:name="com.example.gemery.ssww.activities.AllOrderListActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        </activity>
+        <activity android:name="com.example.gemery.ssww.activities.StorageActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>

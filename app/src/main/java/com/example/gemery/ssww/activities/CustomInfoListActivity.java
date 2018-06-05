@@ -84,7 +84,7 @@ public class CustomInfoListActivity extends AppCompatActivity {
             public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 RecyclerView.ViewHolder holder
                         = new RecyclerView.ViewHolder(LayoutInflater.from(CustomInfoListActivity.this)
-                        .inflate(R.layout.item_custom_info,parent,false)) {
+                        .inflate(R.layout.item_custom_info_ll,parent,false)) {
                 };
 
                 return holder;
@@ -92,7 +92,7 @@ public class CustomInfoListActivity extends AppCompatActivity {
 
             @Override
             public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-                ((TextView)holder.itemView.findViewById(R.id.occ_code)).
+                ((TextView)holder.itemView.findViewById(R.id.s_oea01)).
                         setText(listData.get(position).getS_occ_code());
 
             }

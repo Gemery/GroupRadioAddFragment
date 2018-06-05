@@ -133,7 +133,7 @@ public class ContactFragment extends Fragment implements SwipeRefreshLayout.OnRe
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Intent intent = new Intent(getContext(),OrderEditActivity.class);
         intent.putExtra("action","to_orderedit_activity");
-        startActivity(intent);
+        //startActivity(intent);
 
     }
 }

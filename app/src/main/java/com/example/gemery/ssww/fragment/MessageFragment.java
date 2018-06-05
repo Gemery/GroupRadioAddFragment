@@ -58,7 +58,7 @@ public class MessageFragment extends Fragment {
         Banner banner = view.findViewById(R.id.banner);
         initBanner(banner);
         initData();//……………………………………………>
-        initRecyclerview();
+        //initRecyclerview();
         return view;
     }
 
@@ -81,6 +81,13 @@ public class MessageFragment extends Fragment {
         CreationList data = gson.fromJson(CreationsString.creationsList,CreationList.class);
                 Log.e("tage",data.toString());
                 list = data.getData();
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        initRecyclerview();
+                    }
+                });
             }
         });
 
