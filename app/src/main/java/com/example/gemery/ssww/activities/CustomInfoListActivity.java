@@ -107,7 +107,6 @@ public class CustomInfoListActivity extends AppCompatActivity {
 
     private String post_occ_list = "{\n" +
             "s_occ11:\"string,业务员\"\n" +
-            "   \n" +
             "}";
 
     private void initData() {

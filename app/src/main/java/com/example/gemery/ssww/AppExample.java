@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.example.gemery.ssww.app.Latte;
+import com.example.gemery.ssww.utils.PreferencesUtils;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.joanzapata.iconify.fonts.IoniconsModule;
@@ -36,6 +37,10 @@ public class AppExample extends Application {
 
         //config.imageDownloader(new AuthImageDownloader(this));
         loader.init(config);
+
+        // 保存 经销商代码  及名店编号
+        PreferencesUtils.putSharePre(getContext(),"ssww_code","string_v_01");
+        PreferencesUtils.putSharePre(getContext(),"ssww_dp_number","string_v_01");
 
     }
 

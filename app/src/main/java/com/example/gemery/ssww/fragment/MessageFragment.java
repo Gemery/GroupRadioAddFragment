@@ -87,6 +87,7 @@ public class MessageFragment extends Fragment {
     }
 
     private void initRecyclerview() {
+        Log.e("tag","init RecyclerView");
         //添加Android自带的分割线
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -104,7 +105,7 @@ public class MessageFragment extends Fragment {
 
             @Override
             public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-                Log.e("tage",list.get(position).getUserInfo().getAvatar());
+                Log.e("tag",list.get(position).getUserInfo().getAvatar());
 
                 ((TextView) holder.itemView.findViewById(R.id.m_avatar_name))
                         .setText(list.get(position).getUserInfo().getNickName());

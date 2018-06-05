@@ -25,6 +25,8 @@ import com.example.gemery.ssww.bean.ConstResponse;
 import com.example.gemery.ssww.bean.CustomMsg;
 import com.example.gemery.ssww.bean.MsgList;
 import com.example.gemery.ssww.utils.GsonUtils;
+import com.example.gemery.ssww.utils.PreferencesUtils;
+import com.example.gemery.ssww.utils.SharedPreferencesUtil;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -177,11 +179,14 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
             case R.id.action_send_button:
                 Log.e("tag", "onclick");
                 CustomMsg mCustom = new CustomMsg();
-                mCustom.setId(33333);
-                mCustom.setS_occ00("string00");
-                mCustom.setS_occ02("string02");
-                mCustom.setS_occ03("1234");
-                mCustom.setS_occ_code("String_code");
+                mCustom.setId(0);
+                mCustom.setS_occ02(editUserName.getText().toString());
+                mCustom.setS_occ03(editUserPhone.getText().toString());
+                mCustom.setS_occ04(userAddress.getText().toString());
+                mCustom.setS_occ11(textContentCustomEmp.getText().toString());
+                mCustom.setS_occ04(userAddress.getText().toString());
+                mCustom.setS_occ00(PreferencesUtils.getSharePreStr(this,"ssww_code"));
+                mCustom.setS_occ_code(PreferencesUtils.getSharePreStr(this,"ssww_dp_number"));
                 List<CustomMsg> list1 = new ArrayList<>();
                 list1.add(mCustom);
 

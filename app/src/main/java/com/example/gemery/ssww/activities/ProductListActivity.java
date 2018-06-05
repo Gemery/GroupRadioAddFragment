@@ -16,11 +16,13 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.ImaBean;
 import com.example.gemery.ssww.utils.Constants;
 import com.example.gemery.ssww.utils.GsonUtils;
+import com.example.gemery.ssww.utils.ToastUtil;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -143,12 +145,16 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
     public void onClickedView(View view){
         switch(view.getId()){
             case R.id.action_add_cart:
+                if(checkData.size() == 0){
+                    ToastUtil.showToast(this,"你还没有选择产品");
+                    return;
+                }
                 Intent intent = new Intent(ProductListActivity.this,OrderEditActivity.class);
                 Bundle bundle = new Bundle();
                 Log.e("tag",checkData.toString());
                 bundle.putSerializable("list", (Serializable) checkData);
                intent.putExtras(bundle);
-               // intent.putExtra("action","go to OrderEditActivity");
+
                 startActivity(intent);
                 break;
             case R.id.filter_first:
@@ -163,6 +169,13 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
 
                 break;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("tag","zhixingle");
+      // checkData.clear();
     }
 
     private void showPopupWindow() {

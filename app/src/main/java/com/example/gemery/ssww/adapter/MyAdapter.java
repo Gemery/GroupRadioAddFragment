@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
+import com.example.gemery.ssww.bean.ImaBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
 
     private RecyclerView mRecyclerView;
 
-    private List<String> data = new ArrayList<>();
+    private List<ImaBean.ListBean> data = new ArrayList<>();
     private Context mContext;
 
     private View VIEW_FOOTER;
@@ -32,7 +33,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
     private int TYPE_HEADER = 1001;
     private int TYPE_FOOTER = 1002;
 
-    public MyAdapter(List<String> data, Context mContext) {
+    public MyAdapter(List<ImaBean.ListBean> data, Context mContext) {
         this.data = data;
         this.mContext = mContext;
     }
@@ -52,8 +53,44 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
     public void onBindViewHolder(MyHolder holder, int position) {
         if (!isHeaderView(position) && !isFooterView(position)) {
             if (haveHeaderView()) position--;
+            // 规格
             ((TextView) holder.itemView.findViewById(R.id.content_wl_gg))
-                    .setText(data.get(position));
+                    .setText(data.get(position).getS_ima021());
+            // 型号
+            ((TextView) holder.itemView.findViewById(R.id.content_wl_xh))
+                    .setText(data.get(position).getS_imaud01());
+            //名称
+            ((TextView) holder.itemView.findViewById(R.id.content_wl_name))
+                    .setText(data.get(position).getS_imaud02());
+            //物料代码
+            ((TextView) holder.itemView.findViewById(R.id.wl_content_code))
+                    .setText(data.get(position).getS_ima01());
+
+            // 数量
+           TextView slTv = ((TextView) holder.itemView.findViewById(R.id.text_content_sl));
+                    slTv.setText("1");
+
+            holder.itemView.findViewById(R.id.sl_count_bl).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int count = Integer.parseInt(slTv.getText().toString());
+                    if(count == 0){
+                        return;
+                    }else{
+                        count--;
+                        slTv.setText(String.valueOf(count));
+
+                    }
+                }
+            });
+            holder.itemView.findViewById(R.id.sl_count_pl).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int count = Integer.parseInt(slTv.getText().toString());
+                        count++;
+                        slTv.setText(String.valueOf(count));
+                }
+            });
         }
     }
 
