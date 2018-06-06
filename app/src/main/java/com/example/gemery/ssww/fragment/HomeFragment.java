@@ -101,11 +101,11 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
             intent.putExtra("action","to_personal_activity");
             getActivity().startActivity(intent);
         }
-        else if(i == 1){
-            Intent intent = new Intent(getActivity(),SendMessageActivity.class);
-            intent.putExtra("action","to_chat_activity");
-            getActivity().startActivity(intent);
-        }
+//        else if(i == 1){
+//            Intent intent = new Intent(getActivity(),SendMessageActivity.class);
+//            intent.putExtra("action","to_chat_activity");
+//            getActivity().startActivity(intent);
+//        }
         else if(i == 8){
             Intent intent = new Intent(getActivity(),ProductListActivity.class);
             intent.putExtra("action","to_product_list");

@@ -1,5 +1,6 @@
 package com.example.gemery.ssww.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -94,6 +95,15 @@ public class AllOrderListActivity extends AppCompatActivity {
                         .setText(listData.get(position).getS_oea05());
                 ((TextView) holder.itemView.findViewById(R.id.text_content_date))
                         .setText(listData.get(position).getS_oea07());
+
+                holder.itemView.findViewById(R.id.item_order_linear_layout).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(AllOrderListActivity.this,OrderDetailActivity.class);
+                        intent.putExtra("orderNum",listData.get(position).getS_oea01());
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override

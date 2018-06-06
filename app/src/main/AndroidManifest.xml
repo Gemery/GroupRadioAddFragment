@@ -109,7 +109,12 @@
         </activity>
         <activity android:name="com.example.gemery.ssww.activities.StorageActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
+        </activity>
+        <activity android:name="com.example.gemery.ssww.activities.OrderDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity android:name="com.example.gemery.ssww.activities.ProductDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
     </application>
 

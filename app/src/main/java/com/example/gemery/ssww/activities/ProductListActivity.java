@@ -97,7 +97,15 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
                         }
                     }
                 });
+                holder.itemView.findViewById(R.id.item_ll).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(ProductListActivity.this,ProductDetailActivity.class);
+                      intent.putExtra("action","to_detail_activity");
+                      startActivity(intent);
 
+                    }
+                });
 
 
 
