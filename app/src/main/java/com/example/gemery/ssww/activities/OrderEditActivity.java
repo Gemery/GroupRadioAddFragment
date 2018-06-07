@@ -82,6 +82,11 @@ public class OrderEditActivity extends AppCompatActivity {
            // ToastUtil.showToast(OrderEditActivity.this,num);
             //ToastUtil.showToast(OrderEditActivity.this,String.valueOf(position));
         }
+
+        @Override
+        public void onNumerChange(int positon, List<ImaBean.ListBean> list) {
+
+        }
     };
 
     @Override
@@ -108,7 +113,7 @@ public class OrderEditActivity extends AppCompatActivity {
     private void initView() {
         titleOptionsTv.setText("保存");
         dsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-       dsRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+       //dsRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mAdapter = new MyAdapter(numberChangeListener,list, this);
         dsRecyclerView.setAdapter(mAdapter);
         // 初始recyclerView 头部

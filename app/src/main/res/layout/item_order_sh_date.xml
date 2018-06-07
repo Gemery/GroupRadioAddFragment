@@ -7,17 +7,16 @@
     <RelativeLayout
         android:id="@+id/rl_text_date"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@android:color/white"
+        android:layout_height="35dp"
         android:orientation="horizontal"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
        >
      <TextView
          android:id="@+id/text_label4"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
          android:text="约定的送货时间："
+         android:paddingLeft="4dp"
+         android:textColor="@color/light_red"
          android:gravity="center"
          />
      <TextView
@@ -27,6 +26,7 @@
          android:textSize="14sp"
          android:layout_toRightOf="@+id/text_label4"
          android:text="2018/5/20"
+         android:textColor="@color/light_red"
          android:gravity="center"
          />
      <ImageView
@@ -34,6 +34,7 @@
          android:layout_height="match_parent"
          android:src="@drawable/arrow_right"
          android:layout_alignParentRight="true"
+         android:paddingRight="4dp"
          />
     </RelativeLayout>
     <LinearLayout

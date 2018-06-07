@@ -56,15 +56,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
     public void onBindViewHolder(MyHolder holder, int  position) {
         if (!isHeaderView(position) && !isFooterView(position)) {
             if (haveHeaderView()) position--;
-            // 规格
+            //   s_ima1006_desc='门夹系列淋浴房'
             ((TextView) holder.itemView.findViewById(R.id.content_wl_gg))
-                    .setText(data.get(position).getS_ima021());
+                    .setText(data.get(position).getS_ima1006_desc());
             // 型号
             ((TextView) holder.itemView.findViewById(R.id.content_wl_xh))
                     .setText(data.get(position).getS_imaud01());
             //名称
             ((TextView) holder.itemView.findViewById(R.id.content_wl_name))
-                    .setText(data.get(position).getS_imaud02());
+                    .setText(data.get(position).getS_ima02());
             //物料代码
             ((TextView) holder.itemView.findViewById(R.id.wl_content_code))
                     .setText(data.get(position).getS_ima01());

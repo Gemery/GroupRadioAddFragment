@@ -3,7 +3,7 @@ package com.example.gemery.ssww.bean;
 import java.io.Serializable;
 import java.util.List;
 
-public class CustomMsg{
+public class CustomMsg implements Serializable{
     @Override
     public String toString() {
         return "{" +

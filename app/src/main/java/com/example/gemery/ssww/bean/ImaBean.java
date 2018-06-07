@@ -6,6 +6,13 @@ import java.util.List;
 public class ImaBean implements Serializable {
     private List<ListBean> list;
 
+    @Override
+    public String toString() {
+        return "ImaBean{" +
+                "list=" + list +
+                '}';
+    }
+
     public List<ListBean> getList() {
         return list;
     }
@@ -15,6 +22,42 @@ public class ImaBean implements Serializable {
     }
 
     public static class ListBean implements Serializable {
+        @Override
+        public String toString() {
+            return "ListBean{" +
+                    "id=" + id +
+                    ", s_ima00='" + s_ima00 + '\'' +
+                    ", s_ima_store_id='" + s_ima_store_id + '\'' +
+                    ", s_ima01='" + s_ima01 + '\'' +
+                    ", s_ima02='" + s_ima02 + '\'' +
+                    ", s_ima021='" + s_ima021 + '\'' +
+                    ", s_imaud01='" + s_imaud01 + '\'' +
+                    ", s_ima25='" + s_ima25 + '\'' +
+                    ", s_ima1006='" + s_ima1006 + '\'' +
+                    ", s_ima1006_desc='" + s_ima1006_desc + '\'' +
+                    ", s_ima1007='" + s_ima1007 + '\'' +
+                    ", s_ima1007_desc='" + s_ima1007_desc + '\'' +
+                    ", s_ima131='" + s_ima131 + '\'' +
+                    ", s_ima131_desc='" + s_ima131_desc + '\'' +
+                    ", s_ima39='" + s_ima39 + '\'' +
+                    ", s_ima40='" + s_ima40 + '\'' +
+                    ", s_ima35='" + s_ima35 + '\'' +
+                    ", s_ima27=" + s_ima27 +
+                    ", s_id=" + s_id +
+                    ", s_ima_bag='" + s_ima_bag + '\'' +
+                    ", s_ima_confirm='" + s_ima_confirm + '\'' +
+                    ", s_ima_acti='" + s_ima_acti + '\'' +
+                    ", s_imaud02='" + s_imaud02 + '\'' +
+                    ", s_imaud03='" + s_imaud03 + '\'' +
+                    ", s_imaud04='" + s_imaud04 + '\'' +
+                    ", s_imaud05='" + s_imaud05 + '\'' +
+                    ", s_imaud06='" + s_imaud06 + '\'' +
+                    ", s_imaud07='" + s_imaud07 + '\'' +
+                    ", s_imaud08='" + s_imaud08 + '\'' +
+                    ", s_imaud09='" + s_imaud09 + '\'' +
+                    '}';
+        }
+
         /**
          * id : 1
          * s_ima00 : 300005

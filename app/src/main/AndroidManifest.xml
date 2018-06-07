@@ -29,11 +29,17 @@
         android:supportsRtl="true"
         tools:replace="android:icon,android:name,android:label,android:theme"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.gemery.ssww.MainActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name="com.example.gemery.ssww.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
-        <activity android:name="com.example.gemery.ssww.activities.AddHeaderActivity">
-
+        // 客户资料详情页
+        <activity android:name="com.example.gemery.ssww.activities.CustomDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        // 库存详情页
+        <activity android:name="com.example.gemery.ssww.activities.StorageItemDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
             android:name="com.example.gemery.ssww.activities.WelcomeActivity"

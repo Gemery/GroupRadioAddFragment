@@ -1,5 +1,6 @@
 package com.example.gemery.ssww.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -145,6 +146,17 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
                         .setText(listData.get(position).getS_img04_desc());
                 ((TextView) holder.itemView.findViewById(R.id.s_img08))
                         .setText(String.valueOf(listData.get(position).getS_img08()));
+
+                holder.itemView.findViewById(R.id.item_storage_ll).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(StorageActivity.this,StorageItemDetailActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("storageDetail",listData.get(position));
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override

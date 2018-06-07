@@ -1,5 +1,6 @@
 package com.example.gemery.ssww.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class StorageBean {
@@ -52,7 +53,7 @@ public class StorageBean {
         this.list = list;
     }
 
-    public static class ListBean {
+    public static class ListBean implements Serializable {
         @Override
         public String toString() {
             return "ListBean{" +

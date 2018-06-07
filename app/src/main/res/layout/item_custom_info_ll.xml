@@ -27,7 +27,7 @@
                 android:gravity="center"
                 />
             <TextView
-                android:id="@+id/s_oea01"
+                android:id="@+id/s_occ02"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@+id/text_label1"
@@ -53,7 +53,7 @@
                 android:gravity="center"
                 />
             <TextView
-                android:id="@+id/s_oea04"
+                android:id="@+id/s_occ_04"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@+id/text_label2"
@@ -90,7 +90,7 @@
                 android:gravity="center"
                 />
         </RelativeLayout>
-    <!--约定送货时间-->
+    <!--建立资料的时间-->
         <RelativeLayout
             android:id="@+id/rl_text_date"
             android:layout_width="match_parent"
@@ -108,7 +108,7 @@
                 android:gravity="center"
                 />
             <TextView
-                android:id="@+id/text_content_date"
+                android:id="@+id/s_occ05"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textSize="14sp"

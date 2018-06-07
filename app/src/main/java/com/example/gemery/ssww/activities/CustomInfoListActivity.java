@@ -23,6 +23,7 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,8 +93,28 @@ public class CustomInfoListActivity extends AppCompatActivity {
 
             @Override
             public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-                ((TextView)holder.itemView.findViewById(R.id.s_oea01)).
-                        setText(listData.get(position).getS_occ_code());
+                ((TextView)holder.itemView.findViewById(R.id.s_occ02)).
+                        setText(listData.get(position).getS_occ02());
+                ((TextView)holder.itemView.findViewById(R.id.s_occ_04)).
+                        setText(listData.get(position).getS_occ04());
+                // 建立资料的时间
+                ((TextView)holder.itemView.findViewById(R.id.s_occ05)).
+                        setText(listData.get(position).getS_occ04());
+                // 对应业务员
+                ((TextView)holder.itemView.findViewById(R.id.text_content_emp_code)).
+                        setText(listData.get(position).getS_occ11());
+                final int finalPostion = position;
+                holder.itemView.findViewById(R.id.item_order_linear_layout)
+                        .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(CustomInfoListActivity.this,CustomDetailActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("customBean",(Serializable) listData.get(finalPostion));
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                });
 
             }
 
@@ -119,7 +140,7 @@ public class CustomInfoListActivity extends AppCompatActivity {
                     public void onSuccess(Response<String> response) {
                         //Log.e("tag", response.body());
                          listData = GsonUtils.jsonToArrayList(response.body(),CustomMsg.class);
-                        Log.e("tag",listData.get(1).toString());
+                        Log.e("tag",listData.toString());
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
