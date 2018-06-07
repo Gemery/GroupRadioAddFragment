@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout
         android:id="@+id/item_ll"
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="7"
         android:layout_height="wrap_content">
 
         <ImageView
@@ -17,80 +18,85 @@
             android:padding="5dp"
             android:id="@+id/img_product"
             />
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="5dp"
-            >
-            <LinearLayout
+            <RelativeLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
-                <TextView
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/ll_name"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="物料名称:"
-                    android:paddingBottom="5dp"
-                    />
-                <TextView
-                    android:id="@+id/item_name"
-                    android:hint="$:xxx"
-                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="物料名称:"
+                        android:paddingBottom="5dp"
+                        />
+                    <TextView
+                        android:id="@+id/item_name"
+                        android:hint="$:xxx"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_price"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
-                <TextView
+                    android:layout_below="@+id/ll_name"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="价格:"
+                        android:paddingBottom="5dp"
+                        />
+                    <TextView
+                        android:id="@+id/item_price"
+                        android:hint="$:xxx"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_desc"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="价格:"
-                    android:paddingBottom="5dp"
-                    />
-                <TextView
-                    android:id="@+id/item_price"
-                    android:hint="$:xxx"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="描述:"
-                    android:paddingBottom="5dp"
-                    />
-                <TextView
-                    android:id="@+id/item_des"
-                    android:hint="$:xxx"
-                    android:layout_width="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_below="@+id/ll_price"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="描述:"
+                        android:paddingBottom="5dp"
+                        />
+                    <TextView
+                        android:id="@+id/item_des"
+                        android:hint="$:xxx"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content" />
 
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_wl_code"
+                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="请选择:"
-                    />
-                <CheckBox
-                    android:id="@+id/check_box"
-                    android:layout_marginLeft="10dp"
-                    android:checked="false"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" />
-                <!--<TextView-->
+                    android:layout_below="@+id/ll_desc"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="物料代码:"
+                        />
+                    <TextView
+                        android:id="@+id/text_wl_code"
+                        android:layout_marginLeft="10dp"
+                        android:text="xx物料"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                    <!--<TextView-->
                     <!--android:id="@+id/action_add_cart"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_marginLeft="20dp"-->
@@ -101,8 +107,24 @@
                     <!--android:background="@drawable/border_raduis"-->
                     <!--android:gravity="center"-->
                     <!--/>-->
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+                </LinearLayout>
 
+            </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <CheckBox
+            android:layout_gravity="center"
+            android:id="@+id/check_box"
+            android:layout_marginLeft="10dp"
+            android:paddingRight="10dp"
+            android:checked="false"
+            android:scaleX="1.6"
+            android:scaleY="1.6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

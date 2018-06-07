@@ -9,16 +9,16 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:orientation="horizontal"
-        android:background="#fff"
+        android:background="#eee"
         >
         <ImageView
-            android:layout_width="28dp"
-            android:layout_height="25dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginLeft="5dp"
-            android:src="@mipmap/icon_back"
+            android:src="@drawable/arrow_left"
             android:id="@+id/icon_back_home"
             android:layout_gravity="center"
-            android:background="#eee"
+            android:background="#ddd"
             />
         <android.support.v7.widget.SearchView
             android:layout_width="0dp"
@@ -27,6 +27,7 @@
             app:iconifiedByDefault="false"
             app:queryHint="请输入搜索内容"
             android:focusable="false"
+            android:id="@+id/sv"
             android:focusableInTouchMode="false"
 
             />
@@ -34,7 +35,7 @@
         <TextView
             android:id="@+id/btn_search"
             android:layout_gravity="center"
-            android:background="#eee"
+            android:background="#ddd"
             android:padding="5dp"
             android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
@@ -43,7 +44,11 @@
             />
 
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ddd"
+        ></LinearLayout>
     <LinearLayout
         android:id="@+id/filter_linear_layout"
         android:layout_width="match_parent"

@@ -26,10 +26,12 @@ import com.example.gemery.ssww.adapter.MyAdapter;
 import com.example.gemery.ssww.bean.ConstResponse;
 import com.example.gemery.ssww.bean.ImaBean;
 import com.example.gemery.ssww.bean.OeaBen;
+import com.example.gemery.ssww.listener.NumberChangeListener;
 import com.example.gemery.ssww.utils.Constants;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.example.gemery.ssww.utils.PreferencesUtils;
 import com.example.gemery.ssww.utils.RecycleViewDivider;
+import com.example.gemery.ssww.utils.ToastUtil;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -73,6 +75,15 @@ public class OrderEditActivity extends AppCompatActivity {
     private TextView empCode;
     private TextView currentDate;
 
+    private NumberChangeListener numberChangeListener = new NumberChangeListener() {
+        @Override
+        public void onNumberChange(int position, String num) {
+           // 接受recyclerview 的数据变化
+           // ToastUtil.showToast(OrderEditActivity.this,num);
+            //ToastUtil.showToast(OrderEditActivity.this,String.valueOf(position));
+        }
+    };
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +109,7 @@ public class OrderEditActivity extends AppCompatActivity {
         titleOptionsTv.setText("保存");
         dsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
        dsRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        mAdapter = new MyAdapter(list, this);
+        mAdapter = new MyAdapter(numberChangeListener,list, this);
         dsRecyclerView.setAdapter(mAdapter);
         // 初始recyclerView 头部
          viewHeader = LayoutInflater.from(this).inflate(R.layout.item_order_dantou,null);
@@ -148,11 +159,14 @@ public class OrderEditActivity extends AppCompatActivity {
         oeaListBean.setId("0");
         oeaListBean.setS_oea00(PreferencesUtils.getSharePreStr(this,"ssww_code"));
         oeaListBean.setS_oea_code(PreferencesUtils.getSharePreStr(this,"sww_dp_bumber"));
+        //  s_oea01 : string,单据编号
         oeaListBean.setS_oea01(textContentBH.getText().toString());
         oeaListBean.setS_oea07(currentDate.getText().toString());
         oeaListBean.setS_oea02(String.valueOf(new Date().getTime()));
+        // 消费者手机号
         oeaListBean.setS_oea03(customPhone.getText().toString());
         oeaListBean.setS_oea05(customAddress.getText().toString());
+        // 业务员编号
         oeaListBean.setS_oea06(empCode.getText().toString());
         dtList.add(oeaListBean);
         oeaBen.setOeaList(dtList);
@@ -171,8 +185,10 @@ public class OrderEditActivity extends AppCompatActivity {
             oebListBean.setS_oeb02(String.valueOf(1));
             //规格
             oebListBean.setS_oeb06(list.get(i).getS_ima021());
-            // 数量
-            //oebListBean.setS_oeb07();
+            //    TODO  获得数量
+            long id = mAdapter.getItemId(i);
+
+            oebListBean.setS_oeb07(list.get(i).getS_imaud01());
             dsList.add(oebListBean);
         }
       oeaBen.setOebList(dsList);

@@ -6,7 +6,6 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -22,6 +21,7 @@ import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.StorageBean;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.example.gemery.ssww.utils.ToastUtil;
+import com.example.gemery.ssww.view.SearchView;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -56,6 +56,8 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
     RecyclerView storageRecyclerView;
     @BindView(R.id.storage_swipe_layout)
     SwipeRefreshLayout storageSwipeLayout;
+    @BindView(R.id.my_search_view)
+    SearchView mySearchView;
 
 
     private List<StorageBean.ListBean> listData = new ArrayList<>();
@@ -66,11 +68,12 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
         setContentView(R.layout.activity_storage);
         ButterKnife.bind(this);
         initData();
-       initSwipeView();
+        initSwipeView();
     }
 
     private void initSwipeView() {
         titleBarTitle.setText("库存查询");
+       // titleOptionsImg.setVisibility(View.VISIBLE);
         storageSwipeLayout.setColorSchemeColors(
                 getResources().getColor(android.R.color.holo_blue_light),
                 getResources().getColor(android.R.color.holo_red_light),
@@ -98,28 +101,35 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
                     public void onSuccess(Response<String> response) {
                         String json = response.body();
                         Log.e("tag", json);
-                       StorageBean storageBean = GsonUtils.parseJSON(json, StorageBean.class);
-                       listData = storageBean.getList();
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    initView();
-                                }
-                            });
+                        StorageBean storageBean = GsonUtils.parseJSON(json, StorageBean.class);
+                        listData = storageBean.getList();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                initView();
+                            }
+                        });
                     }
                 });
 
     }
 
     private void initView() {
-        titleOptionsTv.setText("");
+        titleOptionsTv.setText("搜索");
+        mySearchView.setSearchViewListener(new SearchView.onSearchViewListener() {
+            @Override
+            public boolean onQueryTextChange(String text) {
+                Log.e("tag",text+"------->");
+                return false;
+            }
+        });
         storageRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         //storageRecyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         storageRecyclerView.setAdapter(new RecyclerView.Adapter() {
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 RecyclerView.ViewHolder holder = new RecyclerView.ViewHolder(
-                        LayoutInflater.from(StorageActivity.this).inflate(R.layout.item_storage_info,parent,false)
+                        LayoutInflater.from(StorageActivity.this).inflate(R.layout.item_storage_info, parent, false)
                 ) {
                 };
                 return holder;
@@ -127,13 +137,13 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
 
             @Override
             public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-                ((TextView)holder.itemView.findViewById(R.id.s_img01))
+                ((TextView) holder.itemView.findViewById(R.id.s_img01))
                         .setText(listData.get(position).getS_img01());
-                ((TextView)holder.itemView.findViewById(R.id.s_img01_desc))
+                ((TextView) holder.itemView.findViewById(R.id.s_img01_desc))
                         .setText(listData.get(position).getS_img01_desc());
-                ((TextView)holder.itemView.findViewById(R.id.s_img04_desc))
+                ((TextView) holder.itemView.findViewById(R.id.s_img04_desc))
                         .setText(listData.get(position).getS_img04_desc());
-                ((TextView)holder.itemView.findViewById(R.id.s_img08))
+                ((TextView) holder.itemView.findViewById(R.id.s_img08))
                         .setText(String.valueOf(listData.get(position).getS_img08()));
             }
 
@@ -165,12 +175,16 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
   "flage": "1"
 }
      */
-    @OnClick({R.id.title_bar_back,R.id.title_options_tv})
-    public void onViewClick(View view){
-        switch (view.getId()){
+    @OnClick({R.id.title_bar_back, R.id.title_options_tv})
+    public void onViewClick(View view) {
+        switch (view.getId()) {
+            case R.id.title_options_tv:
+                //mySearchView.setVisibility(View.VISIBLE);
+                break;
             case R.id.title_bar_back:
                 finish();
                 break;
+
         }
     }
 
@@ -189,16 +203,17 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
 //            }
         }
     };
+
     @Override
     public void onRefresh() {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-               initData();
-                ToastUtil.showToast(getContext(),"刷新了一条数据");
+                initData();
+                ToastUtil.showToast(getContext(), "刷新了一条数据");
                 // 加载完数据    将下拉进度条收起来
                 storageSwipeLayout.setRefreshing(false);
             }
-        },2000);
+        }, 2000);
     }
 }

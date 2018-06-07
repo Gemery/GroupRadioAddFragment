@@ -1,6 +1,8 @@
 package com.example.gemery.ssww.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,10 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -28,6 +33,7 @@ import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +60,7 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
     private String get_data_url = "http://192.168.1.251:8091/api/imaData/getimaList";
     //private MutiOrderMessage data;
     private List<ImaBean.ListBean> data = new ArrayList<>();
+    private SearchView sv;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,6 +70,66 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
 
         initDatas();
         //initRecyclerView();
+        initSearchView();
+
+    }
+
+    private void initSearchView() {
+        deletedown();
+        // 设置搜索文本监听
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            // 当搜索内容改变时触发该方法
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (!TextUtils.isEmpty(newText)){
+//                    mListView.setFilterText(newText);
+                }else{
+                    //DataKit.searchParams.setSearchKey("");
+                    //search();
+                }
+                return false;
+            }
+            @Override
+            public boolean onQueryTextSubmit(String queryText) {
+                if (sv != null) {
+
+                    // 得到输入管理对象
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    if (imm != null) {
+                        // 这将让键盘在所有的情况下都被隐藏，但是一般我们在点击搜索按钮后，输入法都会乖乖的自动隐藏的。
+                        imm.hideSoftInputFromWindow(sv.getWindowToken(), 0); // 输入法如果是显示状态，那么就隐藏输入法
+                    }
+                   // DataKit.searchParams.setSearchKey(queryText);
+                    sv.clearFocus(); // 不获取焦点
+                   // search();
+                }
+                return true;
+            }
+        });
+
+
+    }
+
+    private void deletedown() {//去掉搜索框的下划线
+        sv = (SearchView)findViewById(R.id.sv);
+        //为该SearchView组件设置事件监听器
+        //sv.setOnQueryTextListener(this);
+        // 设置该SearchView内默认显示的提示文本
+        //sv.setQueryHint("哈雷实验室");
+        if (sv != null) {
+            try {        //--拿到字节码
+                Class<?> argClass = sv.getClass();
+                //--指定某个私有属性,mSearchPlate是搜索框父布局的名字
+                Field ownField = argClass.getDeclaredField("mSearchPlate");
+                //--暴力反射,只有暴力反射才能拿到私有属性
+                ownField.setAccessible(true);
+                View mView = (View) ownField.get(sv);
+                //--设置背景
+                mView.setBackgroundColor(Color.TRANSPARENT);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void initRecyclerView() {
@@ -189,6 +256,13 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
         super.onResume();
         Log.e("tag","zhixingle");
       // checkData.clear();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        checkData.clear();
+        initRecyclerView();
     }
 
     private void showPopupWindow() {

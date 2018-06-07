@@ -6,6 +6,17 @@
     android:layout_height="match_parent">
 
     <include layout="@layout/titilebar"></include>
+    <com.example.gemery.ssww.view.SearchView
+        android:id="@+id/my_search_view"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_height="50dp">
+
+    </com.example.gemery.ssww.view.SearchView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ddd"></LinearLayout>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/storage_swipe_layout"

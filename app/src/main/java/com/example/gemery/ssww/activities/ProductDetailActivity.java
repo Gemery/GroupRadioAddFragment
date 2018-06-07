@@ -11,6 +11,7 @@ import com.example.gemery.groupradioaddfragment.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ProductDetailActivity extends AppCompatActivity {
     @BindView(R.id.title_bar_back)
@@ -39,7 +40,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     private void initData() {
     }
-
+    @OnClick({R.id.title_bar_back})
     public void onViewClick(View view){
         switch (view.getId()){
             case R.id.title_bar_back:

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.ImaBean;
+import com.example.gemery.ssww.listener.NumberChangeListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,9 +34,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
     private int TYPE_HEADER = 1001;
     private int TYPE_FOOTER = 1002;
 
-    public MyAdapter(List<ImaBean.ListBean> data, Context mContext) {
+    private NumberChangeListener mListener;
+    public MyAdapter(NumberChangeListener listener,List<ImaBean.ListBean> data, Context mContext) {
         this.data = data;
         this.mContext = mContext;
+        this.mListener = listener;
     }
 
     @Override
@@ -50,7 +53,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
     }
 
     @Override
-    public void onBindViewHolder(MyHolder holder, int position) {
+    public void onBindViewHolder(MyHolder holder, int  position) {
         if (!isHeaderView(position) && !isFooterView(position)) {
             if (haveHeaderView()) position--;
             // 规格
@@ -65,7 +68,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
             //物料代码
             ((TextView) holder.itemView.findViewById(R.id.wl_content_code))
                     .setText(data.get(position).getS_ima01());
-
+            final int finalPostion = position;
             // 数量
            TextView slTv = ((TextView) holder.itemView.findViewById(R.id.text_content_sl));
                     slTv.setText("1");
@@ -79,7 +82,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
                     }else{
                         count--;
                         slTv.setText(String.valueOf(count));
-
+                        // 监听数据变化
+                        data.get(finalPostion).setS_imaud01(String.valueOf(count));
+                        mListener.onNumberChange(finalPostion,String.valueOf(count));
                     }
                 }
             });
@@ -89,6 +94,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
                     int count = Integer.parseInt(slTv.getText().toString());
                         count++;
                         slTv.setText(String.valueOf(count));
+
+                    data.get(finalPostion).setS_imaud01(String.valueOf(count));
+                    mListener.onNumberChange(finalPostion,String.valueOf(count));
                 }
             });
         }

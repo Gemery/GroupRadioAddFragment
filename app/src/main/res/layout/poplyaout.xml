@@ -19,7 +19,7 @@
         android:textSize="20dp"
         android:drawableRight="@drawable/arrow_right"
         android:padding="5dp"
-        android:text="条件一"/>
+        android:text="时间降序"/>
 
     <View
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:padding="5dp"
-        android:text="条件二"/>
+        android:text="时间升序"/>
 
     <View
         android:layout_width="match_parent"
@@ -45,11 +45,18 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:padding="5dp"
-        android:text="条件3"/>
+        android:text="价格降序"/>
 
     <View
         android:layout_width="match_parent"
         android:background="#ddd"
         android:layout_height="1dp"/>
+    <TextView
+        android:id="@+id/price_plus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:padding="5dp"
+        android:text="价格升序"/>
 
 </LinearLayout>
