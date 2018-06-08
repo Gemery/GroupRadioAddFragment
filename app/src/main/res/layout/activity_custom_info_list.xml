@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include layout="@layout/titilebar"></include>
-    <android.support.v7.widget.RecyclerView
+
+    <com.example.gemery.ssww.view.LoadMoreRecyclerView
         android:id="@+id/custom_cv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"></com.example.gemery.ssww.view.LoadMoreRecyclerView>
 </LinearLayout>

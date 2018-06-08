@@ -7,11 +7,11 @@
 
     <include layout="@layout/titilebar"></include>
 
-    <android.support.v7.widget.RecyclerView
+    <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
         android:id="@+id/all_order_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+    </com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView>
 
 </LinearLayout>

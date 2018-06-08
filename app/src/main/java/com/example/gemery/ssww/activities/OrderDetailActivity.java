@@ -2,6 +2,7 @@ package com.example.gemery.ssww.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,8 @@ import com.example.gemery.ssww.adapter.MyAdapter;
 import com.example.gemery.ssww.adapter.MyOrderDtailAdapter;
 import com.example.gemery.ssww.bean.OeaBen;
 import com.example.gemery.ssww.utils.GsonUtils;
+import com.example.gemery.ssww.utils.ToastUtil;
+import com.example.gemery.ssww.view.LoadMoreRecyclerView;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -31,7 +34,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class OrderDetailActivity extends AppCompatActivity {
+public class OrderDetailActivity extends AppCompatActivity  {
     @BindView(R.id.title_bar_back)
     ImageView titleBarBack;
     @BindView(R.id.title_bar_title)
@@ -120,4 +123,6 @@ public class OrderDetailActivity extends AppCompatActivity {
                 break;
         }
     }
+
+
 }

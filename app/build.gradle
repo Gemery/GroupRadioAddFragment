@@ -86,4 +86,6 @@ dependencies {
 
     compile files('libs/asmack.jar')
     compile files('libs/afinal_0.5.1_bin.jar')
+    // 上啦 下拉 刷新  recycler view
+    compile 'com.wuxiaolong.pullloadmorerecyclerview:library:1.1.2'
 }

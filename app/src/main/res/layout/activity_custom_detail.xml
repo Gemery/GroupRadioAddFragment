@@ -17,7 +17,7 @@
         android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="5dp"
         android:background="#ddd"
         ></LinearLayout>
     <RelativeLayout
@@ -33,11 +33,11 @@
          android:id="@+id/label_wu_code"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
-         android:text="物料代码："
+         android:text="所属经销商代码："
          android:gravity="center"
          />
      <TextView
-         android:id="@+id/wl_content_code"
+         android:id="@+id/s_occ00"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
          android:layout_toRightOf="@+id/label_wu_code"
@@ -64,11 +64,11 @@
          android:id="@+id/label_wl_name"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
-         android:text="物料名称："
+         android:text="店铺编号："
          android:gravity="center"
          />
      <TextView
-         android:id="@+id/content_wl_name"
+         android:id="@+id/s_occ_code"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
          android:layout_toRightOf="@+id/label_wl_name"
@@ -95,11 +95,11 @@
          android:id="@+id/label_wl_xh"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
-         android:text="物料型号："
+         android:text="客户姓名："
          android:gravity="center"
          />
      <TextView
-         android:id="@+id/content_wl_xh"
+         android:id="@+id/s_occ02"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
          android:layout_toRightOf="@+id/label_wl_xh"
@@ -126,11 +126,11 @@
          android:id="@+id/label_wl_gg"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
-         android:text="规格："
+         android:text=" 手机号："
          android:gravity="center"
          />
      <TextView
-         android:id="@+id/content_wl_gg"
+         android:id="@+id/s_occ_03"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
          android:layout_toRightOf="@+id/label_wl_gg"
@@ -157,16 +157,16 @@
          android:id="@+id/text_label_sl"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
-         android:text="数量："
+         android:text="客户收货地址："
          android:gravity="center"
          />
 
      <TextView
-         android:id="@+id/text_content_sl"
+         android:id="@+id/s_occ_04"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
          android:layout_toRightOf="@+id/text_label_sl"
-         android:layout_marginLeft="20dp"
+         android:layout_marginLeft="5dp"
          android:text="118"
          android:layout_marginTop="10dp"
          android:layout_marginBottom="10dp"
@@ -220,16 +220,15 @@
             android:id="@+id/label_s_ima1006"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="产品系列编码："
+            android:text="建立资料时间："
             android:gravity="center"
             />
 
         <TextView
-            android:id="@+id/s_img1006"
+            android:id="@+id/s_occ05"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_s_ima1006"
-            android:layout_marginLeft="20dp"
             android:text="118"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
@@ -256,12 +255,12 @@
             android:id="@+id/label_s_ima1006_desc"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="系列名称："
+            android:text="客户微信号："
             android:gravity="center"
             />
 
         <TextView
-            android:id="@+id/s_img1006_desc"
+            android:id="@+id/s_occ06"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_s_ima1006_desc"
@@ -290,15 +289,14 @@
             android:id="@+id/label_s_ima1007"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="产品大类编码："
+            android:text="客户VIP账号："
             android:gravity="center"
             />
         <TextView
-            android:id="@+id/s_ima1007"
+            android:id="@+id/s_occ07"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_s_ima1007"
-            android:layout_marginLeft="20dp"
             android:text="xxx"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
@@ -323,15 +321,14 @@
             android:id="@+id/label_s_ima1007_desc"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="产品大类名称："
+            android:text="结算方式："
             android:gravity="center"
             />
         <TextView
-            android:id="@+id/s_ima1007_desc"
+            android:id="@+id/s_occ08"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_s_ima1007_desc"
-            android:layout_marginLeft="20dp"
             android:text="xxx"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
@@ -356,48 +353,14 @@
             android:id="@+id/label_s_ima39"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="所属会计存货科目："
+            android:text="客户类型："
             android:gravity="center"
             />
         <TextView
-            android:id="@+id/s_ima39"
+            android:id="@+id/s_occ09"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_s_ima39"
-            android:layout_marginLeft="20dp"
-            android:text="xxx"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            />
-    </RelativeLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#ddd"
-        ></LinearLayout>
-    <RelativeLayout
-        android:id="@+id/rl_s_ima40"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@android:color/white"
-        android:orientation="horizontal"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        >
-        <TextView
-            android:id="@+id/label_s_ima40"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="销售科目："
-            android:gravity="center"
-            />
-        <TextView
-            android:id="@+id/s_ima40"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/label_s_ima40"
-            android:layout_marginLeft="20dp"
             android:text="xxx"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
@@ -422,15 +385,15 @@
             android:id="@+id/label_s_occ001"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="所属经销商代码："
+            android:text="客户开票资料："
             android:gravity="center"
             />
         <TextView
-            android:id="@+id/s_occ001"
+            android:id="@+id/s_occ10"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_s_occ001"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="5dp"
             android:text="xxx"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
@@ -455,15 +418,15 @@
             android:id="@+id/label_s_ima27"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="安全库存："
+            android:text="对应业务员："
             android:gravity="center"
             />
         <TextView
-            android:id="@+id/s_ima27"
+            android:id="@+id/s_occ11"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_s_ima27"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="5dp"
             android:text="xxx"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
@@ -488,15 +451,15 @@
             android:id="@+id/label_s_ima40"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="默认仓库："
+            android:text="积分总数："
             android:gravity="center"
             />
         <TextView
-            android:id="@+id/s_ima40"
+            android:id="@+id/s_occ12"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_s_ima40"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="5dp"
             android:text="xxx"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
@@ -508,67 +471,6 @@
         android:layout_height="1dp"
         android:background="#ddd"
         ></LinearLayout>
-    <RelativeLayout
-        android:id="@+id/rl_s_id"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@android:color/white"
-        android:orientation="horizontal"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        >
-        <TextView
-            android:id="@+id/label_s_id"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="资料同步ID号："
-            android:gravity="center"
-            />
-        <TextView
-            android:id="@+id/s_id"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/label_s_id"
-            android:layout_marginLeft="20dp"
-            android:text="xxx"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            />
-    </RelativeLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#ddd"
-        ></LinearLayout>
-    <RelativeLayout
-        android:id="@+id/rl_s_ima_bag"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@android:color/white"
-        android:orientation="horizontal"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        >
-        <TextView
-            android:id="@+id/label_s_ima_bag"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="是否为组合礼包："
-            android:gravity="center"
-            />
-        <TextView
-            android:id="@+id/s_ima_bag"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/label_s_ima_bag"
-            android:layout_marginLeft="20dp"
-            android:text="xxx"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            />
-    </RelativeLayout>
     </android.support.v7.widget.LinearLayoutCompat>
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>
