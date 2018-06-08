@@ -32,6 +32,8 @@
                 android:textSize="14sp"
                 android:background="@null"
                 android:hint="请输入搜索内容"/>
+            //android:focusable="false"
+            //android:focusableInTouchMode="false"
 
             <ImageButton
                 android:layout_width="35dp"

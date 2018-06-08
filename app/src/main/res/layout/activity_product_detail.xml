@@ -17,7 +17,7 @@
         android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="5dp"
         android:background="#ddd"
         ></LinearLayout>
     <RelativeLayout
@@ -37,10 +37,11 @@
          android:gravity="center"
          />
      <TextView
-         android:id="@+id/wl_content_code"
+         android:id="@+id/s_ima01"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
          android:layout_toRightOf="@+id/label_wu_code"
+         android:layout_marginLeft="20dp"
          android:text="xxxxxxx"
          android:gravity="center"
          />
@@ -68,10 +69,12 @@
          android:gravity="center"
          />
      <TextView
-         android:id="@+id/content_wl_name"
+         android:id="@+id/s_ima02"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
          android:layout_toRightOf="@+id/label_wl_name"
+         android:layout_marginLeft="20dp"
+
          android:text="name"
          android:gravity="center"
          />
@@ -99,10 +102,12 @@
          android:gravity="center"
          />
      <TextView
-         android:id="@+id/content_wl_xh"
+         android:id="@+id/s_imaud01"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
          android:layout_toRightOf="@+id/label_wl_xh"
+         android:layout_marginLeft="20dp"
+
          android:text="xxxxxxxx"
          android:gravity="center"
          />
@@ -130,10 +135,12 @@
          android:gravity="center"
          />
      <TextView
-         android:id="@+id/content_wl_gg"
+         android:id="@+id/s_ima021"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
          android:layout_toRightOf="@+id/label_wl_gg"
+         android:layout_marginLeft="20dp"
+
          android:text="xx111xxx"
          android:gravity="center"
          />
@@ -162,7 +169,7 @@
          />
 
      <TextView
-         android:id="@+id/text_content_sl"
+         android:id="@+id/s_ima25"
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
          android:layout_toRightOf="@+id/text_label_sl"
@@ -225,7 +232,7 @@
             />
 
         <TextView
-            android:id="@+id/s_img1006"
+            android:id="@+id/s_ima1006"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_s_ima1006"
@@ -476,7 +483,7 @@
         android:background="#ddd"
         ></LinearLayout>
     <RelativeLayout
-        android:id="@+id/rl_s_ima40"
+        android:id="@+id/rl_s_ima401"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@android:color/white"
@@ -485,17 +492,17 @@
         android:paddingRight="24dp"
         >
         <TextView
-            android:id="@+id/label_s_ima40"
+            android:id="@+id/label_s_ima35"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="默认仓库："
             android:gravity="center"
             />
         <TextView
-            android:id="@+id/s_ima40"
+            android:id="@+id/s_ima35"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/label_s_ima40"
+            android:layout_toRightOf="@+id/label_s_ima35"
             android:layout_marginLeft="20dp"
             android:text="xxx"
             android:layout_marginTop="10dp"
@@ -569,6 +576,39 @@
             android:gravity="center"
             />
     </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ddd"
+            ></LinearLayout>
+    <RelativeLayout
+            android:id="@+id/rl_s_ima_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+            <TextView
+                android:id="@+id/label_s_ima_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="审核否："
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/s_ima_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/label_s_ima_confirm"
+                android:layout_marginLeft="20dp"
+                android:text="xxx"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                />
+        </RelativeLayout>
     </android.support.v7.widget.LinearLayoutCompat>
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

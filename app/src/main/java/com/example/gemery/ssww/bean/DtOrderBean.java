@@ -3,7 +3,44 @@ package com.example.gemery.ssww.bean;
 import java.util.List;
 
 public class DtOrderBean {
+
+
+    /**
+     * list : [{"id":40,"s_oea00":"300005",
+     * "s_oea_code":"300005001","s_oea_type":"1:零售",
+     * "s_oea01":"300005001SA180600001","s_oea02":1527927428,
+     * "s_oea03":"15989217947","s_oea04":"林鹏辉",
+     * "s_oea05":"家家卫浴有限公司","s_oea06":"300005001000101",
+     * "s_oea07":"2018-06-20","s_oea08":"1098",
+     * "s_oea_confirm":"Y","s_oea09":"tiptop",
+     * "s_oea10":1527927481,"s_oea11":0,
+     * "s_oea12":12324,"s_oea13":"N:不开      ",
+     * "s_oea14":0,"s_oeaud01":"","s_oeaud02":"",
+     * "s_oeaud03":"","s_oeaud04":"","s_oeaud05":"",
+     * "s_oeaud06":"","s_oeaud07":"","s_oeaud08":""}]
+     * TotalPageCount : 30
+     * TotalCount : 30
+     */
+
+    private int TotalPageCount;
+    private int TotalCount;
     private List<ListBean> list;
+
+    public int getTotalPageCount() {
+        return TotalPageCount;
+    }
+
+    public void setTotalPageCount(int TotalPageCount) {
+        this.TotalPageCount = TotalPageCount;
+    }
+
+    public int getTotalCount() {
+        return TotalCount;
+    }
+
+    public void setTotalCount(int TotalCount) {
+        this.TotalCount = TotalCount;
+    }
 
     public List<ListBean> getList() {
         return list;
@@ -30,10 +67,10 @@ public class DtOrderBean {
          * s_oea_confirm : Y
          * s_oea09 : tiptop
          * s_oea10 : 1527927481
-         * s_oea11 : 0.0
-         * s_oea12 : 12324.0
+         * s_oea11 : 0
+         * s_oea12 : 12324
          * s_oea13 : N:不开
-         * s_oea14 : 0.0
+         * s_oea14 : 0
          * s_oeaud01 :
          * s_oeaud02 :
          * s_oeaud03 :
@@ -59,10 +96,10 @@ public class DtOrderBean {
         private String s_oea_confirm;
         private String s_oea09;
         private int s_oea10;
-        private double s_oea11;
-        private double s_oea12;
+        private int s_oea11;
+        private int s_oea12;
         private String s_oea13;
-        private double s_oea14;
+        private int s_oea14;
         private String s_oeaud01;
         private String s_oeaud02;
         private String s_oeaud03;
@@ -192,19 +229,19 @@ public class DtOrderBean {
             this.s_oea10 = s_oea10;
         }
 
-        public double getS_oea11() {
+        public int getS_oea11() {
             return s_oea11;
         }
 
-        public void setS_oea11(double s_oea11) {
+        public void setS_oea11(int s_oea11) {
             this.s_oea11 = s_oea11;
         }
 
-        public double getS_oea12() {
+        public int getS_oea12() {
             return s_oea12;
         }
 
-        public void setS_oea12(double s_oea12) {
+        public void setS_oea12(int s_oea12) {
             this.s_oea12 = s_oea12;
         }
 
@@ -216,11 +253,11 @@ public class DtOrderBean {
             this.s_oea13 = s_oea13;
         }
 
-        public double getS_oea14() {
+        public int getS_oea14() {
             return s_oea14;
         }
 
-        public void setS_oea14(double s_oea14) {
+        public void setS_oea14(int s_oea14) {
             this.s_oea14 = s_oea14;
         }
 
@@ -238,39 +275,6 @@ public class DtOrderBean {
 
         public void setS_oeaud02(String s_oeaud02) {
             this.s_oeaud02 = s_oeaud02;
-        }
-
-        @Override
-        public String toString() {
-            return "ListBean{" +
-                    "id=" + id +
-                    ", s_oea00='" + s_oea00 + '\'' +
-                    ", s_oea_code='" + s_oea_code + '\'' +
-                    ", s_oea_type='" + s_oea_type + '\'' +
-                    ", s_oea01='" + s_oea01 + '\'' +
-                    ", s_oea02=" + s_oea02 +
-                    ", s_oea03='" + s_oea03 + '\'' +
-                    ", s_oea04='" + s_oea04 + '\'' +
-                    ", s_oea05='" + s_oea05 + '\'' +
-                    ", s_oea06='" + s_oea06 + '\'' +
-                    ", s_oea07='" + s_oea07 + '\'' +
-                    ", s_oea08='" + s_oea08 + '\'' +
-                    ", s_oea_confirm='" + s_oea_confirm + '\'' +
-                    ", s_oea09='" + s_oea09 + '\'' +
-                    ", s_oea10=" + s_oea10 +
-                    ", s_oea11=" + s_oea11 +
-                    ", s_oea12=" + s_oea12 +
-                    ", s_oea13='" + s_oea13 + '\'' +
-                    ", s_oea14=" + s_oea14 +
-                    ", s_oeaud01='" + s_oeaud01 + '\'' +
-                    ", s_oeaud02='" + s_oeaud02 + '\'' +
-                    ", s_oeaud03='" + s_oeaud03 + '\'' +
-                    ", s_oeaud04='" + s_oeaud04 + '\'' +
-                    ", s_oeaud05='" + s_oeaud05 + '\'' +
-                    ", s_oeaud06='" + s_oeaud06 + '\'' +
-                    ", s_oeaud07='" + s_oeaud07 + '\'' +
-                    ", s_oeaud08='" + s_oeaud08 + '\'' +
-                    '}';
         }
 
         public String getS_oeaud03() {

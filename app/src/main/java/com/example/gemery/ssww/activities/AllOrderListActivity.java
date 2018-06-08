@@ -53,16 +53,14 @@ public class AllOrderListActivity extends AppCompatActivity {
     LinearLayout title;
     @BindView(R.id.all_order_recycler_view)
     PullLoadMoreRecyclerView allOrderRecyclerView;
+    private int pageSize;
+    private int totalCount;
 
     private String get_all_order_url = "http://192.168.1.251:8091/api/Order/getAllstdOrders";
-    private final String POST_PARAMS_JSON = "{\n" +
-            "  \"ima\": {\n" +
-            "       \n" +
-            "  },\n" +
-            "  \"pageSize\": \"30\",\n" +
-            "  \"pageIndex\": \"1\"\n" +
-            "}";
+    private int count = 1;
+    private  String POST_PARAMS_JSON = "{ima:{},pageSize: 5,pageIndex:" + count + "}";
     private List<DtOrderBean.ListBean> listData = new ArrayList<>();
+    private RecyclerView.Adapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,33 +68,52 @@ public class AllOrderListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_all_order_list);
         ButterKnife.bind(this);
         initData();
-        //initView();
+        initView();
        // allOrderRecyclerView.setPullRefreshEnable(false);
         allOrderRecyclerView.setFooterViewText("loading");
        allOrderRecyclerView.setOnPullLoadMoreListener(new PullLoadMoreRecyclerView.PullLoadMoreListener() {
            @Override
            public void onRefresh() {
-               new Handler().postDelayed(new Runnable() {
-                   @Override
-                   public void run() {
-                       allOrderRecyclerView.setPullLoadMoreCompleted();
-                   }
-               }, 1500);
+             initData();
+             allOrderRecyclerView.setPullLoadMoreCompleted();
            }
 
            @Override
            public void onLoadMore() {
-               new Handler().postDelayed(new Runnable() {
-                   @Override
-                   public void run() {
-//                       list.add("add");
-//                       adapter.notifyItemInserted(list.size()-1);
-                       ToastUtil.showToast(AllOrderListActivity.this," completed Load More Data");
-                       allOrderRecyclerView.setPullLoadMoreCompleted();
-                   }
-               }, 1500);
+                        count++;
+                        if(count > pageSize){
+                            ToastUtil.showToast(AllOrderListActivity.this," 没有更多数据加载了");
+                            allOrderRecyclerView.setPullLoadMoreCompleted();
+                            return;
+                        }
+                        String post_json = "{ima:{},pageSize: 5,pageIndex:" + count + "}";
+                        loadMoreData(post_json);
+
+
            }
        });
+    }
+    private void loadMoreData(String postJson){
+        Log.e("tag",postJson);
+        OkGo.<String>post(get_all_order_url)
+                .tag(this)
+                .upJson(postJson)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        DtOrderBean obj = GsonUtils.parseJSON(response.body(),DtOrderBean.class);
+
+//                        if(obj.getList()==null){
+//                            allOrderRecyclerView.setFooterViewText("没有数据加载了");
+//                            return;
+//                        }
+                        listData.addAll(obj.getList());
+                        // 通知 adapter 更新数量
+                        adapter.notifyDataSetChanged();
+                        allOrderRecyclerView.setPullLoadMoreCompleted();
+
+                    }
+                });
     }
 
     private void initView() {
@@ -104,8 +121,7 @@ public class AllOrderListActivity extends AppCompatActivity {
 
         allOrderRecyclerView.setLinearLayout();
         //allOrderRecyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
-
-        allOrderRecyclerView.setAdapter(new RecyclerView.Adapter() {
+        adapter = new RecyclerView.Adapter() {
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 RecyclerView.ViewHolder holder = new RecyclerView.ViewHolder(
@@ -134,14 +150,24 @@ public class AllOrderListActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
+
+
             }
 
             @Override
             public int getItemCount() {
                 return listData.size();
             }
-        });
+        };
 
+        allOrderRecyclerView.setAdapter(adapter);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        count = 1;
     }
 
     private void initData() {
@@ -155,13 +181,10 @@ public class AllOrderListActivity extends AppCompatActivity {
                         String json = response.body();
                         DtOrderBean obj = GsonUtils.parseJSON(json,DtOrderBean.class);
                         listData = obj.getList();
-                        Log.e("tag",listData.toString());
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                initView();
-                            }
-                        });
+                        pageSize  = obj.getTotalPageCount();
+                        totalCount = obj.getTotalCount();
+                        //Log.e("tag",listData.toString());
+                         adapter.notifyDataSetChanged();
                     }
                 });
 

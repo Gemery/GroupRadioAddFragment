@@ -1,11 +1,12 @@
 package com.example.gemery.ssww.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import com.example.gemery.ssww.utils.GsonUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
+import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,9 +33,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class CustomInfoListActivity extends AppCompatActivity {
+public class CustomInfoListActivity extends AppCompatActivity implements PullLoadMoreRecyclerView.PullLoadMoreListener {
     @BindView(R.id.custom_cv)
-    RecyclerView customCv;
+    PullLoadMoreRecyclerView customCv;
     @BindView(R.id.title_bar_back)
     ImageView titleBarBack;
     @BindView(R.id.title_bar_title)
@@ -51,6 +53,7 @@ public class CustomInfoListActivity extends AppCompatActivity {
     private String get_occ_list = "http://192.168.1.251:8091/api/baseData/getoccList";
     private ArrayList<CustomMsg> listData;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +61,10 @@ public class CustomInfoListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initData();
        // initRecyclerView();
+
+        customCv.setOnPullLoadMoreListener(this);
+        customCv.setFooterViewText("Loading");
+        customCv.setFooterViewBackgroundColor(R.color.white);
     }
     @OnClick({R.id.title_bar_back,R.id.title_options_tv})
     public void onClickView(View view){
@@ -77,8 +84,8 @@ public class CustomInfoListActivity extends AppCompatActivity {
         titleBarTitle.setText("终端客户资料");
         titleOptionsTv.setText("添加");
 
-        customCv.setLayoutManager(new LinearLayoutManager(this));
-        customCv.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
+        customCv.setLinearLayout();
+        //customCv.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
 
         customCv.setAdapter(new RecyclerView.Adapter() {
             @Override
@@ -138,9 +145,8 @@ public class CustomInfoListActivity extends AppCompatActivity {
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
-                        //Log.e("tag", response.body());
                          listData = GsonUtils.jsonToArrayList(response.body(),CustomMsg.class);
-                        Log.e("tag",listData.toString());
+                        //Log.e("tag",listData.toString());
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -149,5 +155,40 @@ public class CustomInfoListActivity extends AppCompatActivity {
                         });
                     }
                 });
+    }
+
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                customCv.setPullLoadMoreCompleted();
+            }
+        },2000);
+    }
+
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what){
+                case 1:
+
+                    break;
+            }
+        }
+    };
+    private void loadMoreData(){
+
+    }
+
+    @Override
+    public void onLoadMore() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                customCv.setPullLoadMoreCompleted();
+            }
+        },2000);
     }
 }

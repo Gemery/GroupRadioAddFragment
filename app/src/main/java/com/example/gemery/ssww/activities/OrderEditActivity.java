@@ -167,6 +167,9 @@ public class OrderEditActivity extends AppCompatActivity {
         //  s_oea01 : string,单据编号
         oeaListBean.setS_oea01(textContentBH.getText().toString());
         oeaListBean.setS_oea07(currentDate.getText().toString());
+        // 消费者姓名
+        oeaListBean.setS_oea04(edtiUserName.getText().toString());
+        // 单据产生的时间
         oeaListBean.setS_oea02(String.valueOf(new Date().getTime()));
         // 消费者手机号
         oeaListBean.setS_oea03(customPhone.getText().toString());
@@ -215,7 +218,7 @@ public class OrderEditActivity extends AppCompatActivity {
                 if(oeaBen == null){
                      oeaBen = getFormData();
                 }
-                Log.e("tag",oeaBen.toString());
+                //Log.e("tag",oeaBen.toString());
                 OkGo.<String>post(Constants.EDIT_ORDER_URL)
                         .tag(OrderEditActivity.this)
                         //.upJson(Constants.EDIT_POST_JSON)
@@ -223,7 +226,7 @@ public class OrderEditActivity extends AppCompatActivity {
                         .execute(new StringCallback() {
                             @Override
                             public void onSuccess(Response<String> response) {
-                                Log.e("tag", response.body());
+                                //Log.e("tag", response.body());
                                 ConstResponse rep = GsonUtils.parseJSON(response.body(), ConstResponse.class);
                                 if (rep.getResultCode().equals("0")) {
 
