@@ -70,7 +70,7 @@ public class OrderDetailActivity extends AppCompatActivity  {
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
-                        Log.e("tag",response.body());
+                        //Log.e("tag",response.body());
                         OeaBen oeaBen = GsonUtils.parseJSON(response.body(),OeaBen.class);
                         list = oeaBen.getOebList();
                         dtBean = oeaBen.getOeaList().get(0);

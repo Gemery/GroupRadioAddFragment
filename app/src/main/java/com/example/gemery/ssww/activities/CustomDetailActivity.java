@@ -95,7 +95,7 @@ public class CustomDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
          obj = (CustomMsg) bundle.getSerializable("customBean");
-        Log.e("tag", obj.toString());
+        //Log.e("tag", obj.toString());
 
     }
 }

@@ -5,4 +5,8 @@
           android:title="重置"
           android:icon="@drawable/vector_del"
           app:showAsAction="never|withText" />
+    <item android:id="@+id/toolbar_edit"
+          android:title="修改"
+          android:icon="@drawable/vector_del"
+          app:showAsAction="never|withText" />
 </menu>

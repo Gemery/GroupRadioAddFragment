@@ -6,17 +6,41 @@
     android:layout_height="match_parent">
 
     <include layout="@layout/titilebar"></include>
-    <com.example.gemery.ssww.view.SearchView
-        android:id="@+id/my_search_view"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:visibility="visible"
         android:layout_height="50dp">
+        <TextView
+            android:id="@+id/search_label_key"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="选择关键词"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:drawablePadding="5dp"
+            android:paddingRight="10dp"
+            android:drawableRight="@drawable/arrow_dropdown_mini"
+            />
+        <com.example.gemery.ssww.view.SearchView
+            android:id="@+id/my_search_view"
+            android:layout_width="match_parent"
+            android:visibility="visible"
+            android:layout_height="50dp">
+        </com.example.gemery.ssww.view.SearchView>
+    </LinearLayout>
 
-    </com.example.gemery.ssww.view.SearchView>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#ddd"></LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/label_key_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        ></android.support.v7.widget.RecyclerView>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/storage_swipe_layout"

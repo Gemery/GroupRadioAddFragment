@@ -1,12 +1,15 @@
 package com.example.gemery.ssww.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -28,6 +32,7 @@ import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -59,7 +64,12 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
     SwipeRefreshLayout storageSwipeLayout;
     @BindView(R.id.my_search_view)
     SearchView mySearchView;
+    @BindView(R.id.search_label_key)
+    TextView searchLabelKey;
+    @BindView(R.id.label_key_recycler)
+    RecyclerView labelKeyRecycler;
 
+    private String search_key = "";
 
     private List<StorageBean.ListBean> listData = new ArrayList<>();
 
@@ -70,11 +80,13 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
         ButterKnife.bind(this);
         initData();
         initSwipeView();
+
+
     }
 
     private void initSwipeView() {
         titleBarTitle.setText("库存查询");
-       // titleOptionsImg.setVisibility(View.VISIBLE);
+        // titleOptionsImg.setVisibility(View.VISIBLE);
         storageSwipeLayout.setColorSchemeColors(
                 getResources().getColor(android.R.color.holo_blue_light),
                 getResources().getColor(android.R.color.holo_red_light),
@@ -101,7 +113,7 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
                     @Override
                     public void onSuccess(Response<String> response) {
                         String json = response.body();
-                        Log.e("tag", json);
+                       // Log.e("tag", json);
                         StorageBean storageBean = GsonUtils.parseJSON(json, StorageBean.class);
                         listData = storageBean.getList();
                         runOnUiThread(new Runnable() {
@@ -115,12 +127,83 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
 
     }
 
+    class SearchTask implements Runnable {
+
+        @Override
+        public void run() {
+            Log.e("---SearchTask---", "开始查询");
+        }
+    }
+
+    private void search(String changeText) {
+        /*
+   "s_img01": "string,物料代码",
+      "s_img01_desc": "string,物料名称",
+      "s_img02": "string,型号",
+      "s_img03": "string,规格",
+      "s_img04": "string,仓库代码",
+      "s_img04_desc": "string,仓库名称",
+      "s_img05": "string,库位",
+ */
+        String str = " { ima: { s_img04_desc:\"浪\" },pageSize: 20,pageIndex: 1}";
+        switch (checkItem){
+            case 0:
+                search_key = "s_img01";
+                break;
+            case 1:
+                search_key = "s_img01_desc";
+                break;
+            case 2:
+                search_key = "s_img02";
+                break;
+            case 3:
+                search_key = "s_img03";
+                break;
+            case 4:
+                search_key = "s_img04";
+                break;
+            case 5:
+                search_key = "s_img04_desc";
+                break;
+            case 6:
+                search_key = "s_img05";
+                break;
+        }
+        String post_json = "{ ima: { " + search_key + ":\"" + changeText + "\" },pageSize: 20,pageIndex: 1}";
+        Log.e("tag",post_json);
+        OkGo.<String>post(get_sotrage_all_url)
+                .tag(this)
+                .upJson(post_json)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                         Log.e("tag",response.body());
+                        StorageBean storageBean = GsonUtils.parseJSON(response.body(), StorageBean.class);
+                        listData = storageBean.getList();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                initView();
+                            }
+                        });
+
+                    }
+                });
+    }
+
     private void initView() {
         titleOptionsTv.setText("搜索");
         mySearchView.setSearchViewListener(new SearchView.onSearchViewListener() {
             @Override
             public boolean onQueryTextChange(String text) {
-                Log.e("tag",text+"------->");
+                Log.e("tag", text);
+                search_key = text;
+                if (text.length() > 0) {
+                   // new Handler().removeCallbacks(new SearchTask());
+                    //new Handler().postDelayed(new SearchTask(), 500);
+                    search(text);
+                }
+
                 return false;
             }
         });
@@ -150,9 +233,9 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
                 holder.itemView.findViewById(R.id.item_storage_ll).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(StorageActivity.this,StorageItemDetailActivity.class);
+                        Intent intent = new Intent(StorageActivity.this, StorageItemDetailActivity.class);
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable("storageDetail",listData.get(position));
+                        bundle.putSerializable("storageDetail", listData.get(position));
                         intent.putExtras(bundle);
                         startActivity(intent);
                     }
@@ -187,9 +270,12 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
   "flage": "1"
 }
      */
-    @OnClick({R.id.title_bar_back, R.id.title_options_tv})
+    @OnClick({R.id.title_bar_back, R.id.title_options_tv,R.id.search_label_key})
     public void onViewClick(View view) {
         switch (view.getId()) {
+            case R.id.search_label_key:
+                showPopuWindow();
+                break;
             case R.id.title_options_tv:
                 //mySearchView.setVisibility(View.VISIBLE);
                 break;
@@ -198,6 +284,28 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
                 break;
 
         }
+    }
+    public  int checkItem = 0;
+    private void showPopuWindow() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+
+
+
+        String[] strArray = {"物料代码","物料名称","型号","规格","仓库代码","仓库名称"};
+
+        builder.setSingleChoiceItems(strArray,checkItem,new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                checkItem = i;
+                searchLabelKey.setText(strArray[checkItem]);
+                dialogInterface.dismiss();
+
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
     }
 
     private Handler handler = new Handler() {
