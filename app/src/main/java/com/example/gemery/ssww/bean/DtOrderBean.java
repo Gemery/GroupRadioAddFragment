@@ -1,8 +1,9 @@
 package com.example.gemery.ssww.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class DtOrderBean {
+public class DtOrderBean implements Serializable{
 
 
     /**
@@ -50,7 +51,7 @@ public class DtOrderBean {
         this.list = list;
     }
 
-    public static class ListBean {
+    public static class ListBean implements Serializable{
         /**
          * id : 40
          * s_oea00 : 300005

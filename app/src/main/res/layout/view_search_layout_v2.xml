@@ -16,7 +16,7 @@
             <!--<ImageButton-->
                 <!--android:layout_width="20dp"-->
                 <!--android:layout_height="20dp"-->
-                <!--android:id="@+id/imb_search_search"-->
+                <!--android:id="@+id/imb_v2"-->
                 <!--android:layout_marginLeft="15dp"-->
                 <!--android:scaleType="centerInside"-->
                 <!--android:src="@drawable/im_search_gray"-->
@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="15dp"
-                android:id="@+id/et_search_text"
+                android:id="@+id/et_search_text_v2"
                 android:layout_weight="1"
                 android:lines="1"
                 android:textSize="14sp"
@@ -40,7 +40,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:padding="12.5dp"
-                android:id="@+id/imb_search_clear"
+                android:id="@+id/imb_search_clear_v2"
                 android:layout_marginRight="20dp"
                 android:src="@drawable/im_x"
                 android:visibility="gone"

@@ -11,22 +11,38 @@
         android:layout_width="match_parent"
         android:layout_height="50dp">
         <TextView
-            android:id="@+id/search_label_key"
+            android:id="@+id/search_label_key_v2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="选择关键词"
+            android:text="门店编号"
             android:gravity="center"
             android:layout_marginLeft="10dp"
             android:drawablePadding="5dp"
             android:paddingRight="10dp"
             android:drawableRight="@drawable/arrow_dropdown_mini"
             />
-        <com.example.gemery.ssww.view.SearchView
-            android:id="@+id/my_search_view"
-            android:layout_width="match_parent"
-            android:visibility="visible"
-            android:layout_height="50dp">
-        </com.example.gemery.ssww.view.SearchView>
+      <include layout="@layout/view_search_layout_v2"></include>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ddd"></LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/search_label_key"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="物料代码"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:drawablePadding="5dp"
+            android:paddingRight="10dp"
+            android:drawableRight="@drawable/arrow_dropdown_mini"
+            />
+        <include layout="@layout/view_search_layout"></include>
     </LinearLayout>
 
 

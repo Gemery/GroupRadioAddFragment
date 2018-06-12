@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/titilebar"></include>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical"
+           >
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <TextView
+                    android:id="@+id/search_label_key_v2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="门店编号"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:drawablePadding="5dp"
+                    android:paddingRight="30dp"
+
+                    />
+
+                <include layout="@layout/view_search_layout_v2"></include>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ddd"></LinearLayout>
+        <!--客服姓名-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+            <TextView
+                android:id="@+id/search_label_key"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="客服姓名"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                android:drawablePadding="5dp"
+                android:paddingRight="10dp"
+                android:drawableRight="@drawable/arrow_dropdown_mini"
+                />
+            <include layout="@layout/view_search_layout"></include>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ddd"></LinearLayout>
+            <!--起始时间-->
+            <RelativeLayout
+                android:id="@+id/rl_order_start_date"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@android:color/white"
+                android:orientation="horizontal"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                >
+                <TextView
+                    android:id="@+id/text_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="起始时间："
+                    android:gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/text_start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/text_label"
+                    android:text=""
+                    android:gravity="center"
+                    />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/arrow_right"
+                    android:layout_alignParentRight="true"
+                    />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ddd"
+                ></LinearLayout>
+            <!--结束时间-->
+            <RelativeLayout
+                android:id="@+id/rl_order_end_date"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@android:color/white"
+                android:orientation="horizontal"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                >
+                <TextView
+                    android:id="@+id/text_label1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="结束时间："
+                    android:gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/text_end_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/text_label1"
+                    android:text=""
+                    android:gravity="center"
+                    />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/arrow_right"
+                    android:layout_alignParentRight="true"
+                    />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ddd"
+                ></LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp">
+                
+                <TextView
+                    android:id="@+id/label_sdt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" 
+                    android:text="已出库:"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="24dp"
+                    />
+                <CheckBox
+                    android:id="@+id/sdt_check_box"
+                    android:layout_toRightOf="@+id/label_sdt"
+                    android:layout_marginTop="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ddd"
+                ></LinearLayout>
+            <Button
+                android:id="@+id/action_send_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="37dp"
+                android:text="搜 索"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:background="@drawable/border_corners"
+                android:textStyle="bold" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

@@ -9,16 +9,16 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -26,13 +26,11 @@ import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.StorageBean;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.example.gemery.ssww.utils.ToastUtil;
-import com.example.gemery.ssww.view.SearchView;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -62,16 +60,30 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
     RecyclerView storageRecyclerView;
     @BindView(R.id.storage_swipe_layout)
     SwipeRefreshLayout storageSwipeLayout;
-    @BindView(R.id.my_search_view)
-    SearchView mySearchView;
+    //    @BindView(R.id.my_search_view)
+//    SearchView mySearchView;
     @BindView(R.id.search_label_key)
     TextView searchLabelKey;
     @BindView(R.id.label_key_recycler)
     RecyclerView labelKeyRecycler;
 
+    @BindView(R.id.et_search_text)
+    EditText etSearchText;
+    @BindView(R.id.imb_search_clear)
+    ImageButton imbSearchClear;
+    @BindView(R.id.search_label_key_v2)
+    TextView searchLabelKeyV2;
+
+    @BindView(R.id.et_search_text_v2)
+    EditText etSearchTextV2;
+    @BindView(R.id.imb_search_clear_v2)
+    ImageButton imbSearchClearV2;
+
+
     private String search_key = "";
 
     private List<StorageBean.ListBean> listData = new ArrayList<>();
+    private String upJson;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,8 +92,6 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
         ButterKnife.bind(this);
         initData();
         initSwipeView();
-
-
     }
 
     private void initSwipeView() {
@@ -113,7 +123,7 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
                     @Override
                     public void onSuccess(Response<String> response) {
                         String json = response.body();
-                       // Log.e("tag", json);
+                        // Log.e("tag", json);
                         StorageBean storageBean = GsonUtils.parseJSON(json, StorageBean.class);
                         listData = storageBean.getList();
                         runOnUiThread(new Runnable() {
@@ -135,9 +145,10 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
         }
     }
 
-    private void search(String changeText) {
-        /*
-   "s_img01": "string,物料代码",
+    private String getInputText(String changeText) {
+            /*
+      "s_img_code": "string,门店编号",
+      "s_img01": "string,物料代码",
       "s_img01_desc": "string,物料名称",
       "s_img02": "string,型号",
       "s_img03": "string,规格",
@@ -145,8 +156,8 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
       "s_img04_desc": "string,仓库名称",
       "s_img05": "string,库位",
  */
-        String str = " { ima: { s_img04_desc:\"浪\" },pageSize: 20,pageIndex: 1}";
-        switch (checkItem){
+        // String str = " { ima: { s_img04_desc:\"浪\" },pageSize: 20,pageIndex: 1}";
+        switch (checkItem) {
             case 0:
                 search_key = "s_img01";
                 break;
@@ -169,15 +180,27 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
                 search_key = "s_img05";
                 break;
         }
-        String post_json = "{ ima: { " + search_key + ":\"" + changeText + "\" },pageSize: 20,pageIndex: 1}";
-        Log.e("tag",post_json);
+        String auto_post_json = search_key + ":\"" + changeText + "\"";
+        return auto_post_json;
+    }
+
+    private String getUpJson() {
+        upJson = "{ ima: { " + getInputText(etSearchText.getText().toString()) +
+                ","+"s_img_code"+":\""+etSearchTextV2.getText().toString()+"\"},pageSize: 20,pageIndex: 1}";
+
+        return upJson;
+    }
+
+    private void search() {
+        getUpJson();
+        Log.e("tag", upJson);
         OkGo.<String>post(get_sotrage_all_url)
                 .tag(this)
-                .upJson(post_json)
+                .upJson(upJson)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
-                         Log.e("tag",response.body());
+                        Log.e("tag", response.body());
                         StorageBean storageBean = GsonUtils.parseJSON(response.body(), StorageBean.class);
                         listData = storageBean.getList();
                         runOnUiThread(new Runnable() {
@@ -193,20 +216,21 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
 
     private void initView() {
         titleOptionsTv.setText("搜索");
-        mySearchView.setSearchViewListener(new SearchView.onSearchViewListener() {
-            @Override
-            public boolean onQueryTextChange(String text) {
-                Log.e("tag", text);
-                search_key = text;
-                if (text.length() > 0) {
-                   // new Handler().removeCallbacks(new SearchTask());
-                    //new Handler().postDelayed(new SearchTask(), 500);
-                    search(text);
-                }
 
-                return false;
-            }
-        });
+//        mySearchView.setSearchViewListener(new SearchView.onSearchViewListener() {
+//            @Override
+//            public boolean onQueryTextChange(String text) {
+//                Log.e("tag", text);
+//                search_key = text;
+//                if (text.length() > 0) {
+//                   // new Handler().removeCallbacks(new SearchTask());
+//                    //new Handler().postDelayed(new SearchTask(), 500);
+//                    search(text);
+//                }
+//
+//                return false;
+//            }
+//        });
         storageRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         //storageRecyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         storageRecyclerView.setAdapter(new RecyclerView.Adapter() {
@@ -270,7 +294,7 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
   "flage": "1"
 }
      */
-    @OnClick({R.id.title_bar_back, R.id.title_options_tv,R.id.search_label_key})
+    @OnClick({R.id.title_bar_back, R.id.title_options_tv, R.id.search_label_key})
     public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.search_label_key:
@@ -278,6 +302,7 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
                 break;
             case R.id.title_options_tv:
                 //mySearchView.setVisibility(View.VISIBLE);
+                search();
                 break;
             case R.id.title_bar_back:
                 finish();
@@ -285,16 +310,16 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
 
         }
     }
-    public  int checkItem = 0;
+
+    public int checkItem = 0;
+
     private void showPopuWindow() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
 
+        String[] strArray = {"物料代码", "物料名称", "型号", "规格", "仓库代码", "仓库名称"};
 
-
-        String[] strArray = {"物料代码","物料名称","型号","规格","仓库代码","仓库名称"};
-
-        builder.setSingleChoiceItems(strArray,checkItem,new DialogInterface.OnClickListener() {
+        builder.setSingleChoiceItems(strArray, checkItem, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 checkItem = i;

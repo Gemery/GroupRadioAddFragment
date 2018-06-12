@@ -37,6 +37,9 @@
         <activity android:name="com.example.gemery.ssww.activities.CustomDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
+        // 订单 过滤查询
+        <activity android:name="com.example.gemery.ssww.activities.OrderSearchActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         // 库存详情页
         <activity android:name="com.example.gemery.ssww.activities.StorageItemDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

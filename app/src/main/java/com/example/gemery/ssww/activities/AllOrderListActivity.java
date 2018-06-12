@@ -115,9 +115,23 @@ public class AllOrderListActivity extends AppCompatActivity {
                     }
                 });
     }
+    @Override
+   protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+               // TODO Auto-generated method stub
+           super.onActivityResult(requestCode, resultCode, intent);
+             if (requestCode == 1 && resultCode == 4) {
+                      Bundle bundle=intent.getExtras();
+                      DtOrderBean obj = (DtOrderBean) bundle.getSerializable("respResult");
+                Log.e("tag",obj.toString());
+                listData = obj.getList();
+                adapter.notifyDataSetChanged();
+                  }
+         }
+
 
     private void initView() {
         titleBarTitle.setText("订单中心");
+        titleOptionsTv.setText("搜索");
 
         allOrderRecyclerView.setLinearLayout();
         //allOrderRecyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
@@ -189,11 +203,19 @@ public class AllOrderListActivity extends AppCompatActivity {
                 });
 
     }
-    @OnClick({R.id.title_bar_back})
+    @OnClick({R.id.title_bar_back,R.id.title_options_tv})
     public void onViewClick(View view){
         switch (view.getId()){
             case R.id.title_bar_back:
                 finish();
+                break;
+            case R.id.title_options_tv:
+//                Intent intent = new Intent(this,OrderSearchActivity.class);
+//                        intent.putExtra("action","to_search_activity");
+//                        startActivity(intent);
+                startActivityForResult(new Intent(AllOrderListActivity.this,
+                        OrderSearchActivity.class), 1);
+
                 break;
         }
     }
