@@ -37,6 +37,14 @@
         <activity android:name="com.example.gemery.ssww.activities.CustomDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
+        // 配送订单页
+        <activity android:name="com.example.gemery.ssww.activities.DispatchActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        // 配送详情订单页
+        <activity android:name="com.example.gemery.ssww.activities.DispatchOrderDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
         // 订单 过滤查询
         <activity android:name="com.example.gemery.ssww.activities.OrderSearchActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>

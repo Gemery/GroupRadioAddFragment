@@ -130,8 +130,8 @@ public class AllOrderListActivity extends AppCompatActivity {
 
 
     private void initView() {
-        titleBarTitle.setText("订单中心");
-        titleOptionsTv.setText("搜索");
+        titleBarTitle.setText(R.string.order_center);
+        titleOptionsTv.setText(R.string.search);
 
         allOrderRecyclerView.setLinearLayout();
         //allOrderRecyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));

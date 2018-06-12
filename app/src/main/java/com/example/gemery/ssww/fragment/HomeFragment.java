@@ -15,6 +15,7 @@ import android.widget.SimpleAdapter;
 import com.example.gemery.ssww.activities.AllOrderListActivity;
 import com.example.gemery.ssww.activities.ContactActivity;
 import com.example.gemery.ssww.activities.CustomInfoListActivity;
+import com.example.gemery.ssww.activities.DispatchActivity;
 import com.example.gemery.ssww.activities.KnowledgeActivity;
 import com.example.gemery.ssww.activities.PersonActivity;
 import com.example.gemery.ssww.activities.ProductListActivity;
@@ -101,11 +102,11 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
             intent.putExtra("action","to_personal_activity");
             getActivity().startActivity(intent);
         }
-//        else if(i == 1){
-//            Intent intent = new Intent(getActivity(),SendMessageActivity.class);
-//            intent.putExtra("action","to_chat_activity");
-//            getActivity().startActivity(intent);
-//        }
+        else if(i == 0){
+            Intent intent = new Intent(getActivity(),DispatchActivity.class);
+            intent.putExtra("action","DispatchActivity");
+            getActivity().startActivity(intent);
+        }
         else if(i == 8){
             Intent intent = new Intent(getActivity(),ProductListActivity.class);
             intent.putExtra("action","to_product_list");
