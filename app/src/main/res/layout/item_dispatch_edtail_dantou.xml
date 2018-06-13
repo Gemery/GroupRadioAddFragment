@@ -26,14 +26,14 @@
                 android:text="单据编号："
                 android:gravity="center"
                 />
+
             <TextView
                 android:id="@+id/s_sdt_h01"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@+id/text_label1"
-                android:text="xx123xx"
                 android:gravity="center"
-                />
+                android:text="xx123xx" />
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -155,6 +155,39 @@
                 android:layout_height="match_parent"
                 android:textSize="14sp"
                 android:layout_toRightOf="@+id/text_label4"
+                android:text="2018/5/20"
+                android:gravity="center"
+                />
+
+        </RelativeLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:background="#ddd"
+          ></LinearLayout>
+    <!--约定送货时间-->
+        <RelativeLayout
+            android:id="@+id/rl_text_date_h03"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+            <TextView
+                android:id="@+id/text_label5"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="客户手机号："
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/s_sdt_h03"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="14sp"
+                android:layout_toRightOf="@+id/text_label5"
                 android:text="2018/5/20"
                 android:gravity="center"
                 />
@@ -537,7 +570,7 @@
                 android:id="@+id/text_label4s_sdt_h17"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="审核否："
+                android:text="审核人："
                 android:gravity="center"
                 />
             <TextView
@@ -568,7 +601,7 @@
                 android:id="@+id/text_label4s_sdt_h18"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="审核否："
+                android:text="审核日期："
                 android:gravity="center"
                 />
             <TextView
@@ -599,7 +632,7 @@
                 android:id="@+id/text_label4s_sdt_h02_date"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="审核否："
+                android:text="配送时间："
                 android:gravity="center"
                 />
             <TextView

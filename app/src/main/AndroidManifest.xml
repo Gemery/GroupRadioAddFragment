@@ -43,6 +43,13 @@
         </activity>
         // 配送详情订单页
         <activity android:name="com.example.gemery.ssww.activities.DispatchOrderDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        // 安装单列表
+        <activity android:name="com.example.gemery.ssww.activities.InstallOrderListActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        // 安装单详情页
+        <activity android:name="com.example.gemery.ssww.activities.InstOrdDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         // 订单 过滤查询

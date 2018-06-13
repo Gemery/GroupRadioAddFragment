@@ -46,7 +46,7 @@ public class MyDispatchDtailAdapter extends RecyclerView.Adapter<MyDispatchDtail
         } else if (viewType == TYPE_HEADER) {
             return new MyHolder(VIEW_HEADER);
         } else {
-            return new MyHolder(getLayout(R.layout.item_order_detail_ds,parent));
+            return new MyHolder(getLayout(R.layout.item_dispatch_order_dansheng,parent));
         }
     }
 
@@ -54,22 +54,25 @@ public class MyDispatchDtailAdapter extends RecyclerView.Adapter<MyDispatchDtail
     public void onBindViewHolder(MyHolder holder, int position) {
         if (!isHeaderView(position) && !isFooterView(position)) {
             if (haveHeaderView()) position--;
-            // 规格
-//            ((TextView) holder.itemView.findViewById(R.id.content_wl_gg))
-//                    .setText(data.get(position).getS_oeb06());
+            // 项次
+            ((TextView) holder.itemView.findViewById(R.id.s_sdt_e02))
+                    .setText(String.valueOf(data.get(position).getS_sdt_e02()));
 //            // 型号
-//            ((TextView) holder.itemView.findViewById(R.id.content_wl_xh))
-//                    .setText(data.get(position).getS_oeb05());
+            ((TextView) holder.itemView.findViewById(R.id.s_sdt_e05))
+                    .setText(data.get(position).getS_sdt_e05());
 //            //名称
-//            ((TextView) holder.itemView.findViewById(R.id.content_wl_name))
-//                    .setText(data.get(position).getS_oeb04());
-//            //物料代码
-//            ((TextView) holder.itemView.findViewById(R.id.wl_content_code))
-//                    .setText(data.get(position).getS_oeb03());
-//
-//            // 数量
-//           TextView slTv = ((TextView) holder.itemView.findViewById(R.id.text_content_sl));
-//                    slTv.setText(data.get(position).getS_oeb07());
+            ((TextView) holder.itemView.findViewById(R.id.s_sdt_e03))
+                    .setText(data.get(position).getS_sdt_e03());
+//            //产品名称
+            ((TextView) holder.itemView.findViewById(R.id.s_sdt_e04))
+                    .setText(data.get(position).getS_sdt_e04());
+            ((TextView) holder.itemView.findViewById(R.id.s_sdt_e06))
+                    .setText(data.get(position).getS_sdt_e06());
+            ((TextView) holder.itemView.findViewById(R.id.s_sdt_e07))
+                    .setText(data.get(position).getS_sdt_e07());
+            // 数量
+           TextView slTv = ((TextView) holder.itemView.findViewById(R.id.s_sdt_e08));
+                    slTv.setText(String.valueOf(data.get(position).getS_sdt_e08()));
 
 
         }

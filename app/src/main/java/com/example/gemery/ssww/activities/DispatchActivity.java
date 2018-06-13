@@ -68,11 +68,12 @@ public class DispatchActivity extends AppCompatActivity {
                 ((TextView)holder.itemView.findViewById(R.id.s_sdt_h04))
                         .setText(listData.get(position).getS_sdt_h04());
                 ((TextView)holder.itemView.findViewById(R.id.s_sdt_h06))
-                        .setText(listData.get(position).getS_sdt_h05());
-                ((TextView)holder.itemView.findViewById(R.id.s_sdt_h06))
-                        .setText(listData.get(position).getS_sdt_h07());
+                        .setText(listData.get(position).getS_sdt_h06());
                 ((TextView)holder.itemView.findViewById(R.id.s_sdt_h02))
                         .setText(listData.get(position).getS_sdt_h02());
+                ((TextView)holder.itemView.findViewById(R.id.s_sdt_h05))
+                        .setText(listData.get(position).getS_sdt_h05());
+
                 holder.itemView.findViewById(R.id.item_order_ll).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

@@ -44,6 +44,8 @@ public class DispatchOrderDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dispatch_order_detail);
         ButterKnife.bind(this);
+        titleBarTitle.setText("配送单详情");
+        titleOptionsTv.setText(R.string.search);
         Intent intent = getIntent();
         String orderNum = intent.getStringExtra("orderNum");
 
@@ -76,6 +78,8 @@ public class DispatchOrderDetailActivity extends AppCompatActivity {
     }
 
     private void initView() {
+
+
         orderDetailRc.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new MyDispatchDtailAdapter(listData,this);
         initRcyclerHeaderView();
@@ -86,7 +90,49 @@ public class DispatchOrderDetailActivity extends AppCompatActivity {
 
     private void initRcyclerHeaderView() {
         viewHeader = LayoutInflater.from(this).inflate(R.layout.item_dispatch_edtail_dantou,null);
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h01))
+                .setText(hObj.getS_sdt_h01());
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h02))
+                .setText(hObj.getS_sdt_h02());
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h03))
+                .setText(hObj.getS_sdt_h03());
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h04))
+                .setText(hObj.getS_sdt_h04());
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h05))
+                .setText(hObj.getS_sdt_h05());
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h06))
+                .setText(hObj.getS_sdt_h06());
 
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h07))
+                .setText(hObj.getS_sdt_h07());
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h08))
+                .setText(hObj.getS_sdt_h08());
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h09))
+                .setText(hObj.getS_sdt_h09());
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h10))
+                .setText(hObj.getS_sdt_h10());
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h11))
+                .setText(hObj.getS_sdt_h11());
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h01))
+                .setText(hObj.getS_sdt_h01());
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h12))
+                .setText(hObj.getS_sdt_h12());
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h13))
+                .setText(hObj.getS_sdt_h13());
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h14))
+                .setText(hObj.getS_sdt_h14());
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h15))
+                .setText(hObj.getS_sdt_h15());
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h16))
+                .setText(hObj.getS_sdt_h16());
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h17))
+                .setText(hObj.getS_sdt_h17());
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h18))
+                .setText(String.valueOf(String.valueOf(hObj.getS_sdt_h18())));
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_h02_date))
+                .setText(String.valueOf(hObj.getS_sdt_h02_date()));
+        ((TextView) viewHeader.findViewById(R.id.s_sdt_hnote))
+                .setText(hObj.getS_sdt_hnote());
     }
 
     @OnClick({R.id.title_bar_back})
