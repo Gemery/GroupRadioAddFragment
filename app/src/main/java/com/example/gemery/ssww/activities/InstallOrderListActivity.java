@@ -111,14 +111,31 @@ public class InstallOrderListActivity extends AppCompatActivity {
         };
         installReView.setAdapter(adapter);
     }
+    public final static int REQUEST_CODE = 1;
     @OnClick({R.id.title_bar_back,R.id.title_options_tv})
     public void onViewClick(View view){
         switch (view.getId()){
             case R.id.title_bar_back:
                 finish();
                 break;
+            case R.id.title_options_tv:
+                Intent intent = new Intent(this,InstallSearchActivity.class);
+                startActivityForResult(intent,REQUEST_CODE);
+                break;
         }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE && resultCode == 4){
+            Bundle bundle = data.getExtras();
+            InstallOrdBen ordBen = (InstallOrdBen) bundle.getSerializable("respResult");
+            listData = ordBen.getList();
+            adapter.notifyDataSetChanged();
+        }
+    }
+
     private void initData() {
         OkGo.<String>post(get_data_url)
                 .tag(this)

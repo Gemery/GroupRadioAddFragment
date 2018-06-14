@@ -41,11 +41,19 @@
         <activity android:name="com.example.gemery.ssww.activities.DispatchActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
+        // 配送单搜索页
+        <activity android:name="com.example.gemery.ssww.activities.DispatchSearchActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
         // 配送详情订单页
         <activity android:name="com.example.gemery.ssww.activities.DispatchOrderDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         // 安装单列表
         <activity android:name="com.example.gemery.ssww.activities.InstallOrderListActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        // 安装单搜索页
+        <activity android:name="com.example.gemery.ssww.activities.InstallSearchActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         // 安装单详情页

@@ -45,7 +45,7 @@ public class DispatchOrderDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dispatch_order_detail);
         ButterKnife.bind(this);
         titleBarTitle.setText("配送单详情");
-        titleOptionsTv.setText(R.string.search);
+        titleOptionsTv.setText("");
         Intent intent = getIntent();
         String orderNum = intent.getStringExtra("orderNum");
 

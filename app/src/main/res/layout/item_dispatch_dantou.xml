@@ -90,32 +90,7 @@
                 android:gravity="center"
                 />
         </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/rl_s_sdt_h06"
-            android:layout_width="match_parent"
-            android:layout_height="34dp"
-            android:background="@android:color/white"
-            android:orientation="horizontal"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            >
-            <TextView
-                android:id="@+id/text_label9"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="派送司机："
-                android:gravity="center"
-                />
-            <TextView
-                android:id="@+id/s_sdt_h06"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_toRightOf="@+id/text_label9"
-                android:text="xx某某"
-                android:gravity="center"
-                />
-        </RelativeLayout>
-    <!--约定送货时间-->
+        <!--约定送货时间-->
         <RelativeLayout
             android:id="@+id/rl_text_date"
             android:layout_width="match_parent"
@@ -139,6 +114,33 @@
                 android:textSize="14sp"
                 android:layout_toRightOf="@+id/text_label4"
                 android:text="2018/5/20"
+                android:gravity="center"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_s_sdt_h06"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+            <TextView
+                android:id="@+id/text_label9"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="派送司机："
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/s_sdt_h06"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/text_label9"
+                android:text="xx某某"
                 android:gravity="center"
                 />
             <TextView

@@ -38,22 +38,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#ddd"></LinearLayout>
-        <!--客服姓名-->
+        <!--客服电话-->
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
-
-                <TextView
-                    android:id="@+id/search_label_key"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:drawablePadding="5dp"
-                    android:drawableRight="@drawable/arrow_dropdown_mini"
-                    android:gravity="center"
-                    android:paddingRight="10dp"
-                    android:text="客户电话" />
+            <TextView
+                android:id="@+id/search_label_key"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="客服电话"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                android:drawablePadding="5dp"
+                android:paddingRight="10dp"
+                android:drawableRight="@drawable/arrow_dropdown_mini"
+                />
             <include layout="@layout/view_search_layout"></include>
             </LinearLayout>
             <LinearLayout
@@ -128,30 +128,6 @@
                     android:src="@drawable/arrow_right"
                     android:layout_alignParentRight="true"
                     />
-            </RelativeLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#ddd"
-                ></LinearLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="35dp">
-                
-                <TextView
-                    android:id="@+id/label_sdt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" 
-                    android:text="已出库:"
-                    android:gravity="center_vertical"
-                    android:layout_marginLeft="24dp"
-                    />
-                <CheckBox
-                    android:id="@+id/sdt_check_box"
-                    android:layout_toRightOf="@+id/label_sdt"
-                    android:layout_marginTop="2dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
             </RelativeLayout>
             <LinearLayout
                 android:layout_width="match_parent"

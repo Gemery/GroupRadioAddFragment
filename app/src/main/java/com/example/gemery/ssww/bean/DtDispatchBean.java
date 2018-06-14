@@ -5,6 +5,15 @@ import java.util.List;
 
 public class DtDispatchBean implements Serializable {
 
+    @Override
+    public String toString() {
+        return "DtDispatchBean{" +
+                "TotalPageCount='" + TotalPageCount + '\'' +
+                ", TotalCount='" + TotalCount + '\'' +
+                ", list=" + list +
+                '}';
+    }
+
     /**
      * list : [{"id":"integer,id","s_sdt_h00":"string,
      * 经销商代码","s_sdt_hcode":"string,门店编号",
@@ -55,7 +64,45 @@ public class DtDispatchBean implements Serializable {
         this.list = list;
     }
 
-    public static class ListBean {
+    public static class ListBean implements Serializable {
+
+        @Override
+        public String toString() {
+            return "ListBean{" +
+                    "id='" + id + '\'' +
+                    ", s_sdt_h00='" + s_sdt_h00 + '\'' +
+                    ", s_sdt_hcode='" + s_sdt_hcode + '\'' +
+                    ", s_sdt_h01='" + s_sdt_h01 + '\'' +
+                    ", s_sdt_h02='" + s_sdt_h02 + '\'' +
+                    ", s_sdt_h03='" + s_sdt_h03 + '\'' +
+                    ", s_sdt_h04='" + s_sdt_h04 + '\'' +
+                    ", s_sdt_h05='" + s_sdt_h05 + '\'' +
+                    ", s_sdt_h06='" + s_sdt_h06 + '\'' +
+                    ", s_sdt_h07='" + s_sdt_h07 + '\'' +
+                    ", s_sdt_h08='" + s_sdt_h08 + '\'' +
+                    ", s_sdt_h09='" + s_sdt_h09 + '\'' +
+                    ", s_sdt_h10='" + s_sdt_h10 + '\'' +
+                    ", s_sdt_hnote='" + s_sdt_hnote + '\'' +
+                    ", s_sdt_h11='" + s_sdt_h11 + '\'' +
+                    ", s_sdt_h12='" + s_sdt_h12 + '\'' +
+                    ", s_sdt_h13='" + s_sdt_h13 + '\'' +
+                    ", s_sdt_h14='" + s_sdt_h14 + '\'' +
+                    ", s_sdt_h15='" + s_sdt_h15 + '\'' +
+                    ", s_sdt_h16='" + s_sdt_h16 + '\'' +
+                    ", s_sdt_hconfirm='" + s_sdt_hconfirm + '\'' +
+                    ", s_sdt_h17='" + s_sdt_h17 + '\'' +
+                    ", s_sdt_h18='" + s_sdt_h18 + '\'' +
+                    ", s_sdt_h02_date='" + s_sdt_h02_date + '\'' +
+                    ", s_sdt_hud01='" + s_sdt_hud01 + '\'' +
+                    ", s_sdt_hud02='" + s_sdt_hud02 + '\'' +
+                    ", s_sdt_hud03='" + s_sdt_hud03 + '\'' +
+                    ", s_sdt_hud04='" + s_sdt_hud04 + '\'' +
+                    ", s_sdt_hud05='" + s_sdt_hud05 + '\'' +
+                    ", s_sdt_hud06='" + s_sdt_hud06 + '\'' +
+                    ", s_sdt_hud07='" + s_sdt_hud07 + '\'' +
+                    '}';
+        }
+
         /**
          * id : integer,id
          * s_sdt_h00 : string,经销商代码
