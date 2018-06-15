@@ -1,5 +1,6 @@
 package com.example.gemery.ssww.activities;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,6 +22,7 @@ import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.DtOrderBean;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.example.gemery.ssww.utils.ToastUtil;
+import com.example.gemery.ssww.utils.WeiboDialogUtils;
 import com.example.gemery.ssww.view.LoadMoreRecyclerView;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -61,6 +63,7 @@ public class AllOrderListActivity extends AppCompatActivity {
     private  String POST_PARAMS_JSON = "{ima:{},pageSize: 5,pageIndex:" + count + "}";
     private List<DtOrderBean.ListBean> listData = new ArrayList<>();
     private RecyclerView.Adapter adapter;
+    private Dialog mWeiboDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -174,7 +177,10 @@ public class AllOrderListActivity extends AppCompatActivity {
             }
         };
 
-        allOrderRecyclerView.setAdapter(adapter);
+
+            allOrderRecyclerView.setAdapter(adapter);
+
+
 
     }
 
@@ -185,7 +191,7 @@ public class AllOrderListActivity extends AppCompatActivity {
     }
 
     private void initData() {
-
+        mWeiboDialog = WeiboDialogUtils.createLoadingDialog(AllOrderListActivity.this, "加载中...");
         OkGo.<String>post(get_all_order_url)
                 .tag(this)
                 .upJson(POST_PARAMS_JSON)
@@ -198,6 +204,7 @@ public class AllOrderListActivity extends AppCompatActivity {
                         pageSize  = obj.getTotalPageCount();
                         totalCount = obj.getTotalCount();
                         //Log.e("tag",listData.toString());
+                        WeiboDialogUtils.closeDialog(mWeiboDialog);
                          adapter.notifyDataSetChanged();
                     }
                 });

@@ -33,7 +33,7 @@
             android:id="@+id/label_wu_code"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textColor="@color/light_red"
+            android:textColor="#555"
             android:text="物料代码："
             android:gravity="center"
             />
@@ -43,7 +43,7 @@
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_wu_code"
             android:text="xxxxxxx"
-            android:textColor="@color/light_red"
+            android:textColor="#555"
             android:gravity="center"
             />
 
@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="物料名称："
-            android:textColor="@color/light_red"
+            android:textColor="#555"
             android:gravity="center"
             />
         <TextView
@@ -74,7 +74,7 @@
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_wl_name"
             android:text="name"
-            android:textColor="@color/light_red"
+            android:textColor="#555"
             android:gravity="center"
             />
 
@@ -96,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="物料型号："
-            android:textColor="@color/light_red"
+            android:textColor="#555"
             android:gravity="center"
             />
         <TextView
@@ -105,7 +105,7 @@
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_wl_xh"
             android:text="xxxxxxxx"
-            android:textColor="@color/light_red"
+            android:textColor="#555"
             android:gravity="center"
             />
 
@@ -127,7 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="系列名称："
-            android:textColor="@color/light_red"
+            android:textColor="#555"
             android:gravity="center"
             />
         <TextView
@@ -136,7 +136,7 @@
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_wl_gg"
             android:text="主体类容"
-            android:textColor="@color/light_red"
+            android:textColor="#555"
             android:gravity="center"
             />
 
@@ -158,7 +158,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="数量："
-            android:textColor="@color/light_red"
+            android:textColor="#555"
             android:gravity="center"
             />
         <TextView
@@ -170,7 +170,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:text="-"
-            android:textColor="@color/light_red"
+            android:textColor="#555"
             android:background="@drawable/border_raduis"
             android:textSize="28sp"
             android:paddingRight="10dp"
@@ -201,7 +201,7 @@
             android:layout_marginTop="5dp"
             android:paddingRight="10dp"
             android:paddingLeft="10dp"
-            android:textColor="@color/light_red"
+            android:textColor="#555"
             android:layout_marginBottom="5dp"
             android:gravity="center"
             android:textSize="22sp"

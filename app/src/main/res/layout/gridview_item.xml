@@ -25,5 +25,5 @@
         android:textSize="16sp"
         android:text="文字"
         android:gravity="center"
-        android:textColor="#aaa" />
+        android:textColor="#555" />
 </RelativeLayout>

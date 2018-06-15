@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/titilebar"></include>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical"
+           >
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <TextView
+                    android:id="@+id/search_label_key_v2"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="仓库名称"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:drawablePadding="5dp"
+
+
+                    />
+
+                <include layout="@layout/view_search_layout_v2"></include>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ddd"></LinearLayout>
+        <!--客服姓名-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+            <TextView
+                android:id="@+id/search_label_key"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:text="物料名称"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                android:drawablePadding="5dp"
+                android:paddingRight="10dp"
+                />
+            <include layout="@layout/view_search_layout"></include>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ddd"></LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <TextView
+                    android:id="@+id/search_key3"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="规格"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:drawablePadding="5dp"
+                    android:paddingRight="10dp"
+                    />
+                <include layout="@layout/view_search_layout"></include>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ddd"
+                ></LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <TextView
+                    android:id="@+id/search_key4"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="型号"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:drawablePadding="5dp"
+                    android:paddingRight="10dp"
+                    />
+                <include layout="@layout/view_search_layout"></include>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ddd"
+                ></LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <TextView
+                    android:id="@+id/search_key5"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:text="仓库名称"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:drawablePadding="5dp"
+                    android:paddingRight="10dp"
+                    />
+                <include layout="@layout/view_search_layout"></include>
+            </LinearLayout>
+            
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ddd"
+                ></LinearLayout>
+            <Button
+                android:id="@+id/action_send_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="37dp"
+                android:text="搜 索"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:background="@drawable/border_corners"
+                android:textStyle="bold" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

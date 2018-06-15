@@ -1,5 +1,7 @@
 package com.example.gemery.ssww.activities;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ import android.widget.TextView;
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.CustomMsg;
 import com.example.gemery.ssww.utils.GsonUtils;
+import com.example.gemery.ssww.utils.WeiboDialogUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -52,6 +55,7 @@ public class CustomInfoListActivity extends AppCompatActivity implements PullLoa
     LinearLayout title;
     private String get_occ_list = "http://192.168.1.251:8091/api/baseData/getoccList";
     private ArrayList<CustomMsg> listData;
+    private Dialog mWeiDialog;
 
 
     @Override
@@ -139,12 +143,14 @@ public class CustomInfoListActivity extends AppCompatActivity implements PullLoa
 
     private void initData() {
         Log.e("tag","11-->initdata");
+        mWeiDialog = WeiboDialogUtils.createLoadingDialog(this,"正在加载中");
         OkGo.<String>post(get_occ_list)
                 .tag(this)
                 .upJson(post_occ_list)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
+                        WeiboDialogUtils.closeDialog(mWeiDialog);
                          listData = GsonUtils.jsonToArrayList(response.body(),CustomMsg.class);
                         //Log.e("tag",listData.toString());
                         runOnUiThread(new Runnable() {
@@ -153,6 +159,20 @@ public class CustomInfoListActivity extends AppCompatActivity implements PullLoa
                                 initRecyclerView();
                             }
                         });
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        Log.e("tag",response.getException().getMessage());
+                        if("connect timed out".equals(response.getException().getMessage())){
+                            WeiboDialogUtils.closeDialog(mWeiDialog);
+
+                          AlertDialog dialog =  new AlertDialog.Builder(CustomInfoListActivity.this)
+                                   .create();
+
+                          dialog.setMessage("请检查网络是否正常");
+                        }
                     }
                 });
     }

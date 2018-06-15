@@ -64,6 +64,27 @@ public class InstallOrderListActivity extends AppCompatActivity {
         titleOptionsTv.setText(R.string.search);
         initData();
         initRecyclerView();
+        installReView.setOnPullLoadMoreListener(new PullLoadMoreRecyclerView.PullLoadMoreListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        installReView.setPullLoadMoreCompleted();
+                    }
+                },1000);
+            }
+
+            @Override
+            public void onLoadMore() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        installReView.setPullLoadMoreCompleted();
+                    }
+                },1000);
+            }
+        });
     }
 
     private void initRecyclerView() {

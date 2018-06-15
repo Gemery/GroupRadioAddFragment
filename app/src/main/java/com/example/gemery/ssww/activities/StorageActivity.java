@@ -302,7 +302,10 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
                 break;
             case R.id.title_options_tv:
                 //mySearchView.setVisibility(View.VISIBLE);
-                search();
+                //search();
+                Intent intent = new Intent(this,StorageSearchActivity.class);
+                startActivity(intent);
+
                 break;
             case R.id.title_bar_back:
                 finish();

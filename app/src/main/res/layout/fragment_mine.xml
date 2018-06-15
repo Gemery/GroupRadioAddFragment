@@ -8,35 +8,67 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#ddd"></LinearLayout>
         <!--头像部分-->
+
+
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:background="#0dadde">
+            android:layout_height="80dp"
+            android:background="@color/white">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_user_avatar"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="24dp"
                 android:src="@mipmap/ic_launcher_round" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
-                android:text="傅猿猿"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
+            <!--android:layout_centerHorizontal="true"-->
+            <LinearLayout
+                android:layout_toRightOf="@+id/img_user_avatar"
+                android:orientation="vertical"
+                android:id="@+id/ll_msg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:text="傅猿猿"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#555"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="20dp"
+                    android:text="13523572356"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#555"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
 
         </RelativeLayout>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#ddd"
+            ></LinearLayout>
         <!--订单部分-->
         <RelativeLayout
+            android:id="@+id/ll_order_all"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@android:color/white"
@@ -75,6 +107,7 @@
 
         </RelativeLayout>
         <LinearLayout
+
             android:background="#aaa"
             android:layout_width="match_parent"
             android:layout_height="1dp"></LinearLayout>

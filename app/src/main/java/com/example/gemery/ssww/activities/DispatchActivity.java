@@ -1,5 +1,6 @@
 package com.example.gemery.ssww.activities;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,10 +16,13 @@ import android.widget.TextView;
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.DtDispatchBean;
 import com.example.gemery.ssww.utils.GsonUtils;
+import com.example.gemery.ssww.utils.WeiboDialogUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +40,10 @@ public class DispatchActivity extends AppCompatActivity {
     TextView titleOptionsTV;
     @BindView(R.id.dispatch_re_view)
     PullLoadMoreRecyclerView dispatchReView;
+    private Dialog mWeiDialog;
+
+    @BindView(R.id.show_empty_view)
+    TextView tView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -133,6 +141,8 @@ public class DispatchActivity extends AppCompatActivity {
     private String upJson = "{ ima: {    },pageSize: 20,pageIndex: 1}";
 
     private void initData() {
+
+       mWeiDialog =  WeiboDialogUtils.createLoadingDialog(this,"正在加载中");
         OkGo.<String>post(get_dispatch_order_url)
                 .tag(this)
                 .upJson(upJson)
@@ -142,7 +152,25 @@ public class DispatchActivity extends AppCompatActivity {
                         DtDispatchBean obj = GsonUtils.parseJSON(response.body(), DtDispatchBean.class);
                         listData = obj.getList();
 
-                        mAdapter.notifyDataSetChanged();
+                        Log.e("|tag",listData.toString());
+                        WeiboDialogUtils.closeDialog(mWeiDialog);
+                        if(listData.size() == 0){
+                            tView.setVisibility(View.VISIBLE);
+                            tView.setText("没有你要的数据");
+                        }else{
+                            mAdapter.notifyDataSetChanged();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Response<String> response) {
+                        super.onError(response);
+                        Log.e("tag",response.getException().getMessage());
+                        if("connect timed out".equals(response.getException().getMessage())){
+                            WeiboDialogUtils.closeDialog(mWeiDialog);
+                            tView.setVisibility(View.VISIBLE);
+                            tView.setText("请检查网络是否链接正常");
+                        }
                     }
                 });
     }

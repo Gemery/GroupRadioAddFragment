@@ -70,7 +70,7 @@ public class InstallSearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_install_search);
         ButterKnife.bind(this);
-        //initData();
+        titleOptionsTv.setText("重置");
         initView();
 
     }
@@ -157,7 +157,6 @@ private String getInputText(String changeText) {
 
     private void initView() {
         titleBarTitle.setText("安装单查询");
-        titleOptionsTv.setText("");
 
     }
     private String getUpJson(){

@@ -30,7 +30,7 @@
         tools:replace="android:icon,android:name,android:label,android:theme"
         android:theme="@style/AppTheme">
         <activity android:name="com.example.gemery.ssww.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            >
 
         </activity>
         // 客户资料详情页
@@ -65,6 +65,14 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         // 库存详情页
         <activity android:name="com.example.gemery.ssww.activities.StorageItemDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        // 库存单搜索页
+        <activity android:name="com.example.gemery.ssww.activities.StorageSearchActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        // 员工资料页
+        <activity android:name="com.example.gemery.ssww.activities.EmpMsgActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity

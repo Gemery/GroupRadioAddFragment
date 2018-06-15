@@ -48,7 +48,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
         } else if (viewType == TYPE_HEADER) {
             return new MyHolder(VIEW_HEADER);
         } else {
-            return new MyHolder(getLayout(R.layout.item_odrder_dansheng_v1,parent));
+            return new MyHolder(getLayout(R.layout.item_order_dansheng,parent));
         }
     }
 
@@ -77,7 +77,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
                 @Override
                 public void onClick(View view) {
                     int count = Integer.parseInt(slTv.getText().toString());
-                    if(count == 0){
+                    if(count == 1){
                         return;
                     }else{
                         count--;

@@ -152,7 +152,7 @@ private String getInputText(String changeText) {
 
     private void initView() {
         titleBarTitle.setText("配送单查询");
-        titleOptionsTv.setText("");
+        titleOptionsTv.setText("重置");
 
     }
     private String getUpJson(){

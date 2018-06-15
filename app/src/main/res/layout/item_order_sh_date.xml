@@ -16,7 +16,7 @@
          android:layout_height="match_parent"
          android:text="约定的送货时间："
          android:paddingLeft="4dp"
-         android:textColor="@color/light_red"
+         android:textColor="#555"
          android:gravity="center"
          />
      <TextView
@@ -26,7 +26,7 @@
          android:textSize="14sp"
          android:layout_toRightOf="@+id/text_label4"
          android:text="2018/5/20"
-         android:textColor="@color/light_red"
+         android:textColor="#555"
          android:gravity="center"
          />
      <ImageView

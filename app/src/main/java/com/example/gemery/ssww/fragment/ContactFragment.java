@@ -71,8 +71,8 @@ public class ContactFragment extends Fragment implements SwipeRefreshLayout.OnRe
 //        adapter = new ArrayAdapter<String>(getContext(),
 //                android.R.layout.simple_list_item_1,
 //                mList);
-        listView.setAdapter(ladapter);
-        listView.setOnItemClickListener(this);
+       // listView.setAdapter(ladapter);
+        //listView.setOnItemClickListener(this);
         return view;
     }
 

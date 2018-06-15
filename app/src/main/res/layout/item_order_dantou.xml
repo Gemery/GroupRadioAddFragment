@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="客户姓名："
-            android:textColor="@color/light_red"
+            android:textColor="#555"
             />
         <android.support.design.widget.TextInputEditText
             android:id="@+id/edit_user_name"
@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="消费者手机号："
-            android:textColor="@color/light_red"
+            android:textColor="#555"
 
             />
         <android.support.design.widget.TextInputEditText
@@ -77,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="消费者地址："
-            android:textColor="@color/light_red"
+            android:textColor="#555"
             />
         <android.support.design.widget.TextInputEditText
             android:id="@+id/custom_address"

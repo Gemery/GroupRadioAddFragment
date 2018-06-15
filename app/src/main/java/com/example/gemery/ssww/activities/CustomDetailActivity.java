@@ -1,7 +1,10 @@
 package com.example.gemery.ssww.activities;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,6 +14,8 @@ import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.CustomMsg;
+import com.example.gemery.ssww.utils.DialogThridUtils;
+import com.example.gemery.ssww.utils.WeiboDialogUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,6 +55,8 @@ public class CustomDetailActivity extends AppCompatActivity {
     @BindView(R.id.s_occ12)
     TextView sOcc12;
     private CustomMsg obj;
+    private Dialog mDialog;
+    private Dialog mWeiboDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,12 +87,31 @@ public class CustomDetailActivity extends AppCompatActivity {
         sOcc11.setText(obj.getS_occ11());
         sOcc12.setText(String.valueOf(obj.getS_occ12()));
     }
-
-    @OnClick({R.id.title_bar_back})
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 1:
+                    DialogThridUtils.closeDialog(mDialog);
+                    WeiboDialogUtils.closeDialog(mWeiboDialog);
+                    break;
+            }
+        }
+    };
+    @OnClick({R.id.title_bar_back,R.id.title_options_tv})
     public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.title_bar_back:
-                finish();
+                mWeiboDialog = WeiboDialogUtils.createLoadingDialog(CustomDetailActivity.this, "加载中...");
+                mHandler.sendEmptyMessageDelayed(1, 2000);
+               // finish();
+                break;
+            case R.id.title_options_tv:
+                mDialog = DialogThridUtils.showWaitDialog(CustomDetailActivity.this, "加载中...", false, true);
+                mHandler.sendEmptyMessageDelayed(1, 2000);
+
+
                 break;
         }
 
