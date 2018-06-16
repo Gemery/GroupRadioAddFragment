@@ -29,9 +29,7 @@
         android:supportsRtl="true"
         tools:replace="android:icon,android:name,android:label,android:theme"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.gemery.ssww.MainActivity"
-            >
-
+        <activity android:name="com.example.gemery.ssww.MainActivity">
         </activity>
         // 客户资料详情页
         <activity android:name="com.example.gemery.ssww.activities.CustomDetailActivity"
@@ -77,13 +75,10 @@
         </activity>
         <activity
             android:name="com.example.gemery.ssww.activities.WelcomeActivity"
-
             android:theme="@style/AppTheme"
             android:label="@string/app_name">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -101,11 +96,9 @@
         </activity>
         <activity android:name="com.example.gemery.ssww.activities.OrderingInfoActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
         </activity>
 
         <service android:name="com.example.gemery.ssww.service.MsfService">
-
         </service>
 
         <activity android:name="com.example.gemery.ssww.activities.ContactActivity"

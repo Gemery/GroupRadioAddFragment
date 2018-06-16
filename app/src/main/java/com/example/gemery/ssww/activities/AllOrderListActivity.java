@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.DtOrderBean;
+import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.example.gemery.ssww.utils.ToastUtil;
 import com.example.gemery.ssww.utils.WeiboDialogUtils;
@@ -58,7 +59,7 @@ public class AllOrderListActivity extends AppCompatActivity {
     private int pageSize;
     private int totalCount;
 
-    private String get_all_order_url = "http://192.168.1.251:8091/api/Order/getAllstdOrders";
+    private String get_all_order_url = Const.W_HOST+"/api/Order/getAllstdOrders";
     private int count = 1;
     private  String POST_PARAMS_JSON = "{ima:{},pageSize: 5,pageIndex:" + count + "}";
     private List<DtOrderBean.ListBean> listData = new ArrayList<>();

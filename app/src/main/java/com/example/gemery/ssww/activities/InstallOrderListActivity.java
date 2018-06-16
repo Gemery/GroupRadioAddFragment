@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.InstallOrdBen;
+import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -38,7 +39,7 @@ public class InstallOrderListActivity extends AppCompatActivity {
     TextView titleOptionsTv;
     @BindView(R.id.install_re_view)
     PullLoadMoreRecyclerView installReView;
-    private String get_data_url = "http://192.168.1.251:8091/api/AfterSale/getIstList";
+    private String get_data_url = Const.W_HOST+"/api/AfterSale/getIstList";
     private String upJson = "{ ima: {    },pageSize: 20,pageIndex: 1}";
     private RecyclerView.Adapter<RecyclerView.ViewHolder> adapter;
     private List<InstallOrdBen.ListBean> listData = new ArrayList<>();

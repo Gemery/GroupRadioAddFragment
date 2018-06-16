@@ -18,6 +18,7 @@ import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.adapter.MyAdapter;
 import com.example.gemery.ssww.adapter.MyOrderDtailAdapter;
 import com.example.gemery.ssww.bean.OeaBen;
+import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.example.gemery.ssww.utils.ToastUtil;
 import com.example.gemery.ssww.view.LoadMoreRecyclerView;
@@ -43,7 +44,7 @@ public class OrderDetailActivity extends AppCompatActivity  {
     TextView titleOptionsTv;
     @BindView(R.id.order_detail_rc)
     RecyclerView orderDetailRc;
-    private final String get_one_order_url = "http://192.168.1.251:8091/api/Order/getStandardList?orderNum=";
+    private final String get_one_order_url = Const.W_HOST+"/api/Order/getStandardList?orderNum=";
 
     private List<OeaBen.OebListBean> list = new ArrayList<>();
 

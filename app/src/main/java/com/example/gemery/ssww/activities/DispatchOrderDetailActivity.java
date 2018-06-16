@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.adapter.MyDispatchDtailAdapter;
 import com.example.gemery.ssww.bean.DispatchEntry;
+import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -36,7 +37,7 @@ public class DispatchOrderDetailActivity extends AppCompatActivity {
     TextView titleOptionsTv;
     @BindView(R.id.order_detail_rc)
     RecyclerView orderDetailRc;
-    private String dispatch_order_detail_url = "http://192.168.1.251:8091/api/AfterSale/getSdtList?orderNum=";
+    private String dispatch_order_detail_url = Const.W_HOST+"/api/AfterSale/getSdtList?orderNum=";
     private MyDispatchDtailAdapter mAdapter;
 
     @Override

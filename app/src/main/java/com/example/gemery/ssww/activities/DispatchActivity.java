@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.DtDispatchBean;
+import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.example.gemery.ssww.utils.WeiboDialogUtils;
 import com.lzy.okgo.OkGo;
@@ -137,7 +138,7 @@ public class DispatchActivity extends AppCompatActivity {
 
 
     private List<DtDispatchBean.ListBean> listData = new ArrayList<>();
-    private String get_dispatch_order_url = "http://192.168.1.251:8091/api/AfterSale/getSdtList";
+    private String get_dispatch_order_url = Const.W_HOST+"/api/AfterSale/getSdtList";
     private String upJson = "{ ima: {    },pageSize: 20,pageIndex: 1}";
 
     private void initData() {

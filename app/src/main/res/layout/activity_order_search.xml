@@ -21,45 +21,256 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
                 <TextView
-                    android:id="@+id/search_label_key_v2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/search_label_key"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:text="门店编号"
                     android:gravity="center"
                     android:layout_marginLeft="10dp"
                     android:drawablePadding="5dp"
-                    android:paddingRight="30dp"
+                     />
 
-                    />
-
-                <include layout="@layout/view_search_layout_v2"></include>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/search_layout_bg">
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp"
+                        android:id="@+id/s_oea_code"
+                        android:layout_weight="1"
+                        android:lines="1"
+                        android:textSize="14sp"
+                        android:background="@null"
+                        android:imeOptions="actionSearch"
+                        android:hint="请输入搜索内容"/>
+                </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#ddd"></LinearLayout>
-        <!--客服姓名-->
+        <!--安装师傅-->
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
                 <TextView
-                    android:id="@+id/search_label_key"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/search_label_key3"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:drawablePadding="5dp"
-                    android:drawableRight="@drawable/arrow_dropdown_mini"
                     android:gravity="center"
                     android:paddingRight="10dp"
-                    android:text="客户电话" />
-            <include layout="@layout/view_search_layout"></include>
+                    android:text="客户姓名" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/search_layout_bg">
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp"
+                        android:id="@+id/s_oea02"
+                        android:layout_weight="1"
+                        android:lines="1"
+                        android:textSize="14sp"
+                        android:background="@null"
+                        android:imeOptions="actionSearch"
+                        android:hint="请输入搜索内容"/>
+                </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#ddd"></LinearLayout>
+        <!--安装师傅电话-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/search_label_key4"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:paddingRight="10dp"
+                    android:text="客户电话" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/search_layout_bg">
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp"
+                        android:id="@+id/s_oea03"
+                        android:layout_weight="1"
+                        android:lines="1"
+                        android:textSize="14sp"
+                        android:background="@null"
+                        android:imeOptions="actionSearch"
+                        android:hint="请输入搜索内容"/>
+                </LinearLayout>
+            </LinearLayout>
+          
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ddd"></LinearLayout>
+        <!--配送司机电话-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/search_label_key2"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:paddingRight="10dp"
+                    android:text="物料名称" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/search_layout_bg">
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp"
+                        android:id="@+id/s_oeb04"
+                        android:layout_weight="1"
+                        android:lines="1"
+                        android:textSize="14sp"
+                        android:background="@null"
+                        android:imeOptions="actionSearch"
+                        android:hint="请输入搜索内容"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ddd"></LinearLayout>
+        <!--物料型号-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/search_label_key1"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:paddingRight="10dp"
+                    android:text="物料型号" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/search_layout_bg">
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp"
+                        android:id="@+id/s_oeb05"
+                        android:layout_weight="1"
+                        android:lines="1"
+                        android:textSize="14sp"
+                        android:background="@null"
+                        android:imeOptions="actionSearch"
+                        android:hint="请输入搜索内容"/>
+                </LinearLayout>
+            </LinearLayout>
+
+          
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ddd"></LinearLayout>
+        <!--规格-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/search_label_key5"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:paddingRight="10dp"
+                    android:text="规格" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/search_layout_bg">
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="15dp"
+                    android:id="@+id/s_oeb06"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:textSize="14sp"
+                    android:background="@null"
+                    android:imeOptions="actionSearch"
+                    android:hint="请输入搜索内容"/>
+            </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ddd"></LinearLayout>
+            <!--<LinearLayout-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="50dp">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/search_label_key"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:drawablePadding="5dp"-->
+                    <!--android:drawableRight="@drawable/arrow_dropdown_mini"-->
+                    <!--android:gravity="center"-->
+                    <!--android:paddingRight="10dp"-->
+                    <!--android:text="客户电话" />-->
+                <!--<include layout="@layout/view_search_layout"></include>-->
+            <!--</LinearLayout>-->
             <!--起始时间-->
             <RelativeLayout
                 android:id="@+id/rl_order_start_date"

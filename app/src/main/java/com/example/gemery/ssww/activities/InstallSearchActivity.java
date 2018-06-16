@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.DtOrderBean;
 import com.example.gemery.ssww.bean.InstallOrdBen;
+import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.example.gemery.ssww.utils.ToastUtil;
 import com.lzy.okgo.OkGo;
@@ -166,7 +167,7 @@ private String getInputText(String changeText) {
         return upJson;
     }
     // 安装单 url
-    private String search_order_url = "http://192.168.1.251:8091/api/AfterSale/getIstList";
+    private String search_order_url = Const.W_HOST+"/api/AfterSale/getIstList";
     private void initData() {
        OkGo.<String>post(search_order_url)
                .tag(this)

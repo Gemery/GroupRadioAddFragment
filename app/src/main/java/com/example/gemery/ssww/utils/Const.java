@@ -1,7 +1,7 @@
 package com.example.gemery.ssww.utils;
 
 public class Const {
-	
+	public static final String W_HOST = "http://183.238.83.20:8070";
 	public static final String XMPP_HOST = "192.168.2.46";
 	public static final int XMPP_PORT = 5222;
 	

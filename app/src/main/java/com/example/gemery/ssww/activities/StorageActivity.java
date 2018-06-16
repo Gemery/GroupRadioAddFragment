@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.StorageBean;
+import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.example.gemery.ssww.utils.ToastUtil;
 import com.lzy.okgo.OkGo;
@@ -40,8 +41,8 @@ import butterknife.OnClick;
 import static com.example.gemery.ssww.AppExample.getContext;
 
 public class StorageActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
-    private final String get_sotrage_all_url = "http://192.168.1.251:8091/api/stockData/getStoreList";
-    private final String edit_storage_url = "http://192.168.1.251:8091/api/stockData/imgExq";
+    private final String get_sotrage_all_url = Const.W_HOST+"/api/stockData/getStoreList";
+    private final String edit_storage_url = Const.W_HOST+"/api/stockData/imgExq";
     @BindView(R.id.title_bar_back)
     ImageView titleBarBack;
     @BindView(R.id.title_bar_title)

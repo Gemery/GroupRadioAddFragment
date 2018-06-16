@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@mipmap/nav_home_pre"></item>
-    <item android:state_checked="false" android:drawable="@mipmap/nav_home_nor"></item>
+    <item android:state_checked="true" android:drawable="@drawable/home32_blue"></item>
+    <item android:state_checked="false" android:drawable="@drawable/home32_gray"></item>
 
 
 </selector>

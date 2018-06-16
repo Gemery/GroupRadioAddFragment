@@ -24,6 +24,7 @@ import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.ConstResponse;
 import com.example.gemery.ssww.bean.CustomMsg;
 import com.example.gemery.ssww.bean.MsgList;
+import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.example.gemery.ssww.utils.PreferencesUtils;
 import com.example.gemery.ssww.utils.SharedPreferencesUtil;
@@ -82,7 +83,7 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
     @BindView(R.id.action_send_button)
     Button actionSendButton;
     // private String get_occ_url = "http://192.168.1.251:8091/api/baseData/getoccList";
-    private String message_url = "http://192.168.1.251:8091/api/baseData/occExq";
+    private String message_url = Const.W_HOST+"/api/baseData/occExq";
     //  java 代码的字符串引号是 双引号  代码提示是  Alt+Enter  ！！！！！！
 
 

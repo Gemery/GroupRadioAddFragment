@@ -37,7 +37,7 @@ public class Constants {
             "pageSize:\"1\",\n" +
             "pageIndex:\"1\"\n" +
             "}";
-   public final static String EDIT_ORDER_URL ="http://192.168.1.251:8091/api/Order/standardOrderExq";
+   public final static String EDIT_ORDER_URL =Const.W_HOST+"/api/Order/standardOrderExq";
    public final static String EDIT_POST_JSON = "{\n" +
            " \"oeaList\": [\n" +
            "   {\n" +

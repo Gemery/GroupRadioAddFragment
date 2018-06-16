@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.CustomMsg;
+import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.example.gemery.ssww.utils.WeiboDialogUtils;
 import com.lzy.okgo.OkGo;
@@ -53,7 +54,7 @@ public class EmpMsgActivity extends AppCompatActivity implements PullLoadMoreRec
     RelativeLayout titleBarRight;
     @BindView(R.id.title)
     LinearLayout title;
-    private String get_occ_list = "http://192.168.1.251:8091/api/baseData/getoccList";
+    private String get_occ_list = Const.W_HOST+"/api/baseData/getoccList";
     private ArrayList<CustomMsg> listData;
     private Dialog mWeiDialog;
 
@@ -83,7 +84,7 @@ public class EmpMsgActivity extends AppCompatActivity implements PullLoadMoreRec
                 break;
         }
     }
-
+ 
     private void initRecyclerView() {
         titleBarTitle.setText("员工信息资料");
         titleOptionsTv.setText("添加");

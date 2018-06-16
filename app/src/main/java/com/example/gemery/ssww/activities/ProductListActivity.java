@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.ImaBean;
+import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.Constants;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.example.gemery.ssww.utils.ToastUtil;
@@ -57,7 +58,7 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
     RecyclerView mRecyclerView;
     private List<ImaBean.ListBean> checkData = new ArrayList<>();
 
-    private String get_data_url = "http://192.168.1.251:8091/api/imaData/getimaList";
+    private String get_data_url = Const.W_HOST+"/api/imaData/getimaList";
     //private MutiOrderMessage data;
     private List<ImaBean.ListBean> data = new ArrayList<>();
     private SearchView sv;
