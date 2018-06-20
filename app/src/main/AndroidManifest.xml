@@ -35,6 +35,25 @@
         <activity android:name="com.example.gemery.ssww.activities.CustomDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
+        // 名店列表页
+        <activity android:name="com.example.gemery.ssww.activities.EStoreActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        // 基础面价页
+        <activity android:name="com.example.gemery.ssww.activities.BasePriceActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        // 基础面价搜索
+        <activity android:name="com.example.gemery.ssww.activities.BPSearchActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        // 价格条件列表显示页  及查询页
+        <activity android:name="com.example.gemery.ssww.activities.EmpPListActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity android:name="com.example.gemery.ssww.activities.EmpPSearchActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
         // 配送订单页
         <activity android:name="com.example.gemery.ssww.activities.DispatchActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

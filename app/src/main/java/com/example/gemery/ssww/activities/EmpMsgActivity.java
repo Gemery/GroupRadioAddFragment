@@ -21,8 +21,10 @@ import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.bean.CustomMsg;
+import com.example.gemery.ssww.bean.EmpMsgBean;
 import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
+import com.example.gemery.ssww.utils.PreferencesUtils;
 import com.example.gemery.ssww.utils.WeiboDialogUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -54,18 +56,22 @@ public class EmpMsgActivity extends AppCompatActivity implements PullLoadMoreRec
     RelativeLayout titleBarRight;
     @BindView(R.id.title)
     LinearLayout title;
-    private String get_occ_list = Const.W_HOST+"/api/baseData/getoccList";
-    private ArrayList<CustomMsg> listData;
+    private String test_url = Const.W_HOST+"/api/baseData/getPositionJsonStr?" + "s_p00=string&s_p_code=string";
+    private String get_emp_list_url = Const.W_HOST+"/api/baseData/getPositionJsonStr?";
+
+    private ArrayList<EmpMsgBean> listData = new ArrayList<>();
     private Dialog mWeiDialog;
+    private RecyclerView.Adapter adapter;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom_info_list);
+        setContentView(R.layout.activity_emp_list);
         ButterKnife.bind(this);
         initData();
-        // initRecyclerView();
+
+        initRecyclerView();
 
         customCv.setOnPullLoadMoreListener(this);
         customCv.setFooterViewText("Loading");
@@ -80,7 +86,7 @@ public class EmpMsgActivity extends AppCompatActivity implements PullLoadMoreRec
             case R.id.title_options_tv:
                 Intent intent = new Intent(this,OrderingInfoActivity.class);
                 intent.putExtra("action","to_custom_info_input");
-                startActivity(intent);
+               // startActivity(intent);
                 break;
         }
     }
@@ -92,12 +98,14 @@ public class EmpMsgActivity extends AppCompatActivity implements PullLoadMoreRec
         customCv.setLinearLayout();
         //customCv.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
 
-        customCv.setAdapter(new RecyclerView.Adapter() {
+
+
+                adapter = new RecyclerView.Adapter() {
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 RecyclerView.ViewHolder holder
                         = new RecyclerView.ViewHolder(LayoutInflater.from(EmpMsgActivity.this)
-                        .inflate(R.layout.item_custom_info_ll,parent,false)) {
+                        .inflate(R.layout.item_emp_msg,parent,false)) {
                 };
 
                 return holder;
@@ -105,28 +113,11 @@ public class EmpMsgActivity extends AppCompatActivity implements PullLoadMoreRec
 
             @Override
             public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-                ((TextView)holder.itemView.findViewById(R.id.s_occ02)).
-                        setText(listData.get(position).getS_occ02());
-                ((TextView)holder.itemView.findViewById(R.id.s_occ_04)).
-                        setText(listData.get(position).getS_occ04());
-                // 建立资料的时间
-                ((TextView)holder.itemView.findViewById(R.id.s_occ05)).
-                        setText(listData.get(position).getS_occ04());
-                // 对应业务员
-                ((TextView)holder.itemView.findViewById(R.id.text_content_emp_code)).
-                        setText(listData.get(position).getS_occ11());
+                ((TextView)holder.itemView.findViewById(R.id.s_p03)).
+                        setText(listData.get(position).getS_p03());
+
                 final int finalPostion = position;
-                holder.itemView.findViewById(R.id.item_order_linear_layout)
-                        .setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Intent intent = new Intent(EmpMsgActivity.this,CustomDetailActivity.class);
-                                Bundle bundle = new Bundle();
-                                bundle.putSerializable("customBean",(Serializable) listData.get(finalPostion));
-                                intent.putExtras(bundle);
-                                startActivity(intent);
-                            }
-                        });
+
 
             }
 
@@ -134,32 +125,35 @@ public class EmpMsgActivity extends AppCompatActivity implements PullLoadMoreRec
             public int getItemCount() {
                 return listData.size();
             }
-        });
+        };
+        customCv.setAdapter(adapter);
 
     }
 
-    private String post_occ_list = "{\n" +
-            "s_occ11:\"string,业务员\"\n" +
-            "}";
+    private String post_occ_list = "";
 
     private void initData() {
-        Log.e("tag","11-->initdata");
+
+         String keyValue1 = "s_p00=" + PreferencesUtils.getSharePreStr(this,"ssww_code");
+         String keyValue2 = "s_p_code=" + PreferencesUtils.getSharePreStr(this,"ssww_dp_number");
+         get_emp_list_url = get_emp_list_url + keyValue1 + "&" + keyValue2 ;
+         Log.e("tag",get_emp_list_url);
         mWeiDialog = WeiboDialogUtils.createLoadingDialog(this,"正在加载中");
-        OkGo.<String>post(get_occ_list)
+        OkGo.<String>get(test_url)
                 .tag(this)
-                .upJson(post_occ_list)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
                         WeiboDialogUtils.closeDialog(mWeiDialog);
-                        listData = GsonUtils.jsonToArrayList(response.body(),CustomMsg.class);
-                        //Log.e("tag",listData.toString());
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                initRecyclerView();
-                            }
-                        });
+
+                        ArrayList<EmpMsgBean> obj = GsonUtils.jsonToArrayList(response.body(), EmpMsgBean.class);
+                        Message msg = new Message();
+                        Log.e("tag",obj.toString());
+                        msg.what = 2;
+                        msg.obj = obj;
+                        handler.sendMessage(msg);
+
+
                     }
 
                     @Override
@@ -193,15 +187,15 @@ public class EmpMsgActivity extends AppCompatActivity implements PullLoadMoreRec
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what){
-                case 1:
-
+                case 2:
+                    listData = (ArrayList<EmpMsgBean>) msg.obj;
+                    adapter.notifyDataSetChanged();
                     break;
+
+
             }
         }
     };
-    private void loadMoreData(){
-
-    }
 
     @Override
     public void onLoadMore() {

@@ -13,10 +13,13 @@ import android.widget.GridView;
 import android.widget.SimpleAdapter;
 
 import com.example.gemery.ssww.activities.AllOrderListActivity;
+import com.example.gemery.ssww.activities.BasePriceActivity;
 import com.example.gemery.ssww.activities.ContactActivity;
 import com.example.gemery.ssww.activities.CustomInfoListActivity;
 import com.example.gemery.ssww.activities.DispatchActivity;
+import com.example.gemery.ssww.activities.EStoreActivity;
 import com.example.gemery.ssww.activities.EmpMsgActivity;
+import com.example.gemery.ssww.activities.EmpPListActivity;
 import com.example.gemery.ssww.activities.InstallOrderListActivity;
 import com.example.gemery.ssww.activities.KnowledgeActivity;
 import com.example.gemery.ssww.activities.PersonActivity;
@@ -69,10 +72,11 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
         int icno[] = {R.drawable.psblue, R.drawable.anblue, R.drawable.js,
                 R.drawable.empmsg, R.drawable.zs, R.drawable.kccx,
                 R.drawable.txl, R.drawable.aproduct,R.drawable.aormsg,
-                R.drawable.aorder};
+                R.drawable.aorder,R.drawable.dpicon,R.drawable.base_price,
+        R.drawable.price_search};
         //图标下的文字
         String name[] = {"配送中心", "安装中心", "结算中心", "员工信息", "知识中心",
-                "库存查询", "通讯录","产品列表","客户资料列表","订单中心"};
+                "库存查询", "通讯录","产品列表","客户资料列表","订单中心","门店资料","基础价格信息","价格查询"};
         dataList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < icno.length; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
@@ -129,9 +133,20 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
             intent.putExtra("action","to_Custom_info_list_activity");
             getActivity().startActivity(intent);
         }
+
         else if(i == 10){
-            Intent intent = new Intent(getActivity(),AllOrderListActivity.class);
-            intent.putExtra("action","to_Custom_info_list_activity");
+            Intent intent = new Intent(getActivity(),EStoreActivity.class);
+            intent.putExtra("action","EStoreActivity");
+            getActivity().startActivity(intent);
+        }
+        else if(i == 11){
+            Intent intent = new Intent(getActivity(),BasePriceActivity.class);
+            intent.putExtra("action","BasePriceActivity");
+            getActivity().startActivity(intent);
+        }
+        else if(i == 12){
+            Intent intent = new Intent(getActivity(),EmpPListActivity.class);
+            intent.putExtra("action","EmpPListActivity");
             getActivity().startActivity(intent);
         }
         else {

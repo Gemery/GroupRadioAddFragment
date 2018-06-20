@@ -7,6 +7,12 @@
         <item name="colorPrimaryDark">@color/blueHai</item>
         <item name="colorAccent">@color/colorActionBar</item>
     </style>
+    <style name="cb_test">
+        <!--波纹的颜色-->
+        <!--<item name="android:colorControlHighlight">@color/colorPrimary</item>-->
+        <!--选中的颜色-->
+        <item name="colorAccent">@color/blueHai</item>
+    </style>
 
     <!-- popup window 显示消失动画-->
     <style name="PopWindowAnimStyle">

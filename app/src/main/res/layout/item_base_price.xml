@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:id="@+id/ll_item_install"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <RelativeLayout
-        android:id="@+id/rl_wl_code"
+        android:id="@+id/rl_text_bh"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:background="@android:color/white"
         android:orientation="horizontal"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         >
-        <TextView
-            android:id="@+id/label_wu_code"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="安装工单号："
-            android:gravity="center"
-            />
-        <TextView
-            android:id="@+id/s_ist_h01"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/label_wu_code"
-            android:text="xxxxxxx"
-            android:gravity="center"
-            />
 
+        <TextView
+            android:id="@+id/text_label1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="物料名称：" />
+
+        <TextView
+            android:id="@+id/s_pb03"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/text_label1"
+            android:gravity="center"
+            android:text="xxxxx" />
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,30 +35,30 @@
         android:background="#ddd"
         ></LinearLayout>
     <RelativeLayout
-        android:id="@+id/rl_wl_name"
+        android:id="@+id/rl_text_bh12"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:background="@android:color/white"
         android:orientation="horizontal"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         >
+
         <TextView
-            android:id="@+id/label_wl_name"
+            android:id="@+id/text_label2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="安装师傅："
             android:gravity="center"
-            />
-        <TextView
-            android:id="@+id/s_ist_h06"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/label_wl_name"
-            android:text="name"
-            android:gravity="center"
+            android:text="折扣(数值)："
+
             />
 
+        <TextView
+            android:id="@+id/s_pb09"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/text_label2"
+            android:gravity="center"
+            android:text="xxx" />
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -68,30 +66,30 @@
         android:background="#ddd"
         ></LinearLayout>
     <RelativeLayout
-        android:id="@+id/rl_wl_xh"
+        android:id="@+id/rl_text_bh13"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:background="@android:color/white"
         android:orientation="horizontal"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         >
+
         <TextView
-            android:id="@+id/label_wl_xh"
+            android:id="@+id/text_label3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="安装时间："
             android:gravity="center"
-            />
-        <TextView
-            android:id="@+id/s_ist_h02"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/label_wl_xh"
-            android:text="xxxxxxxx"
-            android:gravity="center"
+            android:text="单价："
+
             />
 
+        <TextView
+            android:id="@+id/s_pb10"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/text_label3"
+            android:gravity="center"
+            android:text="xxx" />
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -99,81 +97,35 @@
         android:background="#ddd"
         ></LinearLayout>
     <RelativeLayout
-        android:id="@+id/rl_wl_gg"
+        android:id="@+id/rl_text_bh14"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:background="@android:color/white"
         android:orientation="horizontal"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         >
-        <TextView
-            android:id="@+id/label_wl_gg"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="安装详细地址："
-            android:gravity="center"
-            />
-        <TextView
-            android:id="@+id/s_ist_h05"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/label_wl_gg"
-            android:text="主体类容"
-            android:gravity="center"
-            />
 
-    </RelativeLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="#ddd"
-        ></LinearLayout>
-    <RelativeLayout
-        android:id="@+id/rl_sl"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="@android:color/white"
-        android:orientation="horizontal"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        >
         <TextView
-            android:id="@+id/text_label_sl"
+            android:id="@+id/text_label4"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="安装确认否："
             android:gravity="center"
+            android:text="是否参与积分："
+
             />
 
         <TextView
-            android:id="@+id/s_ist_h08"
+            android:id="@+id/s_pb11"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/text_label_sl"
-            android:layout_marginLeft="5dp"
-            android:text="88"
+            android:layout_toRightOf="@+id/text_label4"
             android:gravity="center"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_toLeftOf="@+id/arrow_right"
-            android:text="查看详情"
-            android:gravity="center"
-            />
-        <ImageView
-            android:id="@+id/arrow_right"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/arrow_right"
-            android:layout_alignParentRight="true"
-            />
-
+            android:text="xxx" />
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="#ddd"
         ></LinearLayout>
+
 </LinearLayout>
