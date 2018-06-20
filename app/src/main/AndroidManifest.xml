@@ -54,6 +54,20 @@
         <activity android:name="com.example.gemery.ssww.activities.EmpPSearchActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
+        // 销售礼包列表显示页 及查询页
+        <activity android:name="com.example.gemery.ssww.activities.SGBagActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity android:name="com.example.gemery.ssww.activities.SGBagListActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        // 特殊价格列表显示页  及查询页
+        <activity android:name="com.example.gemery.ssww.activities.SPecpListActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity android:name="com.example.gemery.ssww.activities.SPechSearchActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
         // 配送订单页
         <activity android:name="com.example.gemery.ssww.activities.DispatchActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -113,9 +127,6 @@
         </activity>
         <activity android:name="com.example.gemery.ssww.activities.LinkedActivity">
         </activity>
-        <activity android:name="com.example.gemery.ssww.activities.OrderingInfoActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
 
         <service android:name="com.example.gemery.ssww.service.MsfService">
         </service>
@@ -152,6 +163,10 @@
 
         </activity>
         <activity android:name="com.example.gemery.ssww.activities.CustomInfoListActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        </activity>
+        <activity android:name="com.example.gemery.ssww.activities.CustomEditAcdtivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>

@@ -22,11 +22,10 @@ import com.example.gemery.ssww.activities.EmpMsgActivity;
 import com.example.gemery.ssww.activities.EmpPListActivity;
 import com.example.gemery.ssww.activities.InstallOrderListActivity;
 import com.example.gemery.ssww.activities.KnowledgeActivity;
-import com.example.gemery.ssww.activities.PersonActivity;
 import com.example.gemery.ssww.activities.ProductListActivity;
-import com.example.gemery.ssww.activities.QueryActivity;
 import com.example.gemery.groupradioaddfragment.R;
-import com.example.gemery.ssww.activities.SendMessageActivity;
+import com.example.gemery.ssww.activities.SGBagListActivity;
+import com.example.gemery.ssww.activities.SPecpListActivity;
 import com.example.gemery.ssww.activities.StorageActivity;
 
 import java.util.ArrayList;
@@ -73,10 +72,11 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
                 R.drawable.empmsg, R.drawable.zs, R.drawable.kccx,
                 R.drawable.txl, R.drawable.aproduct,R.drawable.aormsg,
                 R.drawable.aorder,R.drawable.dpicon,R.drawable.base_price,
-        R.drawable.price_search};
+        R.drawable.price_search,R.drawable.s_spec_icon,R.drawable.s_gbag_icon};
         //图标下的文字
         String name[] = {"配送中心", "安装中心", "结算中心", "员工信息", "知识中心",
-                "库存查询", "通讯录","产品列表","客户资料列表","订单中心","门店资料","基础价格信息","价格查询"};
+                "库存查询", "通讯录","产品列表","客户资料列表","订单中心","门店资料",
+                "基础价格信息","价格查询","特殊价格查询","销售礼包查询"};
         dataList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < icno.length; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
@@ -147,6 +147,16 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
         else if(i == 12){
             Intent intent = new Intent(getActivity(),EmpPListActivity.class);
             intent.putExtra("action","EmpPListActivity");
+            getActivity().startActivity(intent);
+        }
+        else if(i == 13){
+            Intent intent = new Intent(getActivity(),SPecpListActivity.class);
+            intent.putExtra("action","SPecpListActivity");
+            getActivity().startActivity(intent);
+        }
+        else if(i == 14){
+            Intent intent = new Intent(getActivity(),SGBagListActivity.class);
+            intent.putExtra("action","SGBagListActivity");
             getActivity().startActivity(intent);
         }
         else {

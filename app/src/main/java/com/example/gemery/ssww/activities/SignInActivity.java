@@ -18,8 +18,10 @@ import android.util.Log;
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.AppExample;
 import com.example.gemery.ssww.MainActivity;
+import com.example.gemery.ssww.bean.LoginResultInfoBean;
 import com.example.gemery.ssww.service.MsfService;
 import com.example.gemery.ssww.utils.Const;
+import com.example.gemery.ssww.utils.GsonUtils;
 import com.example.gemery.ssww.utils.HttpUtils;
 import com.example.gemery.ssww.utils.PreferencesUtils;
 import com.example.gemery.ssww.utils.ToastUtil;
@@ -83,10 +85,23 @@ public class SignInActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivity_sign_in);
         ButterKnife.bind(this);
+        login_url = Const.W_HOST + "/api/baseData/userSign?";
         mContext = this;
-        initReceiver();
-        init();
-        login_url = "https://www.baidu.com";
+        //initReceiver();
+        initData();
+
+    }
+
+    private void initData() {
+        loginDialog = new ProgressDialog(this);
+        loginDialog.setTitle("提示");
+        loginDialog.setMessage("正在请求服务器...");
+        usersp = getSharedPreferences("user",0);
+        if(!usersp.getString("username","").equals("")&& !usersp.getString("userpsw","").equals("")){
+            mEmail.setText(usersp.getString("username",""));
+            mPassword.setText(usersp.getString("userpsw",""));
+        }
+
     }
 
     private void initReceiver() {
@@ -117,96 +132,52 @@ public class SignInActivity extends Activity {
     }
 
 
-    protected void init() {
-        usersp=getSharedPreferences("user",0);
-        if (!usersp.getString("username","").equals("")&&!usersp.getString("userpsw","").equals("")){
-            mEmail.setText(usersp.getString("username",""));
-            mPassword.setText(usersp.getString("userpsw",""));
-        }
-        loginDialog=new ProgressDialog(this);
-        loginDialog.setTitle("提示");
-        loginDialog.setMessage("正在请求服务器，请稍后");
 
-    }
     @OnClick(R.id.btn_sign_in)
     public void onClickView(){
 
-
-        if(!checkForm()){
+        if(checkForm()){
             username=mEmail.getText().toString();
             password=mPassword.getText().toString();
-
-
-            PreferencesUtils.putSharePre(mContext, "username", username);
-            PreferencesUtils.putSharePre(mContext, "pwd", password);
+//            PreferencesUtils.putSharePre(mContext, "username", username);
+//            PreferencesUtils.putSharePre(mContext, "pwd", password);
             loginDialog.show();
 
 
             //启动核心Service  建立长连接    reciver  接受广播（携带后台状态码）做处理验证
            // Intent intent=new Intent(this,MsfService.class);
             //startService(intent);
+           login_url = login_url + "s_zx02=" + username + "&s_zx08=" + password;
 
-
-            OkGo.<String>post(login_url)
-                    .params("username",username)
-                    .params("password",password)
+            OkGo.<String>get(login_url)
+                    .tag(this)
                     .execute(new StringCallback() {
                         @Override
                         public void onSuccess(Response<String> response) {
                             loginDialog.dismiss();
-                            //TODO
-                            Intent intent=new Intent(SignInActivity.this,MainActivity.class);
+                                LoginResultInfoBean object = GsonUtils.parseJSON(response.body(),LoginResultInfoBean.class);
+                                if(object.getServerCode().getResultCode().equals("0")){
+                                    // 第一次登陆  ---》
+                                    if(usersp.getString("username","").equals("")) {
+                                        //usersp = getSharedPreferences("user", 0);
+                                        SharedPreferences.Editor editor = usersp.edit();
+                                        editor.putString("username", username);
+                                        editor.putString("userpsw", password);
+                                        editor.commit();
+                                    }
+                                    Intent intent=new Intent(SignInActivity.this,MainActivity.class);
                                     intent.putExtra("action","im_login");
                                     startActivity(intent);
                                     finish();
-
-//                            try {
-//                                JSONObject object = new JSONObject(response.body());
-//                                //Log.e("tage",object.toString());
-//                                if(object.getString("success").equals("true")){
-//                                    // 第一次登陆  ---》
-//                                    usersp=getSharedPreferences("user",0);
-//                                    SharedPreferences.Editor editor = usersp.edit();
-//                                    //editor.putString("uid", object.getString("g_uid"));
-//                                    editor.putString("username", username);
-//                                    editor.putString("userpsw", password);
-//                                    editor.commit();
-//
-//                                    Intent intent=new Intent(SignInActivity.this,MainActivity.class);
-//                                    intent.putExtra("action","im_login");
-//                                    startActivity(intent);
-//                                    finish();
-//                                }
-//
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-
-
+                                }
                         }
-
                         @Override
                         public void onError(Response<String> response) {
                             super.onError(response);
-
                         }
                     });
-
-
-
         }
-
-
     }
-
-//    @OnClick(R.id.tv_link_sign_in)
-//    public void onLinkClick(){
-//        Intent intent=new Intent(SignInActivity.this,SignUpActivity.class);
-//        intent.putExtra("action","to_sign_up");
-//        startActivity(intent);
-//        finish();
-//    }
 
     private boolean checkForm() {
         final String email = mEmail.getText().toString();
@@ -214,7 +185,7 @@ public class SignInActivity extends Activity {
 
         boolean isPass = true;
 
-        if (email.isEmpty() || email.length() < 6) {
+        if (email.isEmpty() || email.length() < 5) {
             mEmail.setError("请输入正确的用户名 ");
             isPass = false;
         } else {
@@ -258,6 +229,6 @@ public class SignInActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
 
-        unregisterReceiver(receiver);
+        //unregisterReceiver(receiver);
     }
 }

@@ -38,7 +38,7 @@
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.1dp"
         android:background="#ddd"
         ></LinearLayout>
     <RelativeLayout
@@ -69,7 +69,7 @@
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.1dp"
         android:background="#ddd"
         ></LinearLayout>
     <RelativeLayout
@@ -100,38 +100,38 @@
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.5dp"
         android:background="#ddd"
         ></LinearLayout>
+
     <RelativeLayout
         android:id="@+id/rl_wl_gg"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="53dp"
         android:background="@android:color/white"
         android:orientation="horizontal"
         android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-       >
-     <TextView
-         android:id="@+id/label_wl_gg"
-         android:layout_width="wrap_content"
-         android:layout_height="match_parent"
-         android:text="规格："
-         android:gravity="center"
-         />
-     <TextView
-         android:id="@+id/content_wl_gg"
-         android:layout_width="wrap_content"
-         android:layout_height="match_parent"
-         android:layout_toRightOf="@+id/label_wl_gg"
-         android:text="主体类容"
-         android:gravity="center"
-         />
+        android:paddingRight="24dp">
+
+        <TextView
+            android:id="@+id/label_wl_gg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="规格：" />
+
+        <TextView
+            android:id="@+id/content_wl_gg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/label_wl_gg"
+            android:gravity="center"
+            android:text="主体类容" />
 
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.5dp"
         android:background="#ddd"
         ></LinearLayout>
     <RelativeLayout
@@ -189,30 +189,4 @@
             />
 
     </RelativeLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#ddd"
-        ></LinearLayout>
-    <!--<LinearLayout-->
-        <!--android:paddingRight="24dp"-->
-        <!--android:paddingLeft="24dp"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:orientation="horizontal">-->
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="定金金额："-->
-            <!--/>-->
-        <!--<android.support.design.widget.TextInputEditText-->
-            <!--android:id="@+id/order_mon"-->
-            <!--android:layout_width="100dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textColor="#555"-->
-            <!--android:textSize="14sp"-->
-            <!--android:text="xxxx"-->
-            <!--/>-->
-
-    <!--</LinearLayout>-->
 </LinearLayout>

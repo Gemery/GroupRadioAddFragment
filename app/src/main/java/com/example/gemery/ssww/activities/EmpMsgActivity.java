@@ -3,7 +3,6 @@ package com.example.gemery.ssww.activities;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -84,7 +83,7 @@ public class EmpMsgActivity extends AppCompatActivity implements PullLoadMoreRec
                 finish();
                 break;
             case R.id.title_options_tv:
-                Intent intent = new Intent(this,OrderingInfoActivity.class);
+                Intent intent = new Intent(this,EmpPSearchActivity.class);
                 intent.putExtra("action","to_custom_info_input");
                // startActivity(intent);
                 break;

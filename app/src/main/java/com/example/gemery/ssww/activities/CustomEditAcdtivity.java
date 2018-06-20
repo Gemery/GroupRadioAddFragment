@@ -27,7 +27,6 @@ import com.example.gemery.ssww.bean.MsgList;
 import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.example.gemery.ssww.utils.PreferencesUtils;
-import com.example.gemery.ssww.utils.SharedPreferencesUtil;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -40,7 +39,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 // 终端客户信息 录入界面
-public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
+public class CustomEditAcdtivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
 
     @BindView(R.id.title_bar_back)
     ImageView titleBarBack;
@@ -157,14 +156,14 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
     public void onViewClick(View view) {
         switch (view.getId()){
             case R.id.rl_custom:
-                DatePickerDialog datePicker = new DatePickerDialog(OrderingInfoActivity.this,
+                DatePickerDialog datePicker = new DatePickerDialog(CustomEditAcdtivity.this,
                         new DatePickerDialog.OnDateSetListener() {
 
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 // TODO Auto-generated method stub
                                 textContentDate.setText(year + "/ " + (monthOfYear + 1) + "/ " + dayOfMonth);
-                                Toast.makeText(OrderingInfoActivity.this,
+                                Toast.makeText(CustomEditAcdtivity.this,
                                         year + "/" + (monthOfYear + 1) + "/ " + dayOfMonth + "day",
                                         Toast.LENGTH_SHORT).show();
                             }
@@ -207,7 +206,7 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
                                 String json = response.body();
                                 ConstResponse obj = GsonUtils.parseJSON(json, ConstResponse.class);
                                 if (obj.getResultCode().equals("0")) {
-                                    new AlertDialog.Builder(OrderingInfoActivity.this)
+                                    new AlertDialog.Builder(CustomEditAcdtivity.this)
                                             .setTitle("上传到后台")
                                             .setMessage("上传完成")
                                             .setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -225,7 +224,7 @@ public class OrderingInfoActivity extends AppCompatActivity implements Toolbar.O
                                             .create().show();
                                 }
                                 if (obj.getResultCode().equals("9997")) {
-                                    new AlertDialog.Builder(OrderingInfoActivity.this)
+                                    new AlertDialog.Builder(CustomEditAcdtivity.this)
                                             .setTitle("上传到后台")
                                             .setMessage("该用户资料已经存在，请重新输入")
                                             .setNegativeButton("取消", new DialogInterface.OnClickListener() {
