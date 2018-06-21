@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@drawable/background_corners"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rl_wl_code"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+       >
+
+        <TextView
+            android:id="@+id/label_wu_code"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="价格条件编号:  " />
+
+        <TextView
+            android:id="@+id/s_pch02"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/label_wu_code"
+            android:gravity="center"
+            android:text="xxxxxxx" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#ddd"
+        ></LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rl_wl_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+       >
+
+        <TextView
+            android:id="@+id/label_wl_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="价格条件描述:  " />
+
+        <TextView
+            android:id="@+id/s_pch03_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/label_wl_name"
+            android:gravity="center"
+            android:text="name" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#ddd"
+        ></LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rl_wl_xh"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+       >
+
+        <TextView
+            android:id="@+id/label_wl_xh"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="价格生效日期:  " />
+
+        <TextView
+            android:id="@+id/s_pch04"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/label_wl_xh"
+            android:gravity="center"
+            android:text="xxxxxxxx" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#ddd"
+        ></LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rl_wl_gg"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+
+        <TextView
+            android:id="@+id/label_wl_gg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="价格失效日期:    " />
+
+        <TextView
+            android:id="@+id/s_pch05"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/label_wl_gg"
+            android:gravity="center"
+            android:text="主体类容" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#ddd"
+        ></LinearLayout>
+</LinearLayout>

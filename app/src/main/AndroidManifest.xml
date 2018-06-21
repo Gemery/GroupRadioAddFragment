@@ -68,6 +68,9 @@
         <activity android:name="com.example.gemery.ssww.activities.SPechSearchActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
+        <activity android:name="com.example.gemery.ssww.activities.SPecpSearchActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
         // 配送订单页
         <activity android:name="com.example.gemery.ssww.activities.DispatchActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

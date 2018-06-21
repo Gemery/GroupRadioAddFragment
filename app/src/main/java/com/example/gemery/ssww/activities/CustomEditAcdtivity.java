@@ -93,10 +93,6 @@ public class CustomEditAcdtivity extends AppCompatActivity implements Toolbar.On
         ButterKnife.bind(this);
 
         initView();
-        //setSupportActionBar(toolbar);
-        //getSupportActionBar().setTitle("终端客户资料录入");
-
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         rlCustomDef.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,12 +108,6 @@ public class CustomEditAcdtivity extends AppCompatActivity implements Toolbar.On
         titleOptionsTv.setText("重置");
 
     }
-
-    /**
-     * 单选对话框
-     *
-     * @param v
-     */
     private int checkedItem = 0; //默认选中的item
 
     public void singleClick(View v) {

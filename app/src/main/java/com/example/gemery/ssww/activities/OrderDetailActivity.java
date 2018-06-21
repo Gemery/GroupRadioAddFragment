@@ -2,31 +2,25 @@ package com.example.gemery.ssww.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
-import com.example.gemery.ssww.adapter.MyAdapter;
 import com.example.gemery.ssww.adapter.MyOrderDtailAdapter;
 import com.example.gemery.ssww.bean.OeaBen;
 import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
-import com.example.gemery.ssww.utils.ToastUtil;
-import com.example.gemery.ssww.view.LoadMoreRecyclerView;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class OrderDetailActivity extends AppCompatActivity  {
+public class OrderDetailActivity extends AppCompatActivity {
     @BindView(R.id.title_bar_back)
     ImageView titleBarBack;
     @BindView(R.id.title_bar_title)
@@ -44,7 +38,9 @@ public class OrderDetailActivity extends AppCompatActivity  {
     TextView titleOptionsTv;
     @BindView(R.id.order_detail_rc)
     RecyclerView orderDetailRc;
-    private final String get_one_order_url = Const.W_HOST+"/api/Order/getStandardList?orderNum=";
+    private final String get_one_order_url = Const.W_HOST + "/api/Order/getStandardList?orderNum=";
+    @BindView(R.id.title)
+    LinearLayout title;
 
     private List<OeaBen.OebListBean> list = new ArrayList<>();
 
@@ -72,7 +68,7 @@ public class OrderDetailActivity extends AppCompatActivity  {
                     @Override
                     public void onSuccess(Response<String> response) {
                         //Log.e("tag",response.body());
-                        OeaBen oeaBen = GsonUtils.parseJSON(response.body(),OeaBen.class);
+                        OeaBen oeaBen = GsonUtils.parseJSON(response.body(), OeaBen.class);
                         list = oeaBen.getOebList();
                         dtBean = oeaBen.getOeaList().get(0);
                         runOnUiThread(new Runnable() {
@@ -84,7 +80,8 @@ public class OrderDetailActivity extends AppCompatActivity  {
                     }
                 });
     }
-    private  void initView(){
+
+    private void initView() {
         titleBarTitle.setText("订单详细信息");
         titleOptionsTv.setText("编辑");
         orderDetailRc.setLayoutManager(new LinearLayoutManager(this));
@@ -100,10 +97,10 @@ public class OrderDetailActivity extends AppCompatActivity  {
     }
 
     private void initRecylerViewHeader() {
-        viewHeader = LayoutInflater.from(this).inflate(R.layout.item_order_detail_dantou,null);
+        viewHeader = LayoutInflater.from(this).inflate(R.layout.item_order_detail_dantou, null);
         textContentBH = (TextView) viewHeader.findViewById(R.id.text_content_bh);
         TextView csName = (TextView) viewHeader.findViewById(R.id.content_cs_name);
-        TextView   currentDate = (TextView) viewHeader.findViewById(R.id.text_content_date);
+        TextView currentDate = (TextView) viewHeader.findViewById(R.id.text_content_date);
         TextView csEmp = (TextView) viewHeader.findViewById(R.id.text_content_emp_code);
         TextView csPhone = (TextView) viewHeader.findViewById(R.id.content_cs_phone);
         TextView customAddress = (TextView) viewHeader.findViewById(R.id.content_cs_address);
@@ -116,13 +113,45 @@ public class OrderDetailActivity extends AppCompatActivity  {
         customAddress.setText(dtBean.getS_oea05());
     }
 
-    @OnClick({R.id.title_bar_back})
-    public void onClick(View view){
-        switch (view.getId()){
+    @OnClick({R.id.title_bar_back, R.id.title_options_tv})
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.title_bar_back:
                 finish();
                 break;
+            case R.id.title_options_tv:
+                //showPopupWindow();
+                break;
         }
+    }
+/*
+  { "oeaList": [ {
+      "id": "51",
+      "s_oea01": "stringSA180600051"}],
+  "oebList": [
+    { "s_oeb01": "stringSA180600051" }],
+  "flage": "3"
+}
+ */
+    private String upJson = "";
+
+    private void showPopupWindow() {
+        View contentView = LayoutInflater.from(this).inflate(R.layout.menu_action_item, null);
+
+        PopupWindow popupWindow = new PopupWindow(contentView,
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
+
+        contentView.findViewById(R.id.order_edit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        popupWindow.setContentView(contentView);
+        popupWindow.showAsDropDown(title);
+
+
     }
 
 

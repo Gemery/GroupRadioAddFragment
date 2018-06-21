@@ -67,7 +67,7 @@ public class BasePriceActivity extends AppCompatActivity {
             switch (msg.what){
                 case 1:
                     listData = (List<BasePriceBean.ListBean>) msg.obj;
-                    Log.e("tag",listData.toString());
+                    //Log.e("tag",listData.toString());
                     mAdapter.notifyDataSetChanged();
                     break;
             }

@@ -95,11 +95,8 @@ public class EmpMsgActivity extends AppCompatActivity implements PullLoadMoreRec
         titleOptionsTv.setText("添加");
 
         customCv.setLinearLayout();
-        //customCv.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
 
-
-
-                adapter = new RecyclerView.Adapter() {
+        adapter = new RecyclerView.Adapter() {
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 RecyclerView.ViewHolder holder
@@ -114,6 +111,10 @@ public class EmpMsgActivity extends AppCompatActivity implements PullLoadMoreRec
             public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
                 ((TextView)holder.itemView.findViewById(R.id.s_p03)).
                         setText(listData.get(position).getS_p03());
+                ((TextView)holder.itemView.findViewById(R.id.text_name)).
+                        setText(listData.get(position).getS_p02());
+                ((TextView)holder.itemView.findViewById(R.id.text_depart)).
+                        setText(listData.get(position).getS_p01());
 
                 final int finalPostion = position;
 
