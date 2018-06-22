@@ -14,7 +14,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/s_pj05"
             android:padding="5dp"
             android:id="@+id/img_product"
             />

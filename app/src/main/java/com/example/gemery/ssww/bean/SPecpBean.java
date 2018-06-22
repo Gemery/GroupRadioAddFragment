@@ -23,16 +23,16 @@ public class SPecpBean implements Serializable {
      * s_pecp_hud06 :
      */
 
-    private int id;
+    private long id;
     private String s_pecp_h00;
     private String s_pecp_h01;
     private String s_pecp_h02;
     private String s_pecp_h02_desc;
     private String s_pecp_hconfirm;
     private String s_pecp_h03;
-    private int s_pecp_h04;
-    private int s_pecp_h05;
-    private int s_pecp_h06;
+    private long s_pecp_h04;
+    private long s_pecp_h05;
+    private long s_pecp_h06;
     private String s_pecp_hud01;
     private String s_pecp_hud02;
     private String s_pecp_hud03;
@@ -40,11 +40,11 @@ public class SPecpBean implements Serializable {
     private String s_pecp_hud05;
     private String s_pecp_hud06;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -96,27 +96,27 @@ public class SPecpBean implements Serializable {
         this.s_pecp_h03 = s_pecp_h03;
     }
 
-    public int getS_pecp_h04() {
+    public long getS_pecp_h04() {
         return s_pecp_h04;
     }
 
-    public void setS_pecp_h04(int s_pecp_h04) {
+    public void setS_pecp_h04(long s_pecp_h04) {
         this.s_pecp_h04 = s_pecp_h04;
     }
 
-    public int getS_pecp_h05() {
+    public long getS_pecp_h05() {
         return s_pecp_h05;
     }
 
-    public void setS_pecp_h05(int s_pecp_h05) {
+    public void setS_pecp_h05(long s_pecp_h05) {
         this.s_pecp_h05 = s_pecp_h05;
     }
 
-    public int getS_pecp_h06() {
+    public long getS_pecp_h06() {
         return s_pecp_h06;
     }
 
-    public void setS_pecp_h06(int s_pecp_h06) {
+    public void setS_pecp_h06(long s_pecp_h06) {
         this.s_pecp_h06 = s_pecp_h06;
     }
 

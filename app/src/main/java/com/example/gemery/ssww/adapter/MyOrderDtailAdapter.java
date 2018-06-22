@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
-import com.example.gemery.ssww.bean.ImaBean;
 import com.example.gemery.ssww.bean.OeaBen;
 
 import java.util.ArrayList;
@@ -68,7 +67,7 @@ public class MyOrderDtailAdapter extends RecyclerView.Adapter<MyOrderDtailAdapte
                     .setText(data.get(position).getS_oeb03());
 
             // 数量
-           TextView slTv = ((TextView) holder.itemView.findViewById(R.id.text_content_sl));
+           TextView slTv = ((TextView) holder.itemView.findViewById(R.id.s_gbag_e07));
                     slTv.setText(data.get(position).getS_oeb07());
 
 

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
@@ -67,7 +68,6 @@ public class BasePriceActivity extends AppCompatActivity {
             switch (msg.what){
                 case 1:
                     listData = (List<BasePriceBean.ListBean>) msg.obj;
-                    //Log.e("tag",listData.toString());
                     mAdapter.notifyDataSetChanged();
                     break;
             }
@@ -117,6 +117,22 @@ public class BasePriceActivity extends AppCompatActivity {
                         .setText(String.valueOf(listData.get(position).getS_pb10()));
                 ((TextView)holder.itemView.findViewById(R.id.s_pb11))
                         .setText(listData.get(position).getS_pb11());
+
+                if(listData.get(position).getS_pb_confirm_state().equals("Y")){
+//                    ((LinearLayout)holder.itemView.findViewById(R.id.ll_bp_price))
+//                            .setBackgroundResource(R.drawable.arrow_drop_mini);
+                }
+
+                holder.itemView.findViewById(R.id.ll_bp_price).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("bpDetail",listData.get(position));
+                        Intent intent = new Intent(BasePriceActivity.this,BPDetailActivity.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                });
 
             }
 

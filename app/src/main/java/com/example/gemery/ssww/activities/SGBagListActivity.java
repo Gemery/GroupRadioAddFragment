@@ -76,6 +76,15 @@ public class SGBagListActivity extends AppCompatActivity {
                         setText(listData.get(position).getS_gbag_h05());
                 ((TextView)holder.itemView.findViewById(R.id.s_gbag_h09)).
                         setText(String.valueOf(listData.get(position).getS_gbag_h09()));
+
+                holder.itemView.findViewById(R.id.ll_sg_bag_item).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(SGBagListActivity.this,SGBagDetailActivity.class);
+                        intent.putExtra("sgbagNumber",listData.get(position).getS_gbag_h02());
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override

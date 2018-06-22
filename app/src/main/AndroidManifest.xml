@@ -58,6 +58,10 @@
         <activity android:name="com.example.gemery.ssww.activities.SGBagActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
+       <activity android:name="com.example.gemery.ssww.activities.SGBagDetailActivity"
+           android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+           ></activity>
+
         <activity android:name="com.example.gemery.ssww.activities.SGBagListActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
@@ -65,7 +69,12 @@
         <activity android:name="com.example.gemery.ssww.activities.SPecpListActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
-        <activity android:name="com.example.gemery.ssww.activities.SPechSearchActivity"
+        // 特殊价格详情显示页
+        <activity android:name="com.example.gemery.ssww.activities.SPecpDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        // 特殊价格详情显示页
+        <activity android:name="com.example.gemery.ssww.activities.EmpPDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity android:name="com.example.gemery.ssww.activities.SPecpSearchActivity"
@@ -77,6 +86,10 @@
         </activity>
         // 配送单搜索页
         <activity android:name="com.example.gemery.ssww.activities.DispatchSearchActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        // 配送单搜索页
+        <activity android:name="com.example.gemery.ssww.activities.BPDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         // 配送详情订单页

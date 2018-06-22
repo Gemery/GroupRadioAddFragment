@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:id="@+id/ll_sg_bag_item"
     android:layout_width="match_parent"
     android:background="@drawable/background_corners"
     android:layout_height="wrap_content">
@@ -9,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/rl_wl_code"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:background="@android:color/white"
         android:orientation="horizontal"
         android:paddingLeft="24dp"
@@ -40,7 +41,7 @@
     <RelativeLayout
         android:id="@+id/rl_wl_name"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:background="@android:color/white"
         android:orientation="horizontal"
         android:paddingLeft="24dp"
@@ -71,7 +72,7 @@
     <RelativeLayout
         android:id="@+id/rl_wl_xh"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:background="@android:color/white"
         android:orientation="horizontal"
         android:paddingLeft="24dp"
@@ -102,7 +103,7 @@
     <RelativeLayout
         android:id="@+id/rl_wl_gg"
         android:layout_width="match_parent"
-        android:layout_height="53dp"
+        android:layout_height="40dp"
         android:background="@android:color/white"
         android:orientation="horizontal"
         android:paddingLeft="24dp"
@@ -122,6 +123,22 @@
             android:layout_toRightOf="@+id/label_wl_gg"
             android:gravity="center"
             android:text="主体类容" />
+
+        <TextView
+            android:id="@+id/s_gbag11"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/im_arrow_right"
+            android:gravity="center"
+            android:text="查看详情" />
+
+        <ImageView
+            android:id="@+id/im_arrow_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/arrow_right"
+            android:layout_alignParentRight="true"
+            />
 
     </RelativeLayout>
     <LinearLayout

@@ -30,7 +30,7 @@ public class EmpPriceBean implements Serializable{
      * s_pchud06 :
      */
 
-    private int id;
+    private long id;
     private String s_pch00;
     private String s_pch01;
     private String s_pch02;
@@ -39,15 +39,15 @@ public class EmpPriceBean implements Serializable{
     private long s_pch05;
     private String s_pch_confirm;
     private String s_pch06;
-    private int s_pch07;
+    private long s_pch07;
     private String s_pch08;
     private String s_pch09;
-    private int s_pch10;
-    private int s_pch11;
+    private long s_pch10;
+    private long s_pch11;
     private String s_pch12;
     private String s_pch13;
     private String s_pch14;
-    private int s_pch15;
+    private long s_pch15;
     private String s_pchud01;
     private String s_pchud02;
     private String s_pchud03;
@@ -55,11 +55,11 @@ public class EmpPriceBean implements Serializable{
     private String s_pchud05;
     private String s_pchud06;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -99,7 +99,7 @@ public class EmpPriceBean implements Serializable{
         return s_pch04;
     }
 
-    public void setS_pch04(int s_pch04) {
+    public void setS_pch04(long s_pch04) {
         this.s_pch04 = s_pch04;
     }
 
@@ -107,7 +107,7 @@ public class EmpPriceBean implements Serializable{
         return s_pch05;
     }
 
-    public void setS_pch05(int s_pch05) {
+    public void setS_pch05(long s_pch05) {
         this.s_pch05 = s_pch05;
     }
 
@@ -127,11 +127,11 @@ public class EmpPriceBean implements Serializable{
         this.s_pch06 = s_pch06;
     }
 
-    public int getS_pch07() {
+    public long getS_pch07() {
         return s_pch07;
     }
 
-    public void setS_pch07(int s_pch07) {
+    public void setS_pch07(long s_pch07) {
         this.s_pch07 = s_pch07;
     }
 
@@ -151,19 +151,19 @@ public class EmpPriceBean implements Serializable{
         this.s_pch09 = s_pch09;
     }
 
-    public int getS_pch10() {
+    public long getS_pch10() {
         return s_pch10;
     }
 
-    public void setS_pch10(int s_pch10) {
+    public void setS_pch10(long s_pch10) {
         this.s_pch10 = s_pch10;
     }
 
-    public int getS_pch11() {
+    public long getS_pch11() {
         return s_pch11;
     }
 
-    public void setS_pch11(int s_pch11) {
+    public void setS_pch11(long s_pch11) {
         this.s_pch11 = s_pch11;
     }
 
@@ -191,11 +191,11 @@ public class EmpPriceBean implements Serializable{
         this.s_pch14 = s_pch14;
     }
 
-    public int getS_pch15() {
+    public long getS_pch15() {
         return s_pch15;
     }
 
-    public void setS_pch15(int s_pch15) {
+    public void setS_pch15(long s_pch15) {
         this.s_pch15 = s_pch15;
     }
 

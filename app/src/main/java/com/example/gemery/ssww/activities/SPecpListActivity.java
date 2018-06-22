@@ -72,11 +72,24 @@ public class SPecpListActivity extends AppCompatActivity {
                 ((TextView) holder.itemView.findViewById(R.id.s_pecp_h02))
                         .setText(listData.get(position).getS_pecp_h02());
                 ((TextView) holder.itemView.findViewById(R.id.s_pecp_h02_desc))
-                        .setText(listData.get(position).getS_pecp_h02());
+                        .setText(listData.get(position).getS_pecp_h02_desc());
                 ((TextView) holder.itemView.findViewById(R.id.s_pecp_hconfirm))
                         .setText(listData.get(position).getS_pecp_hconfirm());
                 ((TextView) holder.itemView.findViewById(R.id.s_pecp_h03))
                         .setText(listData.get(position).getS_pecp_h03());
+
+                holder.itemView.findViewById(R.id.ll_item_spec).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(SPecpListActivity.this,SPecpDetailActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("specDetail",listData.get(position));
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                });
+
+
             }
 
             @Override

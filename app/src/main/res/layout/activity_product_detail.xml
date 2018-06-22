@@ -393,7 +393,7 @@
         android:paddingRight="24dp"
         >
         <TextView
-            android:id="@+id/label_s_ima40"
+            android:id="@+id/label_s_pb_confirm_user"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="销售科目："
@@ -403,7 +403,7 @@
             android:id="@+id/s_ima40"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/label_s_ima40"
+            android:layout_toRightOf="@+id/label_s_pb_confirm_user"
             android:layout_marginLeft="20dp"
             android:text="xxx"
             android:layout_marginTop="10dp"

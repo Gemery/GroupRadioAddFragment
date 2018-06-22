@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_bp_price"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
     <RelativeLayout
         android:id="@+id/rl_text_bh"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:orientation="horizontal"
         android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        >
+        android:paddingRight="24dp">
 
         <TextView
             android:id="@+id/text_label1"
@@ -29,19 +29,19 @@
             android:gravity="center"
             android:text="xxxxx" />
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="#ddd"
-        ></LinearLayout>
+        android:background="#ddd"></LinearLayout>
+
     <RelativeLayout
         android:id="@+id/rl_text_bh12"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:orientation="horizontal"
         android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        >
+        android:paddingRight="24dp">
 
         <TextView
             android:id="@+id/text_label2"
@@ -60,19 +60,19 @@
             android:gravity="center"
             android:text="xxx" />
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="#ddd"
-        ></LinearLayout>
+        android:background="#ddd"></LinearLayout>
+
     <RelativeLayout
         android:id="@+id/rl_text_bh13"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:orientation="horizontal"
         android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        >
+        android:paddingRight="24dp">
 
         <TextView
             android:id="@+id/text_label3"
@@ -91,19 +91,19 @@
             android:gravity="center"
             android:text="xxx" />
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="#ddd"
-        ></LinearLayout>
+        android:background="#ddd"></LinearLayout>
+
     <RelativeLayout
         android:id="@+id/rl_text_bh14"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:orientation="horizontal"
         android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        >
+        android:paddingRight="24dp">
 
         <TextView
             android:id="@+id/text_label4"
@@ -121,11 +121,27 @@
             android:layout_toRightOf="@+id/text_label4"
             android:gravity="center"
             android:text="xxx" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="查看详情"
+            android:layout_toLeftOf="@+id/im_arrow_right"
+            android:paddingRight="2dp"
+            />
+        <ImageView
+            android:id="@+id/im_arrow_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/arrow_right"
+            />
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="#ddd"
-        ></LinearLayout>
+        android:background="#ddd"></LinearLayout>
 
 </LinearLayout>

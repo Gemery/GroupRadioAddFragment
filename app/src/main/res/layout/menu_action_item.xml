@@ -6,32 +6,32 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:text="修改"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:textColor="#222"
+        android:textColor="#fff"
         android:padding="10dp"
         android:layout_marginLeft="10dp"
         android:id="@+id/order_edit"
         android:layout_marginRight="10dp"
         android:layout_alignParentRight="true"
-        android:background="@drawable/border_raduis"
+        android:background="@drawable/border_corners"
         />
 
     <TextView
         android:id="@+id/order_delete"
         android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
         android:layout_below="@+id/order_edit"
-        android:text="删除"
-        android:textColor="#222"
+        android:text="删 除"
+        android:textColor="#fff"
         android:padding="10dp"
-        android:background="@drawable/border_raduis"
+        android:background="@drawable/border_corners"
         android:gravity="center"
         />
 

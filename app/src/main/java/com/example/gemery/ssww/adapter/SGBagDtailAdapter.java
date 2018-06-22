@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
-import com.example.gemery.ssww.bean.ImaBean;
-import com.example.gemery.ssww.listener.NumberChangeListener;
+import com.example.gemery.ssww.bean.OeaBen;
+import com.example.gemery.ssww.bean.SGBagDetailBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +19,11 @@ import java.util.List;
 /**
  * Created by wsy on 2018/6/4.
  */
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
+public class SGBagDtailAdapter extends RecyclerView.Adapter<SGBagDtailAdapter.MyHolder> {
 
     private RecyclerView mRecyclerView;
 
-    private List<ImaBean.ListBean> data = new ArrayList<>();
+    private List<SGBagDetailBean.GbagEBean> data = new ArrayList<>();
     private Context mContext;
 
     private View VIEW_FOOTER;
@@ -34,71 +34,46 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
     private int TYPE_HEADER = 1001;
     private int TYPE_FOOTER = 1002;
 
-    private NumberChangeListener mListener;
-    public MyAdapter(NumberChangeListener listener,List<ImaBean.ListBean> data, Context mContext) {
+    public SGBagDtailAdapter(List<SGBagDetailBean.GbagEBean> data, Context mContext) {
         this.data = data;
         this.mContext = mContext;
-        this.mListener = listener;
     }
 
     @Override
-    public MyAdapter.MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SGBagDtailAdapter.MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_FOOTER) {
             return new MyHolder(VIEW_FOOTER);
         } else if (viewType == TYPE_HEADER) {
             return new MyHolder(VIEW_HEADER);
         } else {
-            return new MyHolder(getLayout(R.layout.item_order_dansheng,parent));
+            return new MyHolder(getLayout(R.layout.item_sgbag_detail_ds,parent));
         }
     }
 
     @Override
-    public void onBindViewHolder(MyHolder holder, int  position) {
+    public void onBindViewHolder(MyHolder holder, int position) {
         if (!isHeaderView(position) && !isFooterView(position)) {
             if (haveHeaderView()) position--;
-            //   s_ima1006_desc='门夹系列淋浴房'
-            ((TextView) holder.itemView.findViewById(R.id.content_wl_gg))
-                    .setText(data.get(position).getS_ima1006_desc());
-            // 型号
-            ((TextView) holder.itemView.findViewById(R.id.content_wl_xh))
-                    .setText(data.get(position).getS_imaud01());
-            //名称
-            ((TextView) holder.itemView.findViewById(R.id.content_wl_name))
-                    .setText(data.get(position).getS_ima02());
-            //物料代码
-            ((TextView) holder.itemView.findViewById(R.id.wl_content_code))
-                    .setText(data.get(position).getS_ima01());
-            final int finalPostion = position;
-            // 数量
-           TextView slTv = ((TextView) holder.itemView.findViewById(R.id.s_gbag_e07));
-                    slTv.setText("1");
+            // 物料代码
+            ((TextView) holder.itemView.findViewById(R.id.s_gbag_e02))
+                    .setText(data.get(position).getS_gbag_e02());
+            ((TextView) holder.itemView.findViewById(R.id.s_gbag_e03))
+                    .setText(data.get(position).getS_gbag_e03());
+            ((TextView) holder.itemView.findViewById(R.id.s_gbag_e04))
+                    .setText(data.get(position).getS_gbag_e04());
+            ((TextView) holder.itemView.findViewById(R.id.s_gbag_e05))
+                    .setText(data.get(position).getS_gbag_e05());
+            ((TextView) holder.itemView.findViewById(R.id.s_gbag_e06))
+                    .setText(data.get(position).getS_gbag_e06());
+            ((TextView) holder.itemView.findViewById(R.id.s_gbag_e07))
+                    .setText(String.valueOf(data.get(position).getS_gbag_e07()));
+            ((TextView) holder.itemView.findViewById(R.id.s_gbag_e08))
+                    .setText(String.valueOf(data.get(position).getS_gbag_e08()));
+            ((TextView) holder.itemView.findViewById(R.id.s_gbag_e09))
+                    .setText(String.valueOf(data.get(position).getS_gbag_e09()));
+            ((TextView) holder.itemView.findViewById(R.id.s_gbag_enote))
+                    .setText(data.get(position).getS_gbag_enote());
 
-            holder.itemView.findViewById(R.id.sl_count_bl).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int count = Integer.parseInt(slTv.getText().toString());
-                    if(count == 1){
-                        return;
-                    }else{
-                        count--;
-                        slTv.setText(String.valueOf(count));
-                        // 监听数据变化
-                        data.get(finalPostion).setS_imaud01(String.valueOf(count));
-                        mListener.onNumberChange(finalPostion,String.valueOf(count));
-                    }
-                }
-            });
-            holder.itemView.findViewById(R.id.sl_count_pl).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int count = Integer.parseInt(slTv.getText().toString());
-                        count++;
-                        slTv.setText(String.valueOf(count));
-
-                    data.get(finalPostion).setS_imaud01(String.valueOf(count));
-                    mListener.onNumberChange(finalPostion,String.valueOf(count));
-                }
-            });
         }
     }
 

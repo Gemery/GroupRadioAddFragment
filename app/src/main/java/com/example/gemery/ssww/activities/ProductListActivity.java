@@ -238,7 +238,6 @@ public class ProductListActivity extends AppCompatActivity implements View.OnCli
                 Log.e("tag",checkData.toString());
                 bundle.putSerializable("list", (Serializable) checkData);
                intent.putExtras(bundle);
-
                 startActivity(intent);
                 break;
             case R.id.filter_first:

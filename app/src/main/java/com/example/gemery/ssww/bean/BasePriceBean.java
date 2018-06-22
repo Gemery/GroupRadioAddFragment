@@ -17,23 +17,23 @@ public class BasePriceBean implements Serializable {
      * TotalCount : 14
      */
 
-    private int TotalPageCount;
-    private int TotalCount;
+    private long TotalPageCount;
+    private long TotalCount;
     private List<ListBean> list;
 
-    public int getTotalPageCount() {
+    public long getTotalPageCount() {
         return TotalPageCount;
     }
 
-    public void setTotalPageCount(int TotalPageCount) {
+    public void setTotalPageCount(long TotalPageCount) {
         this.TotalPageCount = TotalPageCount;
     }
 
-    public int getTotalCount() {
+    public long getTotalCount() {
         return TotalCount;
     }
 
-    public void setTotalCount(int TotalCount) {
+    public void setTotalCount(long TotalCount) {
         this.TotalCount = TotalCount;
     }
 
@@ -74,23 +74,23 @@ public class BasePriceBean implements Serializable {
          * s_pbud07 :
          */
 
-        private int id;
+        private long id;
         private String s_pb00;
-        private int s_pb01;
+        private long s_pb01;
         private String s_pb02;
         private String s_pb03;
         private String s_pb04;
         private String s_pb05;
         private String s_pb06;
-        private int s_pb07;
-        private int s_pb08;
-        private int s_pb09;
-        private int s_pb10;
+        private long s_pb07;
+        private long s_pb08;
+        private long s_pb09;
+        private long s_pb10;
         private String s_pb11;
         private String s_pb12;
         private String s_pb_confirm_state;
         private String s_pb_confirm_user;
-        private int s_pb_confirm_date;
+        private long s_pb_confirm_date;
         private String s_pb_acti;
         private String s_pbud01;
         private String s_pbud02;
@@ -100,11 +100,11 @@ public class BasePriceBean implements Serializable {
         private String s_pbud06;
         private String s_pbud07;
 
-        public int getId() {
+        public long getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(long id) {
             this.id = id;
         }
 
@@ -116,11 +116,11 @@ public class BasePriceBean implements Serializable {
             this.s_pb00 = s_pb00;
         }
 
-        public int getS_pb01() {
+        public long getS_pb01() {
             return s_pb01;
         }
 
-        public void setS_pb01(int s_pb01) {
+        public void setS_pb01(long s_pb01) {
             this.s_pb01 = s_pb01;
         }
 
@@ -164,35 +164,35 @@ public class BasePriceBean implements Serializable {
             this.s_pb06 = s_pb06;
         }
 
-        public int getS_pb07() {
+        public long getS_pb07() {
             return s_pb07;
         }
 
-        public void setS_pb07(int s_pb07) {
+        public void setS_pb07(long s_pb07) {
             this.s_pb07 = s_pb07;
         }
 
-        public int getS_pb08() {
+        public long getS_pb08() {
             return s_pb08;
         }
 
-        public void setS_pb08(int s_pb08) {
+        public void setS_pb08(long s_pb08) {
             this.s_pb08 = s_pb08;
         }
 
-        public int getS_pb09() {
+        public long getS_pb09() {
             return s_pb09;
         }
 
-        public void setS_pb09(int s_pb09) {
+        public void setS_pb09(long s_pb09) {
             this.s_pb09 = s_pb09;
         }
 
-        public int getS_pb10() {
+        public long getS_pb10() {
             return s_pb10;
         }
 
-        public void setS_pb10(int s_pb10) {
+        public void setS_pb10(long s_pb10) {
             this.s_pb10 = s_pb10;
         }
 
@@ -228,11 +228,11 @@ public class BasePriceBean implements Serializable {
             this.s_pb_confirm_user = s_pb_confirm_user;
         }
 
-        public int getS_pb_confirm_date() {
+        public long getS_pb_confirm_date() {
             return s_pb_confirm_date;
         }
 
-        public void setS_pb_confirm_date(int s_pb_confirm_date) {
+        public void setS_pb_confirm_date(long s_pb_confirm_date) {
             this.s_pb_confirm_date = s_pb_confirm_date;
         }
 

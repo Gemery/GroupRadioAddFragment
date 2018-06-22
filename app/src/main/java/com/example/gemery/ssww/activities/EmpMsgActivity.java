@@ -92,7 +92,7 @@ public class EmpMsgActivity extends AppCompatActivity implements PullLoadMoreRec
  
     private void initRecyclerView() {
         titleBarTitle.setText("员工信息资料");
-        titleOptionsTv.setText("添加");
+        titleOptionsTv.setText("");
 
         customCv.setLinearLayout();
 
@@ -111,10 +111,10 @@ public class EmpMsgActivity extends AppCompatActivity implements PullLoadMoreRec
             public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
                 ((TextView)holder.itemView.findViewById(R.id.s_p03)).
                         setText(listData.get(position).getS_p03());
-                ((TextView)holder.itemView.findViewById(R.id.text_name)).
-                        setText(listData.get(position).getS_p02());
-                ((TextView)holder.itemView.findViewById(R.id.text_depart)).
+                ((TextView)holder.itemView.findViewById(R.id.s_p01)).
                         setText(listData.get(position).getS_p01());
+                ((TextView)holder.itemView.findViewById(R.id.s_p02)).
+                        setText(listData.get(position).getS_p02());
 
                 final int finalPostion = position;
 

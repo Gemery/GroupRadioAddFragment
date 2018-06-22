@@ -78,7 +78,7 @@ public class CustomDetailActivity extends AppCompatActivity {
         sOcc02.setText(obj.getS_occ02());
         sOcc03.setText(obj.getS_occ03());
         sOcc04.setText(obj.getS_occ04());
-        sOcc05.setText("shijian-->");
+        sOcc05.setText("2018/3/11");
         sOcc06.setText(obj.getS_occ06());
         sOcc07.setText(obj.getS_occ07());
         sOcc08.setText(obj.getS_occ08());
@@ -103,15 +103,9 @@ public class CustomDetailActivity extends AppCompatActivity {
     public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.title_bar_back:
-                mWeiboDialog = WeiboDialogUtils.createLoadingDialog(CustomDetailActivity.this, "加载中...");
-                mHandler.sendEmptyMessageDelayed(1, 2000);
-               // finish();
+                finish();
                 break;
             case R.id.title_options_tv:
-                mDialog = DialogThridUtils.showWaitDialog(CustomDetailActivity.this, "加载中...", false, true);
-                mHandler.sendEmptyMessageDelayed(1, 2000);
-
-
                 break;
         }
 

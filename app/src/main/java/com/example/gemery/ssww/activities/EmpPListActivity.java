@@ -90,6 +90,19 @@ public class EmpPListActivity extends AppCompatActivity {
                         setText(dateString);
                 ((TextView)holder.itemView.findViewById(R.id.s_pch05)).
                         setText(formatter.format(date2));
+
+
+                holder.itemView.findViewById(R.id.ll_item_emp_price).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(EmpPListActivity.this,EmpPDetailActivity.class);
+                        Bundle bundle  = new Bundle();
+                        bundle.putSerializable("priceDetail",listData.get(position));
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+
+                    }
+                });
             }
 
             @Override

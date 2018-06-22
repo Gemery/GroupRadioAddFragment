@@ -26,14 +26,14 @@
             android:text="物料代码："
             android:gravity="center"
             />
+
         <TextView
-            android:id="@+id/wl_content_code"
+            android:id="@+id/s_gbag_e02"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_wu_code"
-            android:text="xxxxxxx"
             android:gravity="center"
-            />
+            android:text="xxxxxxx" />
 
     </RelativeLayout>
     <LinearLayout
@@ -57,14 +57,14 @@
             android:text="物料名称："
             android:gravity="center"
             />
+
         <TextView
-            android:id="@+id/content_wl_name"
+            android:id="@+id/s_gbag_e03"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_wl_name"
-            android:text="name"
             android:gravity="center"
-            />
+            android:text="name" />
 
     </RelativeLayout>
     <LinearLayout
@@ -88,14 +88,14 @@
             android:text="物料型号："
             android:gravity="center"
             />
+
         <TextView
-            android:id="@+id/content_wl_xh"
+            android:id="@+id/s_gbag_e04"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_wl_xh"
-            android:text="xxxxxxxx"
             android:gravity="center"
-            />
+            android:text="xxxxxxxx" />
 
     </RelativeLayout>
     <LinearLayout
@@ -119,14 +119,14 @@
             android:text="规格："
             android:gravity="center"
             />
+
         <TextView
-            android:id="@+id/content_wl_gg"
+            android:id="@+id/s_gbag_e05"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_wl_gg"
-            android:text="主体类容"
             android:gravity="center"
-            />
+            android:text="主体类容" />
 
     </RelativeLayout>
     <LinearLayout
@@ -170,25 +170,149 @@
         android:layout_height="1dp"
         android:background="#ddd"
         ></LinearLayout>
-    <!--<LinearLayout-->
-    <!--android:paddingRight="24dp"-->
-    <!--android:paddingLeft="24dp"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:orientation="horizontal">-->
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="定金金额："-->
-    <!--/>-->
-    <!--<android.support.design.widget.TextInputEditText-->
-    <!--android:id="@+id/order_mon"-->
-    <!--android:layout_width="100dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:textColor="#555"-->
-    <!--android:textSize="14sp"-->
-    <!--android:text="xxxx"-->
-    <!--/>-->
+    <RelativeLayout
+        android:id="@+id/rl_s_sgbag_e06"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        >
+        <TextView
+            android:id="@+id/label_s_sgbag_e06"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="描述："
+            android:gravity="center"
+            />
 
-    <!--</LinearLayout>-->
+        <TextView
+            android:id="@+id/s_gbag_e06"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/label_s_sgbag_e06"
+            android:layout_marginLeft="20dp"
+            android:text="88"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            />
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ddd"
+        ></LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rl_s_gbag_enote"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        >
+        <TextView
+            android:id="@+id/label_s_gbag_enote"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="备注："
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/s_gbag_enote"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/label_s_gbag_enote"
+            android:layout_marginLeft="20dp"
+            android:text="88"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            />
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ddd"
+        ></LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rl_s_gbag_e08"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        >
+        <TextView
+            android:id="@+id/label_s_gbag_e08"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="明细价格："
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/s_gbag_e08"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/label_s_gbag_e08"
+            android:layout_marginLeft="20dp"
+            android:text="88"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            />
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ddd"
+        ></LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rl_s_gbag_e09"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        >
+        <TextView
+            android:id="@+id/label_s_gbag_e09"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="明细金额："
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/s_gbag_e09"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/label_s_gbag_e09"
+            android:layout_marginLeft="20dp"
+            android:text="88"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            />
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ddd"
+        ></LinearLayout>
+
 </LinearLayout>

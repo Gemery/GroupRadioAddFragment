@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,13 +17,16 @@ import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.adapter.MyOrderDtailAdapter;
+import com.example.gemery.ssww.bean.ConstResponse;
 import com.example.gemery.ssww.bean.OeaBen;
 import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
+import com.example.gemery.ssww.utils.ToastUtil;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +53,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     private MyOrderDtailAdapter mAdapter;
     private View viewHeader;
     private TextView textContentBH;
+    private OeaBen oeaBen;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,7 +74,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Response<String> response) {
                         //Log.e("tag",response.body());
-                        OeaBen oeaBen = GsonUtils.parseJSON(response.body(), OeaBen.class);
+                         oeaBen = GsonUtils.parseJSON(response.body(), OeaBen.class);
                         list = oeaBen.getOebList();
                         dtBean = oeaBen.getOeaList().get(0);
                         runOnUiThread(new Runnable() {
@@ -120,7 +126,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.title_options_tv:
-                //showPopupWindow();
+                showPopupWindow();
                 break;
         }
     }
@@ -133,23 +139,54 @@ public class OrderDetailActivity extends AppCompatActivity {
   "flage": "3"
 }
  */
+   private String url = Const.W_HOST + "/api/Order/standardOrderExq";
     private String upJson = "";
-
     private void showPopupWindow() {
         View contentView = LayoutInflater.from(this).inflate(R.layout.menu_action_item, null);
 
         PopupWindow popupWindow = new PopupWindow(contentView,
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
-
         contentView.findViewById(R.id.order_edit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(OrderDetailActivity.this,OrderEditActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("orderDetail", (Serializable) oeaBen);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
+        contentView.findViewById(R.id.order_delete).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                upJson = "{ oeaList: [{ id:"+ dtBean.getId() + ",s_oea01:"
+                        + "\"" + dtBean.getS_oea01() + "\"}],"
+                        + "oebList:[{ s_oeb01:\"" + dtBean.getS_oea01() +"\"}],"
+                        + "flage : 3 }";
+                Log.e("tag",upJson);
+                OkGo.<String>post(url)
+                        .tag(this)
+                        .upJson(upJson)
+                        .execute(new StringCallback() {
+                            @Override
+                            public void onSuccess(Response<String> response) {
+                               // Log.e("tag",response.body());
+                                ConstResponse obj = GsonUtils.parseJSON(response.body(),ConstResponse.class);
+                                if(obj.getResultCode().equals("0") && obj.getResultMessage().equals("删除成功")){
+                                    ToastUtil.showToast(OrderDetailActivity.this,"删除成功");
+                                    finish();
+                                }
+
+
+                            }
+                        });
 
             }
         });
 
         popupWindow.setContentView(contentView);
-        popupWindow.showAsDropDown(title);
+        popupWindow.showAtLocation(title, Gravity.BOTTOM,0,0);
 
 
     }
