@@ -144,6 +144,9 @@ public class BasePriceActivity extends AppCompatActivity {
         bpReView.setAdapter(mAdapter);
     }
 
+    private final static int REQUEST_CODE = 1;
+    private final static int RESULT_CODE = 4;
+
     @OnClick({R.id.title_bar_back,R.id.title_options_tv})
     public void onViewClick(View view){
         switch (view.getId()){
@@ -152,9 +155,22 @@ public class BasePriceActivity extends AppCompatActivity {
                 break;
             case R.id.title_options_tv:
                 Intent intent = new Intent(this,BPSearchActivity.class);
-                intent.putExtra("action","BPSearchActivity");
-                startActivity(intent);
+                startActivityForResult(intent,REQUEST_CODE);
                 break;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_CODE) {
+            Bundle bundle = data.getExtras();
+            BasePriceBean obj = (BasePriceBean) bundle.getSerializable("respResult");
+            listData = obj.getList();
+
+            mAdapter.notifyDataSetChanged();
+
+        }
+
     }
 }

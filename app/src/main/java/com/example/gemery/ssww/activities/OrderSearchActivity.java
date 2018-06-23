@@ -213,14 +213,10 @@ public class OrderSearchActivity extends AppCompatActivity {
             case R.id.rl_order_end_date:
                 DatePickerDialog datePicker = new DatePickerDialog(OrderSearchActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
-
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 // TODO Auto-generated method stub
                                 textEndDate.setText(year + "/ " + (monthOfYear + 1) + "/ " + dayOfMonth);
-                                Toast.makeText(OrderSearchActivity.this,
-                                        year + "/" + (monthOfYear + 1) + "/ " + dayOfMonth + "day",
-                                        Toast.LENGTH_SHORT).show();
                             }
                         }, 2018, 5, 20);
                 datePicker.show();
@@ -229,15 +225,10 @@ public class OrderSearchActivity extends AppCompatActivity {
                 DatePickerDialog datePickerend = new DatePickerDialog(OrderSearchActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
 
-
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 // TODO Auto-generated method stub
-                                new Date().getYear();
                                 textStartDate.setText(year + "/ " + (monthOfYear + 1) + "/ " + dayOfMonth);
-                                Toast.makeText(OrderSearchActivity.this,
-                                        year + "/" + (monthOfYear + 1) + "/ " + dayOfMonth + "day",
-                                        Toast.LENGTH_SHORT).show();
                             }
                         }, 2018, 5, 20);
                 datePickerend.show();

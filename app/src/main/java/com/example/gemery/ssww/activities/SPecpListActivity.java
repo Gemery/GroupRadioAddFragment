@@ -16,6 +16,7 @@ import android.widget.Adapter;
 import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
+import com.example.gemery.ssww.bean.InstallOrdBen;
 import com.example.gemery.ssww.bean.SPecpBean;
 import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
@@ -99,6 +100,9 @@ public class SPecpListActivity extends AppCompatActivity {
         };
         specpReView.setAdapter(mAdapter);
     }
+
+    public final static int RESULT_CODE = 4;
+    public final static int REQUEST_CODE = 1;
     @OnClick({R.id.title_bar_back,R.id.title_options_tv})
     public void onViewClick(View view){
         switch (view.getId()){
@@ -107,11 +111,24 @@ public class SPecpListActivity extends AppCompatActivity {
                 break;
             case R.id.title_options_tv:
                 Intent intent = new Intent(this,SPecpSearchActivity.class);
-                intent.putExtra("action","---->");
-                startActivity(intent);
+
+                startActivityForResult(intent,REQUEST_CODE);
                 break;
         }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE && resultCode == RESULT_CODE){
+            Bundle bundle = data.getExtras();
+            ArrayList<SPecpBean> list = (ArrayList<SPecpBean>) bundle.getSerializable("respResult");
+            listData = list;
+            mAdapter.notifyDataSetChanged();
+        }
+
+    }
+
     private List<SPecpBean> listData = new ArrayList<>();
     private Handler handler = new Handler(){
         @Override

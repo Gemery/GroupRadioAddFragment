@@ -135,7 +135,6 @@ public class EStoreActivity extends AppCompatActivity {
                     public void onSuccess(Response<String> response) {
                        // Log.e("tag",response.body());
                         List<EStoreBean> list = GsonUtils.jsonToArrayList(response.body(),EStoreBean.class);
-
                         Message msg = new Message();
                         msg.what = 1;
                         msg.obj  = list;

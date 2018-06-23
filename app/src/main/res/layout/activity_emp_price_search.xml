@@ -20,15 +20,16 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
+
                 <TextView
                     android:id="@+id/search_label_key"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
-                    android:text="门店编号"
-                    android:gravity="center"
                     android:layout_marginLeft="10dp"
                     android:drawablePadding="5dp"
-                    />
+                    android:gravity="center"
+                    android:paddingRight="10dp"
+                    android:text="门店编号:" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -69,7 +70,7 @@
                     android:drawablePadding="5dp"
                     android:gravity="center"
                     android:paddingRight="10dp"
-                    android:text="价格条件编号：" />
+                    android:text="价格条件：" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
@@ -109,7 +110,7 @@
                     android:drawablePadding="5dp"
                     android:gravity="center"
                     android:paddingRight="10dp"
-                    android:text="录入人员：" />
+                    android:text="物料名称：" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
@@ -118,7 +119,7 @@
                     android:background="@drawable/search_layout_bg">
 
                     <EditText
-                        android:id="@+id/s_pch08"
+                        android:id="@+id/s_pce04"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -150,7 +151,7 @@
                     android:drawablePadding="5dp"
                     android:gravity="center"
                     android:paddingRight="10dp"
-                    android:text="职位：" />
+                    android:text="型号：" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
@@ -159,7 +160,7 @@
                     android:background="@drawable/search_layout_bg">
 
                     <EditText
-                        android:id="@+id/s_pch09"
+                        android:id="@+id/s_pce05"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"

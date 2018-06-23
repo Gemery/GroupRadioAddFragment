@@ -129,16 +129,13 @@ public class OrderEditActivity extends AppCompatActivity {
         viewHeader.findViewById(R.id.rl_text_date).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                                DatePickerDialog datePicker = new DatePickerDialog(OrderEditActivity.this,
+                DatePickerDialog datePicker = new DatePickerDialog(OrderEditActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
-
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 // TODO Auto-generated method stub
                                 ((TextView)viewHeader.findViewById(R.id.text_content_date)).setText(year + "/ " + (monthOfYear + 1) + "/ " + dayOfMonth);
-                                Toast.makeText(OrderEditActivity.this,
-                                        year + "year " + (monthOfYear + 1) + "month " + dayOfMonth + "day",
-                                        Toast.LENGTH_SHORT).show();
+
                             }
                         }, 2018, 5, 20);
                 datePicker.show();

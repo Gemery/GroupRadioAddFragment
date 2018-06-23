@@ -158,7 +158,8 @@ public class EmpPListActivity extends AppCompatActivity {
                 });
 
     }
-
+    public final static int REQUEST_CODE = 2;
+    public final static int RESULT_CODE = 4;
     @OnClick({R.id.title_options_tv,R.id.title_bar_back})
     public void onViewClick(View view){
         switch (view.getId()){
@@ -167,9 +168,18 @@ public class EmpPListActivity extends AppCompatActivity {
                 break;
             case R.id.title_options_tv:
                 Intent intent = new Intent(EmpPListActivity.this,EmpPSearchActivity.class);
-                intent.putExtra("action","to_search_price_activity");
-                startActivity(intent);
+                startActivityForResult(intent,REQUEST_CODE);
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE && resultCode == RESULT_CODE){
+            Bundle bundle = data.getExtras();
+            listData = (List<EmpPriceBean>) bundle.getSerializable("respResult");
+            mAdapter.notifyDataSetChanged();
         }
 
     }

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.adapter.MyOrderDtailAdapter;
 import com.example.gemery.ssww.bean.ConstResponse;
+import com.example.gemery.ssww.bean.ImaBean;
 import com.example.gemery.ssww.bean.OeaBen;
 import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
@@ -150,8 +151,26 @@ public class OrderDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(OrderDetailActivity.this,OrderEditActivity.class);
+                List<ImaBean.ListBean> listData = new ArrayList<>();
+                for(int i=0;i<list.size();i++){
+                    /*
+                     * s_ima01 : 1059900137
+                     * s_ima02 : 淋浴房屏风
+                     * s_ima021 :
+                     * s_imaud01 : LA21-01
+                     * s_ima25 : 套
+                     * s_ima1006 : LK
+                     * s_ima1006_desc : 门夹系列淋浴房
+                     */
+                    ImaBean.ListBean obj = new ImaBean.ListBean();
+                    obj.setS_ima01(list.get(i).getS_oeb03());
+                    obj.setS_ima02(list.get(i).getS_oeb04());
+                    obj.setS_imaud01(list.get(i).getS_oeb05());
+                    obj.setS_ima1006_desc(list.get(i).getS_oeb06());
+                   listData.add(obj);
+                }
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("orderDetail", (Serializable) oeaBen);
+                bundle.putSerializable("list", (Serializable) listData);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

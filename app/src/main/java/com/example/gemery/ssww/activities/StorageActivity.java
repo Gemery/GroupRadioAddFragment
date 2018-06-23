@@ -23,6 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
+import com.example.gemery.ssww.bean.InstallOrdBen;
 import com.example.gemery.ssww.bean.StorageBean;
 import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
@@ -85,6 +86,7 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
 
     private List<StorageBean.ListBean> listData = new ArrayList<>();
     private String upJson;
+    private RecyclerView.Adapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -124,7 +126,6 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
                     @Override
                     public void onSuccess(Response<String> response) {
                         String json = response.body();
-                        // Log.e("tag", json);
                         StorageBean storageBean = GsonUtils.parseJSON(json, StorageBean.class);
                         listData = storageBean.getList();
                         runOnUiThread(new Runnable() {
@@ -234,7 +235,9 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
 //        });
         storageRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         //storageRecyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
-        storageRecyclerView.setAdapter(new RecyclerView.Adapter() {
+
+
+        adapter = new RecyclerView.Adapter() {
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 RecyclerView.ViewHolder holder = new RecyclerView.ViewHolder(
@@ -271,9 +274,9 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
             public int getItemCount() {
                 return listData.size();
             }
-        });
+        };
 
-
+        storageRecyclerView.setAdapter(adapter);
     }
 
     /*   post data 模板.........
@@ -302,10 +305,9 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
                 showPopuWindow();
                 break;
             case R.id.title_options_tv:
-                //mySearchView.setVisibility(View.VISIBLE);
-                //search();
+
                 Intent intent = new Intent(this,StorageSearchActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,1);
 
                 break;
             case R.id.title_bar_back:
@@ -313,6 +315,18 @@ public class StorageActivity extends AppCompatActivity implements SwipeRefreshLa
                 break;
 
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode ==1 && resultCode == 4){
+            Bundle bundle = data.getExtras();
+            StorageBean bean = (StorageBean) bundle.getSerializable("respResult");
+            listData = bean.getList();
+            adapter.notifyDataSetChanged();
+        }
+
     }
 
     public int checkItem = 0;
