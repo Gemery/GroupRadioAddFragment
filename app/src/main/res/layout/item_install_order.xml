@@ -22,6 +22,7 @@
             android:gravity="center"
             />
         <TextView
+            android:textColor="#222"
             android:id="@+id/s_ist_h01"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -53,6 +54,7 @@
             android:gravity="center"
             />
         <TextView
+            android:textColor="#222"
             android:id="@+id/s_ist_h06"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -84,6 +86,7 @@
             android:gravity="center"
             />
         <TextView
+            android:textColor="#222"
             android:id="@+id/s_ist_h02"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -115,6 +118,7 @@
             android:gravity="center"
             />
         <TextView
+            android:textColor="#222"
             android:id="@+id/s_ist_h05"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -147,6 +151,7 @@
             />
 
         <TextView
+            android:textColor="#222"
             android:id="@+id/s_ist_h08"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

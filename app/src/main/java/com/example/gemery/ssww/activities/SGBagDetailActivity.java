@@ -25,6 +25,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class SGBagDetailActivity extends AppCompatActivity {
     @BindView(R.id.title_bar_title)
@@ -84,7 +85,16 @@ public class SGBagDetailActivity extends AppCompatActivity {
         initRecylerViewHeader();
         mAdapter.addHeaderView(viewHeader);
     }
-
+    @OnClick({R.id.title_options_tv,R.id.title_bar_back})
+    public void onClickView(View view) {
+        switch (view.getId()) {
+            case R.id.title_options_tv:
+                break;
+            case R.id.title_bar_back:
+                finish();
+                break;
+        }
+    }
     private void initRecylerViewHeader() {
         viewHeader = LayoutInflater.from(this).inflate(R.layout.item_sgbag_detail_dantou, null);
         ((TextView)viewHeader.findViewById(R.id.s_gbag_h02))

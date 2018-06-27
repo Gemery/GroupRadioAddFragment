@@ -136,6 +136,7 @@ public class OrderSearchActivity extends AppCompatActivity {
     }
     private void clearFormData(){
         textEndDate.setText("");
+        textStartDate.setText("");
         sOeb06.setText("");
         sOeb05.setText("");
         sOeb04.setText("");

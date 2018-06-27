@@ -25,7 +25,8 @@
          android:layout_width="wrap_content"
          android:layout_height="match_parent"
          android:layout_toRightOf="@+id/text_label1"
-         android:text="主体类容"
+         android:text="xxx112xxxxx"
+         android:textColor="#222"
          android:gravity="center"
          />
     </RelativeLayout>

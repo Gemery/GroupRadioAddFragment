@@ -74,8 +74,7 @@ public class SignInActivity extends Activity {
 
     SharedPreferences usersp;
     private ProgressDialog loginDialog;
-    private String username;
-    private String password;
+
     private XMPPConnection connection;
     private BroadcastReceiver receiver;
     private SignInActivity mContext;
@@ -97,7 +96,7 @@ public class SignInActivity extends Activity {
         loginDialog.setTitle("提示");
         loginDialog.setMessage("正在请求服务器...");
         usersp = getSharedPreferences("user",0);
-        if(!usersp.getString("username","").equals("")&& !usersp.getString("userpsw","").equals("")){
+        if(!usersp.getString("username","").equals("") && !usersp.getString("userpsw","").equals("")){
             mEmail.setText(usersp.getString("username",""));
             mPassword.setText(usersp.getString("userpsw",""));
         }
@@ -137,13 +136,9 @@ public class SignInActivity extends Activity {
     public void onClickView(){
 
         if(checkForm()){
-            username=mEmail.getText().toString();
-            password=mPassword.getText().toString();
-//            PreferencesUtils.putSharePre(mContext, "username", username);
-//            PreferencesUtils.putSharePre(mContext, "pwd", password);
+           String username=mEmail.getText().toString();
+            String password=mPassword.getText().toString();
             loginDialog.show();
-
-
             //启动核心Service  建立长连接    reciver  接受广播（携带后台状态码）做处理验证
            // Intent intent=new Intent(this,MsfService.class);
             //startService(intent);
@@ -156,8 +151,9 @@ public class SignInActivity extends Activity {
                         public void onSuccess(Response<String> response) {
                             loginDialog.dismiss();
                                 LoginResultInfoBean object = GsonUtils.parseJSON(response.body(),LoginResultInfoBean.class);
-                                if(object.getServerCode().getResultCode().equals("0")){
-                                    // 第一次登陆  ---》
+                                if(object.getServerCode().getResultMessage().equals("登录成功")){
+                                    // 第一次登陆  --->
+                                    Log.e("tag","state->success");
                                     if(usersp.getString("username","").equals("")) {
                                         //usersp = getSharedPreferences("user", 0);
                                         SharedPreferences.Editor editor = usersp.edit();
@@ -170,6 +166,11 @@ public class SignInActivity extends Activity {
                                     startActivity(intent);
                                     finish();
                                 }
+                                if(object.getServerCode().getResultMessage().equals("登录用户名或密码不正确")){
+                                    //mPassword.setError("登录用户名或密码不正确");
+                                    Log.e("tag",username + password);
+
+                                }
                         }
                         @Override
                         public void onError(Response<String> response) {
@@ -180,8 +181,8 @@ public class SignInActivity extends Activity {
     }
 
     private boolean checkForm() {
-        final String email = mEmail.getText().toString();
-        final String password = mPassword.getText().toString();
+         String email = mEmail.getText().toString();
+         String password = mPassword.getText().toString();
 
         boolean isPass = true;
 

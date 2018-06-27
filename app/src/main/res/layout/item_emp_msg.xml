@@ -21,6 +21,7 @@
             />
 
         <TextView
+            android:textColor="#222"
             android:id="@+id/s_p02"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -52,6 +53,7 @@
             />
 
         <TextView
+            android:textColor="#222"
             android:id="@+id/s_p03"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -83,6 +85,7 @@
             />
 
         <TextView
+            android:textColor="#222"
             android:id="@+id/s_p01"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

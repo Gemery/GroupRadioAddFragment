@@ -28,6 +28,7 @@
                 android:text="特殊价格编号：" />
 
             <TextView
+                android:textColor="#222"
                 android:id="@+id/s_pecp_h02"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -54,6 +55,7 @@
                 android:text="特殊价格条件描述：" />
 
             <TextView
+                android:textColor="#222"
                 android:id="@+id/s_pecp_h02_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -61,10 +63,8 @@
                 android:gravity="center"
                 android:text="xx123xx" />
         </RelativeLayout>
-    <!--消费者手机号-->
-    <!--消费者地址-->
 
-    <!--消费者收货地址-->
+    <!--审核否-->
         <RelativeLayout
             android:id="@+id/rl_text_emp_code"
             android:layout_width="match_parent"
@@ -83,6 +83,7 @@
                 android:text="审核否：" />
 
             <TextView
+                android:textColor="#222"
                 android:id="@+id/s_pecp_hconfirm"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -109,6 +110,7 @@
                 android:text="审核人：" />
 
             <TextView
+                android:textColor="#222"
                 android:id="@+id/s_pecp_h03"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"

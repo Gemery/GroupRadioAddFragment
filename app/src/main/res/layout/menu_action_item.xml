@@ -34,5 +34,20 @@
         android:background="@drawable/border_corners"
         android:gravity="center"
         />
+    <TextView
+        android:id="@+id/order_slock"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/order_delete"
+        android:text="锁 库"
+        android:textColor="#fff"
+        android:padding="10dp"
+        android:background="@drawable/border_corners"
+        android:gravity="center"
+        />
 
 </RelativeLayout>

@@ -92,7 +92,7 @@ public class EmpMsgActivity extends AppCompatActivity implements PullLoadMoreRec
  
     private void initRecyclerView() {
         titleBarTitle.setText("员工信息资料");
-        titleOptionsTv.setText("");
+        titleOptionsTv.setText(R.string.search);
 
         customCv.setLinearLayout();
 

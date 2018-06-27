@@ -31,6 +31,23 @@
         android:theme="@style/AppTheme">
         <activity android:name="com.example.gemery.ssww.MainActivity">
         </activity>
+        <activity android:name="com.example.gemery.ssww.activities.ODOListActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name="com.example.gemery.ssww.activities.ODetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        // 锁库单 界面
+        <activity android:name="com.example.gemery.ssww.activities.SLockDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity android:name="com.example.gemery.ssww.activities.SLockEditActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity android:name="com.example.gemery.ssww.activities.SLockListActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity android:name="com.example.gemery.ssww.activities.SLockSearchActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
         // 客户资料详情页
         <activity android:name="com.example.gemery.ssww.activities.CustomDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

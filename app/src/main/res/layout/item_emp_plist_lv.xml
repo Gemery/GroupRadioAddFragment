@@ -30,6 +30,7 @@
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_wu_code"
             android:gravity="center"
+            android:textColor="#222"
             android:text="xxxxxxx" />
 
     </RelativeLayout>
@@ -60,6 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/label_wl_name"
+            android:textColor="#222"
             android:gravity="center"
             android:text="name" />
 
@@ -90,6 +92,7 @@
             android:id="@+id/s_pch04"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:textColor="#222"
             android:layout_toRightOf="@+id/label_wl_xh"
             android:gravity="center"
             android:text="xxxxxxxx" />
@@ -121,6 +124,7 @@
             android:id="@+id/s_pch05"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:textColor="#222"
             android:layout_toRightOf="@+id/label_wl_gg"
             android:gravity="center"
             android:text="主体类容" />

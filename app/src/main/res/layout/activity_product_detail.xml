@@ -74,7 +74,6 @@
          android:layout_height="match_parent"
          android:layout_toRightOf="@+id/label_wl_name"
          android:layout_marginLeft="20dp"
-
          android:text="name"
          android:gravity="center"
          />

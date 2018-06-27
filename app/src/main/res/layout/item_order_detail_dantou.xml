@@ -37,6 +37,7 @@
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@+id/label_cs_name"
                 android:text="xxxx"
+                android:textColor="#222"
                 android:gravity="center"
                 />
         </RelativeLayout>
@@ -67,6 +68,7 @@
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@+id/label_cs_phone"
                 android:text="xxxx"
+                android:textColor="#222"
                 android:gravity="center"
                 />
         </RelativeLayout>
@@ -97,6 +99,7 @@
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@+id/label_cs_address"
                 android:text="xxxx"
+                android:textColor="#222"
                 android:gravity="center"
                 />
         </RelativeLayout>

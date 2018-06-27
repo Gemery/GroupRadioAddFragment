@@ -84,6 +84,7 @@ public class BPDetailActivity extends AppCompatActivity {
         sPb00.setText(bean.getS_pb00());
         sPb01.setText(String.valueOf(bean.getS_pb01()));
         sPb02.setText(bean.getS_pb02());
+        sPh03.setText(bean.getS_pb03());
         sPb04.setText(bean.getS_pb04());
         sPb05.setText(bean.getS_pb05());
         sPb06.setText(bean.getS_pb06());

@@ -55,6 +55,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     private View viewHeader;
     private TextView textContentBH;
     private OeaBen oeaBen;
+    private String orderNum;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,13 +69,13 @@ public class OrderDetailActivity extends AppCompatActivity {
 
     private void initData() {
         Intent intent = getIntent();
-        String orderNum = intent.getStringExtra("orderNum");
+         orderNum = intent.getStringExtra("orderNum");
         OkGo.<String>get(get_one_order_url + orderNum)
                 .tag(this)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
-                        //Log.e("tag",response.body());
+                        Log.e("tag",response.body());
                          oeaBen = GsonUtils.parseJSON(response.body(), OeaBen.class);
                         list = oeaBen.getOebList();
                         dtBean = oeaBen.getOeaList().get(0);
@@ -147,6 +148,15 @@ public class OrderDetailActivity extends AppCompatActivity {
 
         PopupWindow popupWindow = new PopupWindow(contentView,
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
+
+        contentView.findViewById(R.id.order_slock).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OrderDetailActivity.this,SLockEditActivity.class);
+                intent.putExtra("orderNum",orderNum);
+                startActivity(intent);
+            }
+        });
         contentView.findViewById(R.id.order_edit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,10 +166,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                     /*
                      * s_ima01 : 1059900137
                      * s_ima02 : 淋浴房屏风
-                     * s_ima021 :
-                     * s_imaud01 : LA21-01
-                     * s_ima25 : 套
-                     * s_ima1006 : LK
+                    * s_ima25 : 套 * s_ima1006 : LK
                      * s_ima1006_desc : 门夹系列淋浴房
                      */
                     ImaBean.ListBean obj = new ImaBean.ListBean();
@@ -183,7 +190,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                         + "\"" + dtBean.getS_oea01() + "\"}],"
                         + "oebList:[{ s_oeb01:\"" + dtBean.getS_oea01() +"\"}],"
                         + "flage : 3 }";
-                Log.e("tag",upJson);
+                //Log.e("tag",upJson);
                 OkGo.<String>post(url)
                         .tag(this)
                         .upJson(upJson)
@@ -196,11 +203,8 @@ public class OrderDetailActivity extends AppCompatActivity {
                                     ToastUtil.showToast(OrderDetailActivity.this,"删除成功");
                                     finish();
                                 }
-
-
                             }
                         });
-
             }
         });
 

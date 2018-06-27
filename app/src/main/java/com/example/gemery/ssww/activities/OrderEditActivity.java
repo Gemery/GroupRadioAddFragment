@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -69,9 +70,9 @@ public class OrderEditActivity extends AppCompatActivity {
 
 
     private TextView textContentBH;
-    private TextInputEditText edtiUserName;
-    private TextInputEditText customAddress;
-    private TextInputEditText customPhone;
+    private EditText edtiUserName;
+    private EditText customAddress;
+    private EditText customPhone;
     private TextView empCode;
     private TextView currentDate;
 
@@ -121,9 +122,9 @@ public class OrderEditActivity extends AppCompatActivity {
          textContentBH = (TextView) viewHeader.findViewById(R.id.text_content_bh);
          empCode = (TextView) viewHeader.findViewById(R.id.text_content_emp_code);
          currentDate = (TextView) viewHeader.findViewById(R.id.text_content_date);
-         edtiUserName = (TextInputEditText) viewHeader.findViewById(R.id.edit_user_name);
-        customPhone = (TextInputEditText) viewHeader.findViewById(R.id.custom_phone);
-        customAddress = (TextInputEditText) viewHeader.findViewById(R.id.custom_address);
+         edtiUserName = (EditText) viewHeader.findViewById(R.id.edit_user_name);
+        customPhone = (EditText) viewHeader.findViewById(R.id.custom_phone);
+        customAddress = (EditText) viewHeader.findViewById(R.id.custom_address);
 
         mAdapter.addHeaderView(viewHeader);
         viewHeader.findViewById(R.id.rl_text_date).setOnClickListener(new View.OnClickListener() {
