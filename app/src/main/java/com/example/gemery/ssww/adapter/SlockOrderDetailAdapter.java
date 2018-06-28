@@ -11,19 +11,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
-import com.example.gemery.ssww.bean.OeaBen;
+import com.example.gemery.ssww.bean.ODdetailBean;
+import com.example.gemery.ssww.bean.SLockBean;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by wsy on 2018/6/4.
+ * Created by wsy on 2018/6/27.
  */
-public class MyOrderDtailAdapter extends RecyclerView.Adapter<MyOrderDtailAdapter.MyHolder> {
+public class SlockOrderDetailAdapter extends RecyclerView.Adapter<SlockOrderDetailAdapter.MyHolder> {
 
     private RecyclerView mRecyclerView;
 
-    private List<OeaBen.OebListBean> data = new ArrayList<>();
+    private List<SLockBean.LockEListBean> data = new ArrayList<>();
     private Context mContext;
 
     private View VIEW_FOOTER;
@@ -34,19 +35,19 @@ public class MyOrderDtailAdapter extends RecyclerView.Adapter<MyOrderDtailAdapte
     private int TYPE_HEADER = 1001;
     private int TYPE_FOOTER = 1002;
 
-    public MyOrderDtailAdapter(List<OeaBen.OebListBean> data, Context mContext) {
+    public SlockOrderDetailAdapter(List<SLockBean.LockEListBean> data, Context mContext) {
         this.data = data;
         this.mContext = mContext;
     }
 
     @Override
-    public MyOrderDtailAdapter.MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SlockOrderDetailAdapter.MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_FOOTER) {
             return new MyHolder(VIEW_FOOTER);
         } else if (viewType == TYPE_HEADER) {
             return new MyHolder(VIEW_HEADER);
         } else {
-            return new MyHolder(getLayout(R.layout.item_order_detail_ds,parent));
+            return new MyHolder(getLayout(R.layout.ab_slock_detail_item,parent));
         }
     }
 
@@ -54,52 +55,28 @@ public class MyOrderDtailAdapter extends RecyclerView.Adapter<MyOrderDtailAdapte
     public void onBindViewHolder(MyHolder holder, int position) {
         if (!isHeaderView(position) && !isFooterView(position)) {
             if (haveHeaderView()) position--;
-            // 规格
-            ((TextView) holder.itemView.findViewById(R.id.content_wl_gg))
-                    .setText(data.get(position).getS_oeb06());
-            // 型号
-            ((TextView) holder.itemView.findViewById(R.id.content_wl_xh))
-                    .setText(data.get(position).getS_oeb05());
-            //名称
-            ((TextView) holder.itemView.findViewById(R.id.content_wl_name))
-                    .setText(data.get(position).getS_oeb04());
-            //物料代码
-            ((TextView) holder.itemView.findViewById(R.id.wl_content_code))
-                    .setText(data.get(position).getS_oeb03());
-
             // 数量
-//           TextView slTv = ((TextView) holder.itemView.findViewById(R.id.s_gbag_e07));
-//                    slTv.setText(data.get(position).getS_oeb07());
+         ((TextView) holder.itemView.findViewById(R.id.s_lock_e01))
+                    .setText(data.get(position).getS_lock_e01());
+         ((TextView) holder.itemView.findViewById(R.id.s_lock_e05))
+                    .setText(data.get(position).getS_lock_e05());
+         ((TextView) holder.itemView.findViewById(R.id.s_lock_e06))
+                    .setText(data.get(position).getS_lock_e06());
+         ((TextView) holder.itemView.findViewById(R.id.s_lock_e07))
+                    .setText(data.get(position).getS_lock_e07());
+         ((TextView) holder.itemView.findViewById(R.id.s_lock_e08))
+                    .setText(data.get(position).getS_lock_e08());
+         ((TextView) holder.itemView.findViewById(R.id.s_lock_e10))
+                    .setText(data.get(position).getS_lock_e10());
+         ((TextView) holder.itemView.findViewById(R.id.s_lock_e12))
+                    .setText(data.get(position).getS_lock_e12());
+         ((TextView) holder.itemView.findViewById(R.id.s_lock_e13))
+                    .setText(data.get(position).getS_lock_e13());
+         ((TextView) holder.itemView.findViewById(R.id.s_lock_e14))
+                    .setText(data.get(position).getS_lock_e14());
 
-            final int finalPostion = position;
-            // 数量
-            EditText slTv = ((EditText) holder.itemView.findViewById(R.id.s_gbag_e07));
-            slTv.setText("1");
 
-            holder.itemView.findViewById(R.id.sl_count_bl).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int count = Integer.parseInt(slTv.getText().toString());
-                    if(count == 1){
-                        return;
-                    }else{
-                        count--;
-                        slTv.setText(String.valueOf(count));
-                        // 监听数据变化
-                        data.get(finalPostion).setS_oeb07(String.valueOf(count));
-                    }
-                }
-            });
-            holder.itemView.findViewById(R.id.sl_count_pl).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int count = Integer.parseInt(slTv.getText().toString());
-                    count++;
-                    slTv.setText(String.valueOf(count));
 
-                    data.get(finalPostion).setS_oeb07(String.valueOf(count));
-                }
-            });
         }
     }
 

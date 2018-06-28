@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!--客服姓名-->
+        <RelativeLayout
+            android:id="@+id/rl_text_bh"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/text_label1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="锁库单号：" />
+
+            <TextView
+                android:id="@+id/s_lock_h01"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/text_label1"
+                android:gravity="center"
+                android:text="xx某某"
+                android:textColor="#222" />
+        </RelativeLayout>
+    <!--客户收货地址-->
+        <RelativeLayout
+            android:id="@+id/rl_s_oea04"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/text_label2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="源单单号：" />
+
+            <TextView
+                android:id="@+id/s_lock_h02"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/text_label2"
+                android:gravity="center"
+                android:text="xx123xx"
+                android:textColor="#222" />
+        </RelativeLayout>
+
+    <!--消费者收货地址-->
+        <RelativeLayout
+            android:id="@+id/rl_text_emp_code"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/text_label3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="锁单方式：" />
+
+            <TextView
+                android:id="@+id/s_lock_h03"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/text_label3"
+                android:gravity="center"
+                android:text="xx某某"
+                android:textColor="#222" />
+        </RelativeLayout>
+    <!--审核状态-->
+    <RelativeLayout
+        android:id="@+id/rl_s_lock_hconfir"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        >
+
+        <TextView
+            android:id="@+id/text_s_lock_hconfir"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="审核状态：" />
+
+        <TextView
+            android:id="@+id/s_lock_hconfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/text_s_lock_hconfir"
+            android:gravity="center"
+            android:text="xxxxx"
+            android:textColor="#222"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <!--建立资料的时间-->
+        <RelativeLayout
+            android:id="@+id/rl_text_date"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/text_label4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="审核日期：" />
+
+            <TextView
+                android:id="@+id/s_lock_h04"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/text_label4"
+                android:gravity="center"
+                android:text="2018/5/20"
+                android:textColor="#222"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+    <!--操作人员-->
+        <RelativeLayout
+            android:id="@+id/rl_s_lock_huser"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/text_s_lock_huser"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="操作人员：" />
+
+            <TextView
+                android:id="@+id/s_lock_huser"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/text_s_lock_huser"
+                android:gravity="center"
+                android:text="xxxxx"
+                android:textColor="#222"
+                android:textSize="14sp"
+                tools:text="xxx" />
+
+        </RelativeLayout>
+    <!--,锁单开始日期-->
+    <RelativeLayout
+        android:id="@+id/rl_s_lock_hsdate"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+       >
+
+        <TextView
+            android:id="@+id/text_s_lock_hsdate"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="锁单开始日期：" />
+
+        <TextView
+            android:id="@+id/s_lock_hsdate"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/text_s_lock_hsdate"
+            android:gravity="center"
+            android:text="2018/5/20"
+            android:textColor="#222"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+    <!--锁单结束日期-->
+    <RelativeLayout
+        android:id="@+id/s_lock_ll_date"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+
+        <TextView
+            android:id="@+id/text_s_s_lock_hedate"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="锁单结束日期：" />
+
+        <TextView
+            android:id="@+id/s_lock_hedate"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/text_s_s_lock_hedate"
+            android:gravity="center"
+            android:text="2018/5/20"
+            android:textColor="#222"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

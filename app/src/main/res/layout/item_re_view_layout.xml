@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/ll_item_review"
+    android:layout_height="wrap_content">
+    <!--单据编号-->
+        <RelativeLayout
+            android:id="@+id/rl_text_bh"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/text_label1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="锁库单编号：" />
+
+            <TextView
+                android:id="@+id/s_lock_h01"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/text_label1"
+                android:gravity="center"
+                android:text="xx123xx"
+                android:textColor="#222" />
+        </RelativeLayout>
+    <!--客服姓名-->
+        <RelativeLayout
+            android:id="@+id/rl_s_oea04"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/text_label2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="操作人员：" />
+
+            <TextView
+                android:id="@+id/s_lock_huser"
+                android:layout_width="wrap_content"
+
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/text_label2"
+                android:gravity="center"
+                android:text="xx123xx"
+                android:textColor="#222" />
+        </RelativeLayout>
+    <!--消费者收货地址-->
+        <RelativeLayout
+            android:id="@+id/rl_text_emp_code"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/text_label3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+
+                android:text="审核状态：" />
+
+            <TextView
+                android:id="@+id/s_lock_hconfirm"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/text_label3"
+                android:gravity="center"
+                android:text="xx123某某"
+                android:textColor="#222" />
+        </RelativeLayout>
+    <!--约定送货时间-->
+        <RelativeLayout
+            android:id="@+id/rl_text_date"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/text_label4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="审核日期：" />
+
+            <TextView
+                android:id="@+id/s_lock_h04"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/text_label4"
+                android:gravity="center"
+                android:text="2018/5/20"
+                android:textColor="#222"
+                android:textSize="14sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@+id/arrow_right"
+                android:text="查看详情"
+                android:gravity="center"
+                android:textColor="#555"
+                />
+            <ImageView
+                android:id="@+id/arrow_right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/arrow_right"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#ddd"
+            ></LinearLayout>
+
+
+</LinearLayout>

@@ -211,6 +211,26 @@ public class AllOrderListActivity extends AppCompatActivity {
                 });
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        OkGo.<String>post(get_all_order_url)
+                .tag(this)
+                .upJson(POST_PARAMS_JSON)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        String json = response.body();
+                        DtOrderBean obj = GsonUtils.parseJSON(json,DtOrderBean.class);
+                        listData = obj.getList();
+                        pageSize  = obj.getTotalPageCount();
+                        totalCount = obj.getTotalCount();
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+    }
+
     @OnClick({R.id.title_bar_back,R.id.title_options_tv})
     public void onViewClick(View view){
         switch (view.getId()){

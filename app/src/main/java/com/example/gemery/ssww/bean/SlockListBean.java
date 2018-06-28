@@ -6,17 +6,17 @@ public class SlockListBean {
     /**
      {"list": [
      {
-     "id": "integer,id",
+     "id": "longeger,id",
      "s_lock_h00": "string,经销商代码",
      "s_lock_hcode": "string,门店编号",
      "s_lock_h01": "string,（锁库单号）备置单号",
      "s_lock_h02": "string,源单单号",
      "s_lock_h03": "string,锁单方式（1：订单 2：销售出库单 3：调拨单）",
-     "s_lock_hsdate": "integer,锁单开始日期(时间戳)",
-     "s_lock_hedate": "integer,锁单结束日期（如果结束日期还未出库，则自动释放出库存）(时间戳)",
+     "s_lock_hsdate": "longeger,锁单开始日期(时间戳)",
+     "s_lock_hedate": "longeger,锁单结束日期（如果结束日期还未出库，则自动释放出库存）(时间戳)",
      "s_lock_huser": "string,操作人员",
      "s_lock_hconfirm": "string,审核状态",
-     "s_lock_h04": "integer,审核日期(时间戳)",
+     "s_lock_h04": "longeger,审核日期(时间戳)",
      "s_lock_hud01": "string,s_lock_hud01",
      "s_lock_hud02": "string,s_lock_hud02",
      "s_lock_hud03": "string,s_lock_hud03",
@@ -24,28 +24,28 @@ public class SlockListBean {
      "s_lock_hud05": "string,s_lock_hud05",
      "s_lock_hud06": "string,s_lock_hud06"
      }],
-     "TotalPageCount": "integer,总页数",
-     "TotalCount": "integer,总记录数"
+     "TotalPageCount": "longeger,总页数",
+     "TotalCount": "longeger,总记录数"
      }
      */
 
-    private int TotalPageCount;
-    private int TotalCount;
+    private long TotalPageCount;
+    private long TotalCount;
     private List<ListBean> list;
 
-    public int getTotalPageCount() {
+    public long getTotalPageCount() {
         return TotalPageCount;
     }
 
-    public void setTotalPageCount(int TotalPageCount) {
+    public void setTotalPageCount(long TotalPageCount) {
         this.TotalPageCount = TotalPageCount;
     }
 
-    public int getTotalCount() {
+    public long getTotalCount() {
         return TotalCount;
     }
 
-    public void setTotalCount(int TotalCount) {
+    public void setTotalCount(long TotalCount) {
         this.TotalCount = TotalCount;
     }
 
@@ -78,17 +78,17 @@ public class SlockListBean {
          * s_lock_hud06 : null
          */
 
-        private int id;
+        private long id;
         private String s_lock_h00;
         private String s_lock_hcode;
         private String s_lock_h01;
         private String s_lock_h02;
         private String s_lock_h03;
-        private int s_lock_hsdate;
-        private int s_lock_hedate;
+        private long s_lock_hsdate;
+        private long s_lock_hedate;
         private String s_lock_huser;
         private String s_lock_hconfirm;
-        private int s_lock_h04;
+        private long s_lock_h04;
         private String s_lock_hud01;
         private String s_lock_hud02;
         private String s_lock_hud03;
@@ -96,11 +96,11 @@ public class SlockListBean {
         private String s_lock_hud05;
         private String s_lock_hud06;
 
-        public int getId() {
+        public long getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(long id) {
             this.id = id;
         }
 
@@ -144,19 +144,19 @@ public class SlockListBean {
             this.s_lock_h03 = s_lock_h03;
         }
 
-        public int getS_lock_hsdate() {
+        public long getS_lock_hsdate() {
             return s_lock_hsdate;
         }
 
-        public void setS_lock_hsdate(int s_lock_hsdate) {
+        public void setS_lock_hsdate(long s_lock_hsdate) {
             this.s_lock_hsdate = s_lock_hsdate;
         }
 
-        public int getS_lock_hedate() {
+        public long getS_lock_hedate() {
             return s_lock_hedate;
         }
 
-        public void setS_lock_hedate(int s_lock_hedate) {
+        public void setS_lock_hedate(long s_lock_hedate) {
             this.s_lock_hedate = s_lock_hedate;
         }
 
@@ -176,11 +176,11 @@ public class SlockListBean {
             this.s_lock_hconfirm = s_lock_hconfirm;
         }
 
-        public int getS_lock_h04() {
+        public long getS_lock_h04() {
             return s_lock_h04;
         }
 
-        public void setS_lock_h04(int s_lock_h04) {
+        public void setS_lock_h04(long s_lock_h04) {
             this.s_lock_h04 = s_lock_h04;
         }
 

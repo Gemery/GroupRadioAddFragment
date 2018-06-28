@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/ll_item_review"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#ddd"
+        ></LinearLayout>
+    <!--单据编号-->
+        <RelativeLayout
+            android:id="@+id/rl_text_bh"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/text_label1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="锁库单编号：" />
+
+            <TextView
+                android:id="@+id/s_lock_e01"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/text_label1"
+                android:gravity="center"
+                android:text="xx123xx"
+                android:textColor="#222" />
+        </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#ddd"
+        ></LinearLayout>
+    <!--物料代码-->
+        <RelativeLayout
+            android:id="@+id/rl_s_oea04"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/text_label2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="物料代码：" />
+
+            <TextView
+                android:id="@+id/s_lock_e05"
+                android:layout_width="wrap_content"
+
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/text_label2"
+                android:gravity="center"
+                android:text="xx123xx"
+                android:textColor="#222" />
+        </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#ddd"
+        ></LinearLayout>
+    <!--物料名称-->
+        <RelativeLayout
+            android:id="@+id/rl_text_emp_code"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/text_label3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="物料名称：" />
+
+            <TextView
+                android:id="@+id/s_lock_e06"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/text_label3"
+                android:gravity="center"
+                android:text="xx123某某"
+                android:textColor="#222" />
+        </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#ddd"
+        ></LinearLayout>
+    <!--型号-->
+        <RelativeLayout
+            android:id="@+id/rl_text_date"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/text_label4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="型号：" />
+
+            <TextView
+                android:id="@+id/s_lock_e07"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/text_label4"
+                android:gravity="center"
+                android:text="LZ_10"
+                android:textColor="#222"
+                android:textSize="14sp" />
+        </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#ddd"
+        ></LinearLayout>
+    <!--规格-->
+     <RelativeLayout
+            android:id="@+id/rl_s_lock_e08"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/label_s_lock_e08"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="规格：" />
+
+         <TextView
+             android:id="@+id/s_lock_e08"
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:layout_toRightOf="@+id/label_s_lock_e08"
+             android:gravity="center"
+             android:text="11"
+             android:textColor="#222"
+             android:textSize="14sp" />
+        </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#ddd"
+        ></LinearLayout>
+    <!--锁库存数量-->
+     <RelativeLayout
+            android:id="@+id/rl_s_lock_e10"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/label_s_lock_e10"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="锁库存数量：" />
+
+            <TextView
+                android:id="@+id/s_lock_e10"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/label_s_lock_e10"
+                android:gravity="center"
+                android:text="20"
+                android:textColor="#222"
+                android:textSize="14sp" />
+        </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#ddd"
+        ></LinearLayout>
+    <!--仓库代码-->
+     <RelativeLayout
+            android:id="@+id/rl_s_lock_e12"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/label_s_lock_e12"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="仓库代码：" />
+
+            <TextView
+                android:id="@+id/s_lock_e12"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/label_s_lock_e12"
+                android:gravity="center"
+                android:text="20"
+                android:textColor="#222"
+                android:textSize="14sp" />
+        </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#ddd"
+        ></LinearLayout>
+    <!--仓库库位-->
+     <RelativeLayout
+            android:id="@+id/rl_s_lock_e13"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/label_s_lock_e13"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="仓库库位：" />
+
+            <TextView
+                android:id="@+id/s_lock_e13"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/label_s_lock_e13"
+                android:gravity="center"
+                android:text="20"
+                android:textColor="#222"
+                android:textSize="14sp" />
+        </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#ddd"
+        ></LinearLayout>
+    <!--批次号-->
+     <RelativeLayout
+            android:id="@+id/rl_s_lock_e14"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+
+            <TextView
+                android:id="@+id/label_s_lock_e14"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="批次号：" />
+
+            <TextView
+                android:id="@+id/s_lock_e14"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/label_s_lock_e14"
+                android:gravity="center"
+                android:text="20"
+                android:textColor="#222"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+
+
+
+
+
+</LinearLayout>

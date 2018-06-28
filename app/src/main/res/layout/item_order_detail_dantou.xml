@@ -113,6 +113,56 @@
     <!--约定送货时间-->
     <include layout="@layout/item_order_sh_date_v1"></include>
 
+
+        <!--出库单号-->
+        <RelativeLayout
+            android:id="@+id/rl_s_oga01"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            >
+            <TextView
+                android:id="@+id/label_s_oga01"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="出库单号："
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/s_oga01"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/label_s_oga01"
+                android:text="xxxx"
+                android:textColor="#222"
+                android:gravity="center"
+                />
+            <TextView
+                android:id="@+id/tv_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="查看详情"
+                android:layout_toLeftOf="@+id/img_arrow"
+                android:gravity="center"
+                android:visibility="gone"
+                />
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/img_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/arrow_right"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.11dp"
+            android:background="#ddd"></LinearLayout>
+
     </android.support.v7.widget.LinearLayoutCompat>
 
 </android.support.constraint.ConstraintLayout>
