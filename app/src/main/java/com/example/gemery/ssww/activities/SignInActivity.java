@@ -14,6 +14,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
+import android.view.View;
 
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.AppExample;
@@ -78,13 +79,13 @@ public class SignInActivity extends Activity {
     private XMPPConnection connection;
     private BroadcastReceiver receiver;
     private SignInActivity mContext;
-    private String login_url;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivity_sign_in);
         ButterKnife.bind(this);
-        login_url = Const.W_HOST + "/api/baseData/userSign?";
+
         mContext = this;
         //initReceiver();
         initData();
@@ -132,17 +133,24 @@ public class SignInActivity extends Activity {
 
 
 
-    @OnClick(R.id.btn_sign_in)
-    public void onClickView(){
+    @OnClick({R.id.icon_sign_in_wechat,R.id.btn_sign_in})
+    public void onClickView(View view){
+        switch (view.getId()){
+            case R.id.icon_sign_in_wechat:
+                Intent intent=new Intent(SignInActivity.this,SignUpActivity.class);
+                intent.putExtra("action","im_login");
+                startActivity(intent);
+                finish();
+                break;
 
+            case R.id.btn_sign_in:
         if(checkForm()){
            String username=mEmail.getText().toString();
             String password=mPassword.getText().toString();
             loginDialog.show();
-            //启动核心Service  建立长连接    reciver  接受广播（携带后台状态码）做处理验证
-           // Intent intent=new Intent(this,MsfService.class);
-            //startService(intent);
-           login_url = login_url + "s_zx02=" + username + "&s_zx08=" + password;
+
+           //start(Intent(this,MsfService.class)); //启动核心Service 建立长连接    reciver接受广播（携带后台状态码）做处理验证
+            String login_url = Const.W_HOST + "/api/baseData/userSign?"+ "s_zx02=" + username + "&s_zx08=" + password;
 
             OkGo.<String>get(login_url)
                     .tag(this)
@@ -166,9 +174,9 @@ public class SignInActivity extends Activity {
                                     startActivity(intent);
                                     finish();
                                 }
-                                if(object.getServerCode().getResultMessage().equals("登录用户名或密码不正确")){
+                               else if(object.getServerCode().getResultMessage().equals("登录用户名或密码不正确")){
                                     //mPassword.setError("登录用户名或密码不正确");
-                                    Log.e("tag",username + password);
+                                    Log.e("tag",login_url);
 
                                 }
                         }
@@ -178,12 +186,14 @@ public class SignInActivity extends Activity {
                         }
                     });
         }
+        break;
+        }
+
     }
 
     private boolean checkForm() {
          String email = mEmail.getText().toString();
          String password = mPassword.getText().toString();
-
         boolean isPass = true;
 
         if (email.isEmpty() || email.length() < 5) {

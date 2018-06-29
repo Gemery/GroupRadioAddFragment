@@ -60,9 +60,56 @@ public class ODetailActivity extends AppCompatActivity {
         mAdapter.addHeaderView(viewHeader);
         outOrdReview.setAdapter(mAdapter);
     }
-
+    private ODdetailBean.OgaListBean hObj = new ODdetailBean.OgaListBean();
     private void initViewHeader() {
         viewHeader = LayoutInflater.from(this).inflate(R.layout.ab_test_layout,null);
+
+        ((TextView)viewHeader.findViewById(R.id.s_oga01))
+            .setText(hObj.getS_oga01());
+        ((TextView)viewHeader.findViewById(R.id.s_oga_code))
+            .setText(hObj.getS_oga_code());
+        ((TextView)viewHeader.findViewById(R.id.s_oga_type))
+            .setText(hObj.getS_oga_type());
+        ((TextView)viewHeader.findViewById(R.id.s_oga02))
+            .setText(hObj.getS_oga02());
+        ((TextView)viewHeader.findViewById(R.id.s_oga03))
+            .setText(hObj.getS_oga03());
+        ((TextView)viewHeader.findViewById(R.id.s_oga04))
+            .setText(hObj.getS_oga04());
+        ((TextView)viewHeader.findViewById(R.id.s_oga05))
+            .setText(hObj.getS_oga05());
+        ((TextView)viewHeader.findViewById(R.id.s_oga10))
+            .setText(hObj.getS_oga10());
+        ((TextView)viewHeader.findViewById(R.id.s_oga06))
+            .setText(hObj.getS_oga06());
+        ((TextView)viewHeader.findViewById(R.id.s_oga07))
+            .setText(hObj.getS_oga07());
+        ((TextView)viewHeader.findViewById(R.id.s_oga12))
+            .setText(hObj.getS_oga12());
+        ((TextView)viewHeader.findViewById(R.id.s_oga13))
+            .setText(hObj.getS_oga13());
+        ((TextView)viewHeader.findViewById(R.id.s_oga16))
+            .setText(hObj.getS_oga16());
+        ((TextView)viewHeader.findViewById(R.id.s_oga18))
+            .setText(hObj.getS_oga18());
+        ((TextView)viewHeader.findViewById(R.id.s_oga_confirm))
+            .setText(hObj.getS_oga_confirm());
+        ((TextView)viewHeader.findViewById(R.id.s_ogauser))
+            .setText(hObj.getS_ogauser());
+        ((TextView)viewHeader.findViewById(R.id.s_oga18))
+                .setText(hObj.getS_oga18());
+        ((TextView)viewHeader.findViewById(R.id.s_oga19))
+                .setText(hObj.getS_oga19());
+        ((TextView)viewHeader.findViewById(R.id.s_oga20))
+                .setText(hObj.getS_oga20());
+        ((TextView)viewHeader.findViewById(R.id.s_oga21))
+                .setText(hObj.getS_oga21());
+        ((TextView)viewHeader.findViewById(R.id.s_oga22))
+                .setText(hObj.getS_oga22());
+        ((TextView)viewHeader.findViewById(R.id.s_oga24))
+                .setText(hObj.getS_oga24());
+        ((TextView)viewHeader.findViewById(R.id.s_oga25))
+                .setText(hObj.getS_oga25());
 
     }
 
@@ -76,6 +123,7 @@ public class ODetailActivity extends AppCompatActivity {
                 case DATA_UPDATE:
                     ODdetailBean obj = (ODdetailBean) msg.obj;
                     list = obj.getOgbList();
+                    hObj = obj.getOgaList().get(0);
                     initRecyclerView();
                     break;
             }
@@ -85,23 +133,6 @@ public class ODetailActivity extends AppCompatActivity {
 
     };
 
-//    private void initView(ODdetailBean obj) {
-//        ODdetailBean.OgaListBean hObj = obj.getOgaList().get(0);
-//        sOgaCode.setText(hObj.getS_oga_code());
-//        sOga01.setText(hObj.getS_oga01());
-//        sOga02.setText(hObj.getS_oga02());
-//        sOga03.setText(hObj.getS_oga03());
-//        sOga04.setText(hObj.getS_oga04());
-//        sOga05.setText(hObj.getS_oga05());
-//        sOga10.setText(hObj.getS_oga10());
-//        sOgaConfirm.setText(hObj.getS_oga_confirm());
-//        sOga12.setText(hObj.getS_oga12());
-//        sOga13.setText(hObj.getS_oga13());
-//        sOga14.setText(hObj.getS_oga14());
-//        sOga16.setText(hObj.getS_oga16());
-//        sOga18.setText(hObj.getS_oga18());
-//        sOga19.setText(hObj.getS_oga19());
-//    }
 
     private String getDataUrl = Const.W_HOST + "/api/stockData/getOgabList?orderNum=";
 

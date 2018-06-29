@@ -65,7 +65,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
-                    android:text="锁库单单号" />
+                    android:text="出库单单号" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -76,6 +76,82 @@
 
                     <EditText
                         android:id="@+id/s_lock_h01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入搜索内容"
+                        android:imeOptions="actionSearch"
+                        android:lines="1"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ddd"></LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/label_s_oga04"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="客户姓名" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/search_layout_bg">
+
+                    <EditText
+                        android:id="@+id/s_oga04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入搜索内容"
+                        android:imeOptions="actionSearch"
+                        android:lines="1"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ddd"></LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/label_s_oga03"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="客户手机号" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/search_layout_bg">
+
+                    <EditText
+                        android:id="@+id/s_oga03"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -234,7 +310,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="锁单起始时间：" />
+                    android:text="出库起始时间：" />
                 <TextView
                     android:id="@+id/text_start_date"
                     android:layout_width="wrap_content"
@@ -271,7 +347,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="锁单结束时间：" />
+                    android:text="出库结束时间：" />
                 <TextView
                     android:id="@+id/text_end_date"
                     android:layout_width="wrap_content"
@@ -308,7 +384,9 @@
                 android:textColor="#ffffff"
                 android:textSize="16sp"
                 android:background="@drawable/border_corners"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginBottom="30dp"
+                />
 
         </android.support.v7.widget.LinearLayoutCompat>
 

@@ -69,7 +69,7 @@ public class ODOBean implements Serializable {
         this.list = list;
     }
 
-    public static class ListBean {
+    public static class ListBean implements Serializable{
         @Override
         public String toString() {
             return "{" +

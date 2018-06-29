@@ -151,11 +151,28 @@ public class SLockListActivity extends AppCompatActivity {
                 break;
             case R.id.title_options_tv:
                 Intent intent = new Intent(this, SLockSearchActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,REQUEST_CODE);
                 break;
         }
     }
+
+
     private final static int DATA_UPDATE = 1;
+    private final static int REQUEST_CODE = 2;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(REQUEST_CODE == requestCode && RESULT_CODE == resultCode){
+            Bundle bundle = data.getExtras();
+            SlockListBean obj = (SlockListBean) bundle.getSerializable("respResult");
+            listData = obj.getList();
+            mAdapter.notifyDataSetChanged();
+        }
+
+    }
+
+    private final static int RESULT_CODE = 4;
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {

@@ -11,12 +11,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
-import com.example.gemery.ssww.bean.BasePriceBean;
-import com.example.gemery.ssww.bean.InstallOrdBen;
+import com.example.gemery.ssww.bean.ODOBean;
 import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.example.gemery.ssww.utils.ToastUtil;
@@ -31,38 +29,41 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class BPSearchActivity extends AppCompatActivity {
+public class OGASearchActivity extends AppCompatActivity {
     @BindView(R.id.title_bar_title)
     TextView titleBarTitle;
     @BindView(R.id.title_options_tv)
     TextView titleOptionsTv;
-    @BindView(R.id.title)
-    LinearLayout title;
-    @BindView(R.id.s_pb12)
-    EditText sPb12;
-    @BindView(R.id.s_pb03)
-    EditText sPb03;
-    @BindView(R.id.s_pb04)
-    EditText sPb04;
-    @BindView(R.id.s_ph05)
-    EditText sPh05;
+    @BindView(R.id.s_lock_h02)
+    EditText sLockH02;
+    @BindView(R.id.s_lock_h01)
+    EditText sLockH01;
+    @BindView(R.id.s_lock_e05)
+    EditText sLockE05;
+    @BindView(R.id.s_lock_e07)
+    EditText sLockE07;
+    @BindView(R.id.s_lock_e08)
+    EditText sLockE08;
     @BindView(R.id.text_start_date)
     TextView textStartDate;
     @BindView(R.id.text_end_date)
     TextView textEndDate;
+    @BindView(R.id.s_oga04)
+    EditText sOga04;
+    @BindView(R.id.s_oga03)
+    EditText sOga03;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bp_search);
+        setContentView(R.layout.activity_oga_search);
         ButterKnife.bind(this);
-        titleBarTitle.setText("基础面价搜索");
+        titleBarTitle.setText("出库单搜索");
         titleOptionsTv.setText("重置");
-
     }
 
     @OnClick({R.id.title_bar_back, R.id.title_options_tv,
-            R.id.action_send_button,R.id.rl_order_start_date,R.id.rl_order_end_date})
+            R.id.action_send_button, R.id.rl_order_end_date, R.id.rl_order_start_date})
     public void onViewClick(View view) {
         switch (view.getId()) {
             case R.id.title_bar_back:
@@ -75,7 +76,7 @@ public class BPSearchActivity extends AppCompatActivity {
                 initData();
                 break;
             case R.id.rl_order_end_date:
-                DatePickerDialog datePicker = new DatePickerDialog(BPSearchActivity.this,
+                DatePickerDialog datePicker = new DatePickerDialog(OGASearchActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -86,7 +87,7 @@ public class BPSearchActivity extends AppCompatActivity {
                 datePicker.show();
                 break;
             case R.id.rl_order_start_date:
-                DatePickerDialog datePickerend = new DatePickerDialog(BPSearchActivity.this,
+                DatePickerDialog datePickerend = new DatePickerDialog(OGASearchActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
 
                             @Override
@@ -101,39 +102,58 @@ public class BPSearchActivity extends AppCompatActivity {
     }
 
     private void clearForm() {
-        sPb12.setText("");
+        sLockH02.setText("");
         textEndDate.setText("");
         textStartDate.setText("");
-        sPb03.setText("");
-        sPb04.setText("");
-        sPh05.setText("");
+        sLockH01.setText("");
+        sLockE05.setText("");
+        sLockE07.setText("");
+        sLockE08.setText("");
+        sOga03.setText("");
+        sOga04.setText("");
     }
 
     private String getFormJson() {
         String upJson = "";
         if (!textEndDate.getText().toString().isEmpty()) {
-            String endDate = "s_pb07" + ":" + new Date(textEndDate.getText().toString()).getTime() + ",";
+            String endDate = "s_oga02_1" + ":" + new Date(textEndDate.getText().toString()).getTime() + ",";
             upJson += endDate;
         }
         if (!textStartDate.getText().toString().isEmpty()) {
-            String endDate = "s_pb08" + ":" + new Date(textEndDate.getText().toString()).getTime() + ",";
+            String endDate = "s_oga02_2" + ":" + new Date(textEndDate.getText().toString()).getTime() + ",";
             upJson += endDate;
         }
-        if (!sPb03.getText().toString().isEmpty()) {
-            String filterB = "s_pb03" + ":\"" + sPb03.getText().toString() + "\",";
+        if (!sLockH02.getText().toString().isEmpty()) {
+            String filterB = "s_oga08" + ":\"" + sLockH02.getText().toString() + "\",";
             upJson += filterB;
         }
-        if (!sPb04.getText().toString().isEmpty()) {
-            String filterB = "s_pb04" + ":\"" + sPb04.getText().toString() + "\",";
+        if (!sLockH01.getText().toString().isEmpty()) {
+            String filterB = "s_oga01" + ":\"" + sLockH01.getText().toString() + "\",";
             upJson += filterB;
         }
-        if (!sPh05.getText().toString().isEmpty()) {
-            String filterB = "s_pb05" + ":\"" + sPh05.getText().toString() + "\",";
+        if (!sOga03.getText().toString().isEmpty()) {
+            String filterB = "s_oga03" + ":\"" + sOga03.getText().toString() + "\",";
+            upJson += filterB;
+        }
+        if (!sOga04.getText().toString().isEmpty()) {
+            String filterB = "s_oga04" + ":\"" + sOga04.getText().toString() + "\",";
             upJson += filterB;
         }
 
-        if (!sPb12.getText().toString().isEmpty()) {
-            String filterB = "s_ph12" + ":\"" + sPb12.getText().toString() + "\",";
+        if (!sLockE05.getText().toString().isEmpty()) {
+            String filterB = "s_ogb06" + ":\"" + sLockE05.getText().toString() + "\",";
+            upJson += filterB;
+        }
+        if (!sLockE07.getText().toString().isEmpty()) {
+            String filterB = "s_ogb07" + ":\"" + sLockE07.getText().toString() + "\",";
+            upJson += filterB;
+        }
+        if (!sLockE08.getText().toString().isEmpty()) {
+            String filterB = "s_ogb08" + ":\"" + sLockE08.getText().toString() + "\",";
+            upJson += filterB;
+        }
+        if (!sLockE08.getText().toString().isEmpty()) {
+            String filterB = "s_ogb08" + ":\"" + sLockE08.getText().toString() + "\",";
             upJson += filterB;
         }
         return upJson;
@@ -146,17 +166,17 @@ public class BPSearchActivity extends AppCompatActivity {
     }
 
     //  url
-    private String search_base_price_url = Const.W_HOST + "/api/salesData/getpbList";
+    private String search_lock_order_url = Const.W_HOST + "/api/stockData/getOgaList";
 
     private void initData() {
-        OkGo.<String>post(search_base_price_url)
+        OkGo.<String>post(search_lock_order_url)
                 .tag(this)
                 .upJson(getUpJson())
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(Response<String> response) {
                         //Log.e("tag",response.body());
-                        BasePriceBean obj = GsonUtils.parseJSON(response.body(), BasePriceBean.class);
+                        ODOBean obj = GsonUtils.parseJSON(response.body(), ODOBean.class);
                         if (obj.getList().size() != 0) {
                             Message msg = new Message();
                             msg.what = GET_DATA_NOT_NULL;
@@ -180,7 +200,7 @@ public class BPSearchActivity extends AppCompatActivity {
             super.handleMessage(msg);
             switch (msg.what) {
                 case GET_DATA_IS_NULL:
-                    ToastUtil.showToast(BPSearchActivity.this, "您输入的条件没有匹配的订单");
+                    ToastUtil.showToast(OGASearchActivity.this, "您输入的条件没有匹配的订单");
 
                     break;
                 case GET_DATA_NOT_NULL:
@@ -196,3 +216,4 @@ public class BPSearchActivity extends AppCompatActivity {
         }
     };
 }
+

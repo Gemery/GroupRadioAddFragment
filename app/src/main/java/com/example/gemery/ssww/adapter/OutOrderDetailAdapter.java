@@ -55,8 +55,30 @@ public class OutOrderDetailAdapter extends RecyclerView.Adapter<OutOrderDetailAd
         if (!isHeaderView(position) && !isFooterView(position)) {
             if (haveHeaderView()) position--;
             // 数量
-//           TextView slTv = ((TextView) holder.itemView.findViewById(R.id.s_gbag_e07));
-//                    slTv.setText(data.get(position).getS_oeb07());
+           ((TextView) holder.itemView.findViewById(R.id.s_ogb02))
+                    .setText(data.get(position).getS_ogb02());
+           ((TextView) holder.itemView.findViewById(R.id.s_ogb05))
+                    .setText(data.get(position).getS_ogb05());
+           ((TextView) holder.itemView.findViewById(R.id.s_ogb06))
+                    .setText(data.get(position).getS_ogb06());
+           ((TextView) holder.itemView.findViewById(R.id.s_ogb07))
+                    .setText(data.get(position).getS_ogb07());
+           ((TextView) holder.itemView.findViewById(R.id.s_ogb08))
+                    .setText(data.get(position).getS_ogb08());
+           ((TextView) holder.itemView.findViewById(R.id.s_ogb09))
+                    .setText(data.get(position).getS_ogb02());
+           ((TextView) holder.itemView.findViewById(R.id.s_ogb10))
+                    .setText(data.get(position).getS_ogb10());
+           ((TextView) holder.itemView.findViewById(R.id.s_ogb11))
+                    .setText(data.get(position).getS_ogb11());
+           ((TextView) holder.itemView.findViewById(R.id.s_ogb12))
+                    .setText(data.get(position).getS_ogb12());
+           ((TextView) holder.itemView.findViewById(R.id.s_ogb13))
+                    .setText(data.get(position).getS_ogb13());
+           ((TextView) holder.itemView.findViewById(R.id.s_ogb14))
+                    .setText(data.get(position).getS_ogb14());
+           ((TextView) holder.itemView.findViewById(R.id.s_ogb_note))
+                    .setText(data.get(position).getS_ogb_note());
 
 
         }

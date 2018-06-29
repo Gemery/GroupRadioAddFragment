@@ -14,11 +14,16 @@ import android.util.Log;
 import android.util.Patterns;
 
 import com.example.gemery.groupradioaddfragment.R;
+import com.example.gemery.ssww.MainActivity;
 import com.example.gemery.ssww.activities.SignInActivity;
+import com.example.gemery.ssww.bean.LoginResultInfoBean;
+import com.example.gemery.ssww.utils.Const;
+import com.example.gemery.ssww.utils.GsonUtils;
 import com.example.gemery.ssww.utils.HttpUtils;
 import com.example.gemery.ssww.utils.ToastUtil;
 import com.example.gemery.ssww.utils.XmppConnectionManager;
 import com.example.gemery.ssww.utils.XmppUtil;
+import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
@@ -134,57 +139,26 @@ public class SignUpActivity extends Activity{
         }
     };
     @OnClick(R.id.btn_sign_up)
-    void onClickSignUp(){
-        Log.e("tag","listener  btn btn ");
-        account = mEmail.getText().toString();
-        password_u = mPassword.getText().toString();
-        //if(!checkForm()){
-        dialog.setTitle("正在注册...");
-        dialog.setMessage("正在连接服务器中 ......");
-        dialog.show();
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    XMPPConnection mXMPPConnection=xmppConnectionManager.init();
-                    try {
-                        Log.e("tage",mXMPPConnection.toString());
-                        mXMPPConnection.connect();
-
-                        int result= XmppUtil.register(mXMPPConnection, account, password_u);
-
-                        mHandler.sendEmptyMessage(result);
-                    } catch (XMPPException e) {
-                        e.printStackTrace();
-                        mHandler.sendEmptyMessage(4);
-                    }
-                }
-            }).start();
-
-
-
-            //网络请求验证
-//            HttpUtils.Buider()
-//                    .register(mName.getText().toString(),
-//                            mEmail.getText().toString(),
-//                            mPhone.getText().toString(),
-//                            mPassword.getText().toString(),
-//                            mRePassword.getText().toString(),
-//                            new StringCallback() {
-//                                @Override
-//                                public void onSuccess(Response<String> response) {
-//
-//                                }
-//
-//                                @Override
-//                                public void onError(Response<String> response) {
-//
-//                                    Log.e("tag","注册网络出错了");
-//                                    super.onError(response);
-//                                }
-//                            });
-
-        //}
+    void onClickSignUp() {
     }
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    XMPPConnection mXMPPConnection=xmppConnectionManager.init();
+//                    try {
+//                        Log.e("tage",mXMPPConnection.toString());
+//                        mXMPPConnection.connect();
+//
+//                        int result= XmppUtil.register(mXMPPConnection, account, password_u);
+//
+//                        mHandler.sendEmptyMessage(result);
+//                    } catch (XMPPException e) {
+//                        e.printStackTrace();
+//                        mHandler.sendEmptyMessage(4);
+//                    }
+//                }
+//            }).start();
+
     @OnClick(R.id.tv_link_sign_in)
     void toLogin(){
         Intent intent=new Intent(SignUpActivity.this,SignInActivity.class);

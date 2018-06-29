@@ -1,8 +1,9 @@
 package com.example.gemery.ssww.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class SlockListBean {
+public class SlockListBean implements Serializable {
     /**
      {"list": [
      {
@@ -57,7 +58,7 @@ public class SlockListBean {
         this.list = list;
     }
 
-    public static class ListBean {
+    public static class ListBean implements Serializable{
         /**
          * id : 48
          * s_lock_h00 : null

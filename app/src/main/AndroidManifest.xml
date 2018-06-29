@@ -33,6 +33,8 @@
         </activity>
         <activity android:name="com.example.gemery.ssww.activities.AddHeaderActivity">
         </activity>
+        <activity android:name="com.example.gemery.ssww.activities.OGASearchActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name="com.example.gemery.ssww.activities.ODOListActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name="com.example.gemery.ssww.activities.ODetailActivity"
