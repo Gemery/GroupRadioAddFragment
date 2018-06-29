@@ -161,12 +161,16 @@ public class SignInActivity extends Activity {
                                 LoginResultInfoBean object = GsonUtils.parseJSON(response.body(),LoginResultInfoBean.class);
                                 if(object.getServerCode().getResultMessage().equals("登录成功")){
                                     // 第一次登陆  --->
-                                    Log.e("tag","state->success");
+                                    Log.e("tag",response.body());
                                     if(usersp.getString("username","").equals("")) {
                                         //usersp = getSharedPreferences("user", 0);
                                         SharedPreferences.Editor editor = usersp.edit();
                                         editor.putString("username", username);
                                         editor.putString("userpsw", password);
+                                        editor.putString("ssww_code",object.getS_zx00());
+                                        editor.putString("dp_number",object.getS_zx06());
+                                        editor.putString("login_user_code",object.getS_zx01());
+                                        editor.putString("login_name",object.getS_zx02());
                                         editor.commit();
                                     }
                                     Intent intent=new Intent(SignInActivity.this,MainActivity.class);

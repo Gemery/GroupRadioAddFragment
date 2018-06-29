@@ -3,6 +3,7 @@ package com.example.gemery.ssww.activities;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -111,7 +112,7 @@ public class SLockEditActivity extends AppCompatActivity {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(SLockEditActivity.this);
                 //builder.setTitle("你选择的客户类型是：");
-                String[] types = {"订单", "出库单", "某某"};
+                String[] types = {"订单", "销售出库单", "调拨单"};
 
                 builder.setSingleChoiceItems(types, checkedItem, new DialogInterface.OnClickListener() {
                     @Override
@@ -203,8 +204,9 @@ public class SLockEditActivity extends AppCompatActivity {
     private String getSlockedSumlUrl = Const.W_HOST + "/api/stockData/getLockE?s_lock_e03=";
         // 获取该订单的已锁物料的数量及物料代码
     private  void getSlockedSum(){
-        String ssww_code = "300005";
-        String dp_number = "300005001";
+        SharedPreferences usersp = getSharedPreferences("user", 0);
+        String ssww_code = usersp.getString("ssww_code","");
+        String dp_number = usersp.getString("dp_number","");
         getSlockedSumlUrl = getSlockedSumlUrl + list.get(0).getS_oeb01() +"&s_lock_h00=" + ssww_code +"&s_lock_hcode=" + dp_number;
         OkGo.<String>get(getSlockedSumlUrl)
                 .tag(this)

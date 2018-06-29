@@ -3,6 +3,7 @@ package com.example.gemery.ssww.activities;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -133,9 +134,9 @@ public class EmpMsgActivity extends AppCompatActivity implements PullLoadMoreRec
     private String post_occ_list = "";
 
     private void initData() {
-
-         String keyValue1 = "s_p00=" + PreferencesUtils.getSharePreStr(this,"ssww_code");
-         String keyValue2 = "s_p_code=" + PreferencesUtils.getSharePreStr(this,"ssww_dp_number");
+        SharedPreferences usersp = getSharedPreferences("user", 0);
+         String keyValue1 = "s_p00=" + usersp.getString("ssww_code","");
+         String keyValue2 = "s_p_code=" + usersp.getString("dp_number","");
          get_emp_list_url = get_emp_list_url + keyValue1 + "&" + keyValue2 ;
          Log.e("tag",get_emp_list_url);
         mWeiDialog = WeiboDialogUtils.createLoadingDialog(this,"正在加载中");

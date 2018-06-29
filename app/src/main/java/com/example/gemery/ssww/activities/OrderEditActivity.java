@@ -3,6 +3,7 @@ package com.example.gemery.ssww.activities;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -160,8 +161,9 @@ public class OrderEditActivity extends AppCompatActivity {
         //订单单头
         OeaBen.OeaListBean oeaListBean = new OeaBen.OeaListBean();
         oeaListBean.setId("0");
-        oeaListBean.setS_oea00(PreferencesUtils.getSharePreStr(this,"ssww_code"));
-        oeaListBean.setS_oea_code(PreferencesUtils.getSharePreStr(this,"sww_dp_bumber"));
+        SharedPreferences usersp = getSharedPreferences("user", 0);
+        oeaListBean.setS_oea00(usersp.getString("ssww_code",""));
+        oeaListBean.setS_oea_code(usersp.getString("ssww_code",""));
         //  s_oea01 : string,单据编号
         oeaListBean.setS_oea01(textContentBH.getText().toString());
         oeaListBean.setS_oea07(currentDate.getText().toString());

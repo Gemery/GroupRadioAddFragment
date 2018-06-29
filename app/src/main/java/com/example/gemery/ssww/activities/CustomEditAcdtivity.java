@@ -2,6 +2,7 @@ package com.example.gemery.ssww.activities;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -27,6 +28,7 @@ import com.example.gemery.ssww.bean.MsgList;
 import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
 import com.example.gemery.ssww.utils.PreferencesUtils;
+import com.example.gemery.ssww.utils.SharedPreferencesUtil;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -175,8 +177,11 @@ public class CustomEditAcdtivity extends AppCompatActivity implements Toolbar.On
                 mCustom.setS_occ04(userAddress.getText().toString());
                 mCustom.setS_occ11(textContentCustomEmp.getText().toString());
                 mCustom.setS_occ04(userAddress.getText().toString());
-                mCustom.setS_occ00(PreferencesUtils.getSharePreStr(this,"ssww_code"));
-                mCustom.setS_occ_code(PreferencesUtils.getSharePreStr(this,"ssww_dp_number"));
+
+                SharedPreferences usersp = getSharedPreferences("user", 0);
+
+                mCustom.setS_occ00(usersp.getString("ssww_code",""));
+                mCustom.setS_occ_code(usersp.getString("dp_number",""));
                 List<CustomMsg> list1 = new ArrayList<>();
                 list1.add(mCustom);
 
