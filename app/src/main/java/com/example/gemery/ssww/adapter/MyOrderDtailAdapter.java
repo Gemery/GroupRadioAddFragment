@@ -68,38 +68,11 @@ public class MyOrderDtailAdapter extends RecyclerView.Adapter<MyOrderDtailAdapte
                     .setText(data.get(position).getS_oeb03());
 
             // 数量
-//           TextView slTv = ((TextView) holder.itemView.findViewById(R.id.s_gbag_e07));
-//                    slTv.setText(data.get(position).getS_oeb07());
 
-            final int finalPostion = position;
-            // 数量
-            EditText slTv = ((EditText) holder.itemView.findViewById(R.id.s_gbag_e07));
-            slTv.setText("1");
+            TextView slTv = ((TextView) holder.itemView.findViewById(R.id.s_gbag_e07));
+            slTv.setText(data.get(position).getS_oeb07());
 
-            holder.itemView.findViewById(R.id.sl_count_bl).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int count = Integer.parseInt(slTv.getText().toString());
-                    if(count == 1){
-                        return;
-                    }else{
-                        count--;
-                        slTv.setText(String.valueOf(count));
-                        // 监听数据变化
-                        data.get(finalPostion).setS_oeb07(String.valueOf(count));
-                    }
-                }
-            });
-            holder.itemView.findViewById(R.id.sl_count_pl).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int count = Integer.parseInt(slTv.getText().toString());
-                    count++;
-                    slTv.setText(String.valueOf(count));
 
-                    data.get(finalPostion).setS_oeb07(String.valueOf(count));
-                }
-            });
         }
     }
 

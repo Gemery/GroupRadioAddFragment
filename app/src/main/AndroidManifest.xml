@@ -31,6 +31,8 @@
         android:theme="@style/AppTheme">
         <activity android:name="com.example.gemery.ssww.MainActivity">
         </activity>
+        <activity android:name="com.example.gemery.ssww.activities.AddHeaderActivity">
+        </activity>
         <activity android:name="com.example.gemery.ssww.activities.ODOListActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name="com.example.gemery.ssww.activities.ODetailActivity"

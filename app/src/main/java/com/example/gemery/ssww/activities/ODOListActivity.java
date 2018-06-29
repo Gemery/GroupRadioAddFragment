@@ -27,6 +27,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ODOListActivity extends AppCompatActivity {
     @BindView(R.id.title_bar_title)
@@ -48,9 +49,7 @@ public class ODOListActivity extends AppCompatActivity {
         initData();
         initView();
     }
-
     private List<ODOBean.ListBean> listData = new ArrayList<>();
-
     private void initView() {
         odoReView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -126,4 +125,15 @@ public class ODOListActivity extends AppCompatActivity {
             }
         }
     };
+
+    @OnClick({R.id.title_bar_back,R.id.title_options_tv})
+    public void onClickView(View view){
+         switch (view.getId()){
+             case R.id.title_bar_back:
+                 finish();
+                 break;
+             case R.id.title_options_tv:
+                 break;
+         }
+    }
 }

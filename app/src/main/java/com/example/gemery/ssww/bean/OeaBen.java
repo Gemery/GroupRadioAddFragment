@@ -1,8 +1,9 @@
 package com.example.gemery.ssww.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class OeaBen {
+public class OeaBen implements Serializable{
 
     @Override
     public String toString() {
@@ -379,7 +380,7 @@ public class OeaBen {
         }
     }
 
-    public static class OebListBean {
+    public static class OebListBean implements Serializable {
         /**
          * s_oeb01 : string,单据编号
          * s_oeb02 : integer,项次

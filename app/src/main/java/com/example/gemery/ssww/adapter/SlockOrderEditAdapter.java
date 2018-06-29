@@ -4,27 +4,32 @@ package com.example.gemery.ssww.adapter;
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
-import com.example.gemery.ssww.bean.ODdetailBean;
-import com.example.gemery.ssww.bean.SLockBean;
+import com.example.gemery.ssww.bean.OeaBen;
+import com.example.gemery.ssww.bean.StorageBean;
+import com.example.gemery.ssww.utils.Const;
+import com.example.gemery.ssww.utils.GsonUtils;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.callback.StringCallback;
+import com.lzy.okgo.model.Response;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by wsy on 2018/6/27.
+ * Created by wsy on 2018/6/28.
  */
-public class SlockOrderDetailAdapter extends RecyclerView.Adapter<SlockOrderDetailAdapter.MyHolder> {
+public class SlockOrderEditAdapter extends RecyclerView.Adapter<SlockOrderEditAdapter.MyHolder> {
 
     private RecyclerView mRecyclerView;
 
-    private List<SLockBean.LockEListBean> data = new ArrayList<>();
+    private List<OeaBen.OebListBean> data = new ArrayList<>();
     private Context mContext;
 
     private View VIEW_FOOTER;
@@ -35,19 +40,18 @@ public class SlockOrderDetailAdapter extends RecyclerView.Adapter<SlockOrderDeta
     private int TYPE_HEADER = 1001;
     private int TYPE_FOOTER = 1002;
 
-    public SlockOrderDetailAdapter(List<SLockBean.LockEListBean> data, Context mContext) {
+    public SlockOrderEditAdapter(List<OeaBen.OebListBean> data, Context mContext) {
         this.data = data;
         this.mContext = mContext;
     }
-
     @Override
-    public SlockOrderDetailAdapter.MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SlockOrderEditAdapter.MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_FOOTER) {
             return new MyHolder(VIEW_FOOTER);
         } else if (viewType == TYPE_HEADER) {
             return new MyHolder(VIEW_HEADER);
         } else {
-            return new MyHolder(getLayout(R.layout.ab_slock_detail_item,parent));
+            return new MyHolder(getLayout(R.layout.ab_item_lock_order_edit,parent));
         }
     }
 
@@ -55,26 +59,60 @@ public class SlockOrderDetailAdapter extends RecyclerView.Adapter<SlockOrderDeta
     public void onBindViewHolder(MyHolder holder, int position) {
         if (!isHeaderView(position) && !isFooterView(position)) {
             if (haveHeaderView()) position--;
-            // 数量
-         ((TextView) holder.itemView.findViewById(R.id.s_lock_e01))
-                    .setText(data.get(position).getS_lock_e01());
-         ((TextView) holder.itemView.findViewById(R.id.s_lock_e05))
-                    .setText(data.get(position).getS_lock_e05());
-         ((TextView) holder.itemView.findViewById(R.id.s_lock_e06))
-                    .setText(data.get(position).getS_lock_e06());
-         ((TextView) holder.itemView.findViewById(R.id.s_lock_e07))
-                    .setText(data.get(position).getS_lock_e07());
-         ((TextView) holder.itemView.findViewById(R.id.s_lock_e08))
-                    .setText(data.get(position).getS_lock_e08());
-         ((TextView) holder.itemView.findViewById(R.id.s_lock_e10))
-                    .setText(data.get(position).getS_lock_e10());
-         ((TextView) holder.itemView.findViewById(R.id.s_lock_e12))
-                    .setText(data.get(position).getS_lock_e12());
-         ((TextView) holder.itemView.findViewById(R.id.s_lock_e13))
-                    .setText(data.get(position).getS_lock_e13());
-         ((TextView) holder.itemView.findViewById(R.id.s_lock_e14))
-                    .setText(data.get(position).getS_lock_e14());
+            // 规格
+            ((TextView) holder.itemView.findViewById(R.id.content_wl_gg))
+                    .setText(data.get(position).getS_oeb06());
+            // 型号
+            ((TextView) holder.itemView.findViewById(R.id.content_wl_xh))
+                    .setText(data.get(position).getS_oeb05());
+            //名称
+            ((TextView) holder.itemView.findViewById(R.id.content_wl_name))
+                    .setText(data.get(position).getS_oeb04());
+            //物料代码
+            ((TextView) holder.itemView.findViewById(R.id.wl_content_code))
+                    .setText(data.get(position).getS_oeb03());
 
+            // 数量
+            final int finalPostion = position;
+            TextView slTv = ((TextView) holder.itemView.findViewById(R.id.s_gbag_e07));
+            slTv.setText("0");
+
+            holder.itemView.findViewById(R.id.sl_count_bl).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    double count = Double.parseDouble(slTv.getText().toString());
+                    if(count == 0){
+                        return;
+                    }else{
+                        count--;
+                        slTv.setText(String.valueOf(count));
+                        // 监听数据变化
+                        data.get(finalPostion).setS_oeb07(String.valueOf(count));
+                    }
+                }
+            });
+            holder.itemView.findViewById(R.id.sl_count_pl).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    double count = Double.parseDouble(slTv.getText().toString());
+                    double aMax = Double.parseDouble(data.get(finalPostion).getS_oeb07())
+                              - Double.parseDouble(data.get(finalPostion).getS_oeb16())
+                              - Double.parseDouble(data.get(finalPostion).getS_oebud02());
+                    double bMax = Double.parseDouble(data.get(finalPostion).getS_oebud01())
+                              - Double.parseDouble(data.get(finalPostion).getS_oebud02());
+                    double slockMax = (aMax > bMax) ? aMax : bMax;
+                    Log.e("tag",aMax+ "---->"+bMax);
+                    if(count == slockMax){
+                        return;
+                    }else {
+                        count++;
+                        slTv.setText(String.valueOf(count));
+                        data.get(finalPostion).setS_oeb07(String.valueOf(count));
+                    }
+
+                }
+            });
         }
     }
 

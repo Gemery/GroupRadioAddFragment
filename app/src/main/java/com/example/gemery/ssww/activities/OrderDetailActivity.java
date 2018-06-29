@@ -207,7 +207,9 @@ public class OrderDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(OrderDetailActivity.this,SLockEditActivity.class);
-                intent.putExtra("orderNum",orderNum);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("listData", (Serializable) list);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });

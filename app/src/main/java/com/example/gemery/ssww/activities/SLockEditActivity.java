@@ -19,13 +19,21 @@ import android.widget.TextView;
 
 import com.example.gemery.groupradioaddfragment.R;
 import com.example.gemery.ssww.adapter.MyOrderDtailAdapter;
+import com.example.gemery.ssww.adapter.SlockOrderEditAdapter;
+import com.example.gemery.ssww.bean.ODdetailBean;
 import com.example.gemery.ssww.bean.OeaBen;
 import com.example.gemery.ssww.bean.SLockBean;
+import com.example.gemery.ssww.bean.StorageBean;
+import com.example.gemery.ssww.parambean.RespSlockedSumBean;
 import com.example.gemery.ssww.utils.Const;
 import com.example.gemery.ssww.utils.GsonUtils;
+import com.google.gson.JsonObject;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -43,15 +51,17 @@ public class SLockEditActivity extends AppCompatActivity {
     @BindView(R.id.slock_re_view)
     RecyclerView mRecyclerView;
 
+    private int slockMax = 0;
+
     View viewHeader;
-    private MyOrderDtailAdapter mAdapter;
+    private SlockOrderEditAdapter mAdapter;
     private TextView vNumber;
     private TextView vType;
     private TextView vStart;
     private TextView vEnd;
     private String orderNum;
 
-
+    private List<OeaBen.OebListBean> list = new ArrayList<>();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,38 +69,29 @@ public class SLockEditActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initData();
         initView();
-
     }
-
-
-
-    private List<OeaBen.OebListBean> list = new ArrayList<>();
 
     private void initView() {
         titleBarTitle.setText("锁库存");
         titleOptionsTv.setText("保存");
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mAdapter = new SlockOrderEditAdapter(list, this);
 
-        mAdapter = new MyOrderDtailAdapter(list, this);
-        mRecyclerView.setAdapter(mAdapter);
+
+         mRecyclerView.setAdapter(mAdapter);
         // 初始recyclerView 头部
         initRecylerViewHeader();
-
         mAdapter.addHeaderView(viewHeader);
-
-
     }
     private int checkedItem = 0;
     private void initRecylerViewHeader() {
         viewHeader = LayoutInflater.from(this).inflate(R.layout.item_slock_dt,null);
-
         vNumber = viewHeader.findViewById(R.id.s_lock_h02);
         vType = viewHeader.findViewById(R.id.s_lock_h03);
         vStart   = (TextView)viewHeader.findViewById(R.id.s_lock_hsdate);
         vEnd   = (TextView)viewHeader.findViewById(R.id.s_lock_hedate);
 
-        vNumber.setText(orderNum);
-
+        vNumber.setText(list.get(0).getS_oeb01());
         viewHeader.findViewById(R.id.rl_start_date).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,7 +106,6 @@ public class SLockEditActivity extends AppCompatActivity {
                 datePickerend.show();
             }
         });
-
         viewHeader.findViewById(R.id.rl_order_type).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,99 +142,163 @@ public class SLockEditActivity extends AppCompatActivity {
         });
     }
 
-    private String getOrderDetailUrl = Const.W_HOST + "/api/Order/getStandardList?orderNum=";
 
 
     private void initData () {
-            Intent intent = getIntent();
-             orderNum = intent.getStringExtra("orderNum");
+        Bundle bundle = getIntent().getExtras();
+        list = (List<OeaBen.OebListBean>) bundle.getSerializable("listData");
+        Log.e("tag",list.toString());
+        // 获取该订单的已锁物料的数量及物料代码
+        getSlockedSum();
+        getStorageCount();
 
-            OkGo.<String>get(getOrderDetailUrl + orderNum)
+        }
+        private boolean jk1 = false;
+        private List<String> storageList = new ArrayList<>();
+   // 获得该物料的库存数
+    private  String getStorageCountUrl = Const.W_HOST + "/api/stockData/getStoreList";
+    private void getStorageCount(){
+        for(int i= 0;i<list.size();i++){
+            String wCode = list.get(0).getS_oeb03();
+            String upJson = "{ ima: { s_img01:\""+wCode+"\"},pageSize: 20,pageIndex: 1}";
+            OkGo.<String>post(getStorageCountUrl)
                     .tag(this)
+                    .upJson(upJson)
                     .execute(new StringCallback() {
                         @Override
                         public void onSuccess(Response<String> response) {
-                            //Log.e("tag",response.body());
-                            OeaBen oeaBen = GsonUtils.parseJSON(response.body(), OeaBen.class);
+                            Log.e("tag",response.body());
+                            JSONObject jsonObject = null;
+                            try {
+                                jsonObject = new JSONObject(response.body());
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            int count = 0;
+                            try {
+                                count = jsonObject.getInt("TotalCount");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            jk1 = true;
+                            if(count == 0){
+
+                            }else{
+                                StorageBean obj = GsonUtils.parseJSON(response.body(),StorageBean.class);
+                                storageList.add(String.valueOf(obj.getList().get(0).getS_img08()));
+                            }
+
+
                             Message msg = new Message();
-                            msg.what = DATA_UPDATE;
-                            msg.obj = oeaBen;
+                            msg.what = 1;
                             handler.sendMessage(msg);
-                            //list = oeaBen.getOebList();
                         }
                     });
-
         }
-        private final static int DATA_UPDATE = 1;
-        private Handler handler = new Handler(){
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                switch (msg.what){
-                    case DATA_UPDATE:
-                        list = ((OeaBen)msg.obj).getOebList();
-                        initView();
-                        break;
+     }
+
+   private boolean jk2 = false;
+    private final static int SLOCK_DATA_UPDATE = 2;
+    public ArrayList<RespSlockedSumBean> slockedList = new ArrayList<>();
+    private String getSlockedSumlUrl = Const.W_HOST + "/api/stockData/getLockE?s_lock_e03=";
+        // 获取该订单的已锁物料的数量及物料代码
+    private  void getSlockedSum(){
+        String ssww_code = "300005";
+        String dp_number = "300005001";
+        getSlockedSumlUrl = getSlockedSumlUrl + list.get(0).getS_oeb01() +"&s_lock_h00=" + ssww_code +"&s_lock_hcode=" + dp_number;
+        OkGo.<String>get(getSlockedSumlUrl)
+                .tag(this)
+                .execute(new StringCallback() {
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        jk2 = true;
+                        Log.e("tag",getSlockedSumlUrl + response.body());
+                        if(response.body().equals("[]")){
+                            slockedList = new ArrayList<>();
+                        }else{
+                            slockedList = GsonUtils.jsonToArrayList(response.body(),RespSlockedSumBean.class);
+                        }
+                        Message msg = new Message();
+                        msg.what  = 2;
+                        handler.sendMessage(msg);
+
+                }});
+    }
+    private void handlerCount(){
+        if(jk1 && jk2){
+            if(slockedList.size() != 0){
+                for(int i=0;i<list.size();i++){
+                    list.get(i).setS_oebud02(String.valueOf(slockedList.get(i).getLock_sum()));
+                    list.get(i).setS_oebud03(slockedList.get(i).getS_lock_e05());
+                    }
+            }else{
+                for(int i=0;i<list.size();i++) {
+                    list.get(i).setS_oebud02("0");
+                    list.get(i).setS_oebud03("0");
                 }
-
             }
-        };
-        private String getFormJson(){
-            SLockBean sLockBean = new SLockBean();
-            List<SLockBean.LockEListBean> eList = new ArrayList<>();
-
-            // TODO  设置set 属性
-
-                    /** s_lock_e04 : integer,项次
-                     * s_lock_e03 : string,源单单号
-                    * s_lock_e05 : string,物料代码
-                    * s_lock_e06 : string,物料名称
-                    * s_lock_e07 : string,型号
-                    * s_lock_e08 : string,规格
-                    * s_lock_e10 : double,锁库存数量
-
-                    * s_oeb01 : string,单据编号
-                    * s_oeb02 : integer,项次
-                    * s_oeb03 : string,物料代码
-                    * s_oeb04 : string,物料名称
-                    * s_oeb05 : string,型号
-                    * s_oeb06 : string,规格
-                    * s_oeb07 : double,数量
-                    */
-            for(int i=0;i<list.size();i++){
-                SLockBean.LockEListBean eObj = new SLockBean.LockEListBean();
-                eObj.setS_lock_e03(vNumber.getText().toString());
-                eObj.setS_lock_e05(list.get(i).getS_oeb03());
-                eObj.setS_lock_e06(list.get(i).getS_oeb04());
-                eObj.setS_lock_e07(list.get(i).getS_oeb05());
-                eObj.setS_lock_e08(list.get(i).getS_oeb05());
-                eObj.setS_lock_e10(list.get(i).getS_oeb07());
-                eObj.setS_lock_e11("0");
-                eObj.setS_lock_e12("102");
-                eObj.setS_lock_e13("121");
-                eObj.setS_lock_e14("1");
-                eList.add(eObj);
+            if(storageList.size() != 0){
+                for(int i=0;i<list.size();i++){
+                    list.get(i).setS_oebud01(storageList.get(i));
+                }
+            }else{
+                for(int i=0;i<list.size();i++){
+                    list.get(i).setS_oebud01("0");
+                }
             }
-            sLockBean.setLock_e_list(eList);
-            List<SLockBean.LockHListBean> hList = new ArrayList<>();
-            SLockBean.LockHListBean hObj = new SLockBean.LockHListBean();
-            // TODO  设置set 属性
-            hObj.setS_lock_h02(vNumber.getText().toString());
-            hObj.setS_lock_h03(vType.getText().toString());
-            hObj.setS_lock_hsdate(String.valueOf(new Date(vStart.getText().toString()).getTime()));
-            hObj.setS_lock_hedate(String.valueOf(new Date(vEnd.getText().toString()).getTime()));
-            hList.add(hObj);
-            sLockBean.setLock_h_list(hList);
-            sLockBean.setFlage("1");
-            Log.e("tag",sLockBean.toString());
 
-            return sLockBean.toString();
+            Log.e("tag",list.toString());
+            initView();
         }
 
-        private String postSlockOrderUrl = Const.W_HOST + "/api/stockData/lockskExq";
+    }
+   private Handler handler = new Handler(){
+       @Override
+       public void handleMessage(Message msg) {
+           super.handleMessage(msg);
+           switch (msg.what){
+               case 1:
+                  handlerCount();
+                   break;
+               case 2:
+                   handlerCount();
+                   break;
+           }
 
+       }
+   };
+    private String getFormJson(){
+        SLockBean sLockBean = new SLockBean();
+        List<SLockBean.LockEListBean> eList = new ArrayList<>();
+        // TODO  设置set 属性
+        for(int i=0;i<list.size();i++){
+            SLockBean.LockEListBean eObj = new SLockBean.LockEListBean();
+            eObj.setS_lock_e03(vNumber.getText().toString());
+            eObj.setS_lock_e05(list.get(i).getS_oeb03());
+            eObj.setS_lock_e06(list.get(i).getS_oeb04());
+            eObj.setS_lock_e07(list.get(i).getS_oeb05());
+            eObj.setS_lock_e08(list.get(i).getS_oeb05());
+            eObj.setS_lock_e10(list.get(i).getS_oeb07());
+            eObj.setS_lock_e11("0");
+            eObj.setS_lock_e12("102");
+            eObj.setS_lock_e13("121");
+            eObj.setS_lock_e14("1");
+            eList.add(eObj); }sLockBean.setLock_e_list(eList);
+        List<SLockBean.LockHListBean> hList = new ArrayList<>();
+        SLockBean.LockHListBean hObj = new SLockBean.LockHListBean();
+        // TODO  设置set 属性
+        hObj.setS_lock_h02(vNumber.getText().toString());
+        hObj.setS_lock_h03(vType.getText().toString());
+        hObj.setS_lock_hsdate(String.valueOf(new Date(vStart.getText().toString()).getTime()));
+        hObj.setS_lock_hedate(String.valueOf(new Date(vEnd.getText().toString()).getTime()));
+        hList.add(hObj);
+        sLockBean.setLock_h_list(hList);
+        sLockBean.setFlage("1");
+        // Log.e("tag",sLockBean.toString());
+        return sLockBean.toString(); }
 
-        @OnClick({R.id.title_options_tv,R.id.title_bar_back})
+      private String postSlockOrderUrl = Const.W_HOST + "/api/stockData/lockskExq";
+       @OnClick({R.id.title_options_tv,R.id.title_bar_back})
        public void onViewClick(View view){
           switch (view.getId()){
                case R.id.title_options_tv:
@@ -247,7 +311,6 @@ public class SLockEditActivity extends AppCompatActivity {
                                    Log.e("tag",response.body());
                                }
                            });
-
                 break;
               case R.id.title_bar_back:
                   finish();
