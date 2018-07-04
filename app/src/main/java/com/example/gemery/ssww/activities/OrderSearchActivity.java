@@ -59,8 +59,8 @@ public class OrderSearchActivity extends AppCompatActivity {
     TextView searchLabelKey;
     @BindView(R.id.s_oea_code)
     EditText sOeaCode;
-    @BindView(R.id.s_oea02)
-    EditText sOea02;
+    @BindView(R.id.s_oea04)
+    EditText sOea04;
     @BindView(R.id.s_oea03)
     EditText sOea03;
     @BindView(R.id.s_oeb04)
@@ -107,8 +107,8 @@ public class OrderSearchActivity extends AppCompatActivity {
             upJson += filterB;
 
         }
-        if (!sOea02.getText().toString().isEmpty()) {
-            String kV1 = "s_oea02" + ":\"" + sOea02.getText().toString() + "\",";
+        if (!sOea04.getText().toString().isEmpty()) {
+            String kV1 = "s_oea04" + ":\"" + sOea04.getText().toString() + "\",";
             upJson += kV1;
 
         }
@@ -141,7 +141,7 @@ public class OrderSearchActivity extends AppCompatActivity {
         sOeb05.setText("");
         sOeb04.setText("");
         sOea03.setText("");
-        sOea02.setText("");
+        sOea04.setText("");
         sOeaCode.setText("");
     }
 
@@ -171,6 +171,7 @@ public class OrderSearchActivity extends AppCompatActivity {
                         //Log.e("tag",response.body());
                         DtOrderBean obj = GsonUtils.parseJSON(response.body(), DtOrderBean.class);
                         if (obj.getList().size() != 0) {
+                            Log.e("tag",obj.getList().size()+ "------>");
                             Message msg = new Message();
                             msg.what = GET_DATA_NOT_NULL;
                             msg.obj = obj;

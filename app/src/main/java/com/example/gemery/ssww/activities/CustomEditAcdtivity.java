@@ -174,7 +174,7 @@ public class CustomEditAcdtivity extends AppCompatActivity implements Toolbar.On
                 mCustom.setId(0);
                 mCustom.setS_occ02(editUserName.getText().toString());
                 mCustom.setS_occ03(editUserPhone.getText().toString());
-                mCustom.setS_occ04(userAddress.getText().toString());
+
                 mCustom.setS_occ11(textContentCustomEmp.getText().toString());
                 mCustom.setS_occ04(userAddress.getText().toString());
 
